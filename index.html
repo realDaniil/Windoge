@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./apps.css">
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <title>Windoge</title>
+</head>
+<body>
+<section class="error-screen-secton">
+    <div class="error-screen-content-holder">
+        <h2 style="font-size: 60px;">:(</h2>
+        <h3 style="font-size: 40px;">Oops</h3>
+        <p>This site is not supported on mobile devices.</p>
+    </div>
+</section>
+
+<div class="blackBackground"></div>
+<div id="contextmenu">
+    <button id="c-btn-personalization">Personalization</button><br>
+    <button id="c-btn-create">Create</button><br>
+    <button id="c-btn-paste">Paste</button><br>
+    <button id="c-btn-copy">Copy</button><br>
+</div>
+<section class="setion-apps">
+    <!-- настройка фона -->
+    <div id="personalization">
+        <div id="drag-personalization">
+                <div class="drag-symbols-holder">
+                        <p>&#8211;</p>
+                        <img src="img/double_square.svg" style="width: 20px; pointer-events: none;">
+                        <p>&times;</p>
+                </div>
+        </div>
+        <h2>Background</h2>
+        <div style="width: 180px; height: 100px; border: solid"></div>
+        <input type="checkbox" >
+        <p>gradient</p>
+        <div class="">
+            <h3>Background color selection</h3>
+            <div class="background-colors-holder">
+                <div class="color1"></div>
+                <div class="color2"></div>
+                <div class="color3"></div>
+                <div class="color4"></div>
+                <div class="color5"></div>
+                <div class="color6"></div>
+                <div class="color7"></div>
+                <div class="color8"></div>
+                <div class="color9"></div>
+                <div class="color10"></div>
+                <input type="color" class="add-color">
+            </div>
+        </div>
+    </div>
+
+    <!-- Калькулятор -->
+    <div class="calc">
+        <div id="drag-personalization">
+            <div class="drag-symbols-holder">
+                    <p>&#8211;</p>
+                    <p>&times;</p>
+            </div>
+        </div>
+        <div class="calc-buttons-holder">
+            <div class="calc-number-holder">
+                <h2 class="calc-number" style="font-size: 34px;">0</h2>
+            </div>
+                <div class="calc-buttons">
+                <button class="calc-btn calc-btn-AC">AC</button>
+                <button class="calc-btn calc-btn-plus-minus">&#177;</button>
+                <button class="calc-btn calc-btn-exponentiate">x&sup2;</button>
+                <button class="calc-btn calc-btn-divide">&#247;</button>
+                <button class="calc-btn calc-btn-num">7</button>
+                <button class="calc-btn calc-btn-num">8</button>
+                <button class="calc-btn calc-btn-num">9</button>
+                <button class="calc-btn calc-btn-x">&#215;</button>
+                <button class="calc-btn calc-btn-num">4</button>
+                <button class="calc-btn calc-btn-num">5</button>
+                <button class="calc-btn calc-btn-num">6</button>
+                <button class="calc-btn calc-btn-minus">-</button>
+                <button class="calc-btn calc-btn-num">1</button>
+                <button class="calc-btn calc-btn-num">2</button>
+                <button class="calc-btn calc-btn-num">3</button>
+                <button class="calc-btn calc-btn-plus">+</button>
+                <button class="calc-btn calc-btn-num">0</button>
+                <button class="calc-btn calc-btn-dot">.</button>
+                <button class="calc-btn calc-btn-del">&#8249;-</button>
+                <button class="calc-btn calc-btn-equal">=</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<main class="main">
+    <div id="calculator-logo" class="app">
+        <div class="icon-holder">
+            <img src="./img/calculator-logo.svg">
+        </div>
+        <div class="app-text-holder">
+            <p class="app-text">Calculator</p>
+        </div>
+    </div>
+<canvas id="canvas"></canvas>
+</main>
+
+<footer class="footer">
+    <div class="start-holder">
+        <div class="start">
+        </div>
+    </div>
+    <div class="lil-time-holder">
+        <p class="lil-time">00:00</p>
+        <p class="lil-date">00.00.0000</p>
+    </div>
+</footer>
+<div class="time">
+    <div class="big-time-holder">
+        <div class="big-time">00:00</div>
+        <div class="big-date"></div>
+    </div>
+        <div class="calendar">
+            <div class="days-holder">
+                <div class="calendar-day calendar-day1">1</div>
+                <div class="calendar-day calendar-day2">2</div>
+                <div class="calendar-day calendar-day3">3</div>
+                <div class="calendar-day calendar-day4">4</div>
+                <div class="calendar-day calendar-day5">5</div>
+                <div class="calendar-day calendar-day6">6</div>
+                <div class="calendar-day calendar-day7">7</div>
+                <div class="calendar-day calendar-day8">8</div>
+                <div class="calendar-day calendar-day9">9</div>
+                <div class="calendar-day calendar-day10">10</div>
+                <div class="calendar-day calendar-day11">11</div>
+                <div class="calendar-day calendar-day12">12</div>
+                <div class="calendar-day calendar-day13">13</div>
+                <div class="calendar-day calendar-day14">14</div>
+                <div class="calendar-day calendar-day15">15</div>
+                <div class="calendar-day calendar-day16">16</div>
+                <div class="calendar-day calendar-day17">17</div>
+                <div class="calendar-day calendar-day18">18</div>
+                <div class="calendar-day calendar-day19">19</div>
+                <div class="calendar-day calendar-day20">20</div>
+                <div class="calendar-day calendar-day21">21</div>
+                <div class="calendar-day calendar-day22">22</div>
+                <div class="calendar-day calendar-day23">23</div>
+                <div class="calendar-day calendar-day24">24</div>
+                <div class="calendar-day calendar-day25">25</div>
+                <div class="calendar-day calendar-day26">26</div>
+                <div class="calendar-day calendar-day27">27</div>
+                <div class="calendar-day calendar-day28">28</div>
+                <div class="calendar-day calendar-day29">29</div>
+                <div class="calendar-day calendar-day30">30</div>
+                <div class="calendar-day calendar-day31">31</div>
+            </div>
+        </div>
+        <div class="stopwatch-and-timer-holder">
+            <p class="stopwatch-holder stopwatch-and-timer-properties">Stopwatch</p>
+            <p class="timer-holder">Timer</p>
+        </div>
+        <div class="stopwatch">
+            <h2 class="stopwatch-numbers" style="text-align: center; margin: 1rem 0;"></h2>
+            <div class="stopwatch-button-holder">
+                <button class="start-stopwatch stopwatch-button">
+                    <p>Start</p>
+                </button>
+            <button class="pause-stopwatch stopwatch-button">
+                <p>Pause</p>
+            </button>
+            <button class="reset-stopwatch stopwatch-button">
+                <p>Reset</p>
+            </button>
+            <button class="lap-stopwatch stopwatch-button">
+                <p>Lap</p>
+            </button>
+        </div>
+        <div class="lap-saction"></div>
+        </div>
+        <div class="timer">
+            <audio>
+            <source src="./audio/zvukovoy-signal-tsifrovogo-budilnika-26709.mp3" type="audio/mpeg">
+            </audio>
+            <div class="timer-num-holder"  style="margin-top: 1rem;">
+                <div class="dont-click-timer"></div>
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" max="60" value="0" maxlength="2" class="timer-min">
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" max="59" value="30" maxlength="2" class="timer-sec">
+            </div>
+            <div class="timer-num-holder"  style="margin-bottom: 1rem;">
+                <p style="padding: 0 2rem; font-size: 10px;">Min</p>
+                <p style="padding: 0 1rem; font-size: 10px;">Sec</p>
+            </div>
+            <div class="timer-buttons">
+                <button class="start-timer stopwatch-button"><p>Start</p></button>
+                <button class="stop-timer stopwatch-button"><p>Stop</p></button>
+                <button class="reset-timer stopwatch-button"><p>Reset</p></button>
+            </div>
+
+    </div>
+</div>
+<script src="./main.js"></script>
+<script src="./apps.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+img{
+    pointer-events: none;
+}
+body{
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    overflow: hidden;
+    background-size: cover;
+}
+.error-screen-secton{
+    background-color: rgb(35, 105, 180);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    color: #ffffff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-image: url("./img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 93%;
+}
+.blackBackground{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -10;
+    transition: 0.5s ease-in-out;
+}
+#canvas{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+.icon-holder{
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.app{
+    width: 80px;
+    z-index: 10;
+    display: block;
+    height: 100px;
+    /*background-color: #ff9501;*/
+    position: absolute;
+}
+.app:hover{
+    background-color: rgba(20, 80, 210, 0.5);
+}
+.app-text-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+}
+.app-text{
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}
+#personalization{
+    position: absolute;
+    left: 25%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+    width: 800px;
+    height: 600px;
+    z-index: 500;
+    display: none;
+}
+#drag-personalization{
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    height: 30px;
+    background-color: #4f4f4f;
+}
+.drag-symbols-holder{
+    float: right;
+    margin-right: 10px;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+}
+.background-colors-holder{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center
+}
+.background-colors-holder div{
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+    border: solid 1px;
+}
+.color1{
+    background-color: brown;
+}
+.color2{
+background-color: cyan;
+}
+.color3{
+background-color: forestgreen;
+}
+.color4{
+background-color: darkorange;
+}
+.color5{
+background-color: darkmagenta;
+}
+.color6{
+background-color: lightseagreen;
+}
+.color7{
+background-color: royalblue;
+}
+.color8{
+background-color: coral;
+}
+.color9{
+background-color: darkblue;
+}
+.color10{
+background-color: darkred;
+}
+.add-color{
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    border: 1px solid black;
+    background-color: transparent;
+    width: 35px;
+    height: 35px;
+}
+.add-color::-webkit-color-swatch{
+    border: black;
+
+    /* width: 35px; */
+    /* height: 35px; */
+}
+.add-color::-moz-color-swatch{
+    border: black;
+}
+
+#contextmenu{
+    z-index: 1000;
+    position: absolute;
+    display: none;
+    border: #4f4f4f 1px;
+    border-radius: 1px;
+    background-color: rgb(238 238 238);
+    width: auto;
+    padding: 0.5rem 0;
+    box-shadow: 1px 1px 5px black;
+}
+#contextmenu button{
+    text-align: left;
+    padding: 2px 10px 2px 10px;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+}
+#contextmenu button:hover{
+    background-color: rgba(255 255 255);
+}
+footer{
+    z-index: 900;
+    color: white;
+    background: rgb(16, 16, 16);
+    width: 100%;
+    height: 7%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+.start-holder{
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.start{
+    background-image: url("./img/start.svg");
+    background-repeat: no-repeat;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+}
+.start:hover{
+    background-color: royalblue;
+}
+
+.lil-time-holder{
+    padding: 0 10px 0 10px;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: 0.1s ease;
+}
+.lil-time-holder:hover{
+    background-color: rgb(39, 39, 39);
+}
+.time{
+    transition: 0.5s ease-in-out;
+    z-index: 800;
+    position: absolute;
+    bottom: -610px;
+    right: 0;
+    width: 300px;
+    height: 600px;
+    background-color: rgb(31, 31, 31);
+    border-top: solid rgb(76, 76, 76) 1px;
+    border-left: solid rgb(76, 76, 76) 1px;
+    color: #ffffff;
+}
+.big-time-holder{
+    padding: 1rem;
+    border-bottom: solid rgb(76, 76, 76) 1px;
+}
+.big-time{
+    font-size: 38px;
+    font-weight: 200;
+}
+.big-date{
+    font-size: 20px;
+    font-weight: 300;
+}
+.days-holder{
+    padding: 1rem 0 0 0;
+    margin: auto;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) ;
+}
+.calendar-day{
+    padding: 2px;
+    height: 25px;
+    font-weight: 300;
+    /* text-shadow: 0 0 2px #ffff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stopwatch-and-timer-holder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px rgb(76, 76, 76);
+    width: 90%;
+    margin: auto;
+}
+.stopwatch-holder, .timer-holder{
+    width: 40%;
+    border: 1px solid rgba(31, 31, 31, 0);
+    text-align: center;
+    position: relative;
+    bottom: -1px;
+    padding: 0.5rem;
+}
+.stopwatch-and-timer-properties{
+    border-top: solid 1px rgb(76, 76, 76);
+    border-left: solid 1px rgb(76, 76, 76);
+    border-right: solid 1px rgb(76, 76, 76);
+    border-radius: 5px 5px 0 0;
+    background-color: rgb(31, 31, 31);
+    position: relative;
+    bottom: -1px;
+}
+
+.stopwatch{
+    width: 90%;
+    margin: auto;
+}
+.stopwatch-button-holder{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.stopwatch-button{
+    border: none;
+    border-radius: 2px;
+    padding: 0.2rem;
+    width: 60px;
+    align-items: center;
+}
+.start-stopwatch{
+    background-color: rgb(10, 42, 18);
+    color: rgb(72, 186, 114);
+}
+.start-stopwatch:hover{
+    background-color: rgba(10, 32, 10);
+}
+.pause-stopwatch{
+    display: none;
+    background-color: rgb(52, 14, 13);
+    color: rgb(212, 82, 86);
+}
+.pause-stopwatch:hover{
+    background-color: rgba(42, 21, 0);
+}
+.reset-stopwatch{
+    display: none;
+    background-color: rgb(52, 52, 52);
+    color: white;
+}
+.reset-stopwatch:hover, .lap-stopwatch:hover{
+    background-color: rgba(40, 40, 40);
+}
+.lap-stopwatch{
+    background-color: rgb(52, 52, 52);
+    color: white;
+}
+
+.lap-saction{
+    overflow-y: scroll;
+    height: 140px;
+}
+.lap-content{
+    margin: auto;
+    text-align: center;
+    border-bottom: 1px solid rgb(76, 76, 76);
+}
+.lap-saction::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 5px;
+    background-color: rgba(76, 76, 76, 0)
+}
+.lap-saction::-webkit-scrollbar-thumb{
+    background-color: rgb(76, 76, 76);
+    border-radius: 5px;
+}
+.lap-saction::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(90, 90, 90);
+    border-radius: 5px;
+}
+.timer{
+    display: none;
+}
+.timer-num-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dont-click-timer{
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    display: none;
+}
+.timer-min, .timer-sec{
+    background-color: rgb(31, 31, 31);
+    color: white;
+    border: none;
+    font-size: 28px;
+    outline:none;
+    padding:0;
+    cursor: default;
+    width: 60px;
+    text-align: center;
+}
+
+.timer-buttons{
+    width: 90%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.start-timer{
+    background-color: rgb(10, 42, 18);
+    color: rgb(72, 186, 114);
+}
+.start-timer:hover{
+    background-color: rgb(10, 32, 10);
+}
+.stop-timer{
+    display: none;
+    background-color: rgb(52, 31, 4);
+    color: rgb(249, 156, 8);
+}
+.stop-timer:hover{
+    background-color: rgb(42, 21, 0);
+}
+.reset-timer{
+    display: none;
+    background-color: rgb(52, 52, 52);
+    color: white;
+}
+.reset-timer:hover{
+    background-color: rgb(40, 40, 40);
+}

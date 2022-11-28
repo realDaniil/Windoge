@@ -1,5 +1,6 @@
 // call
-let calcOpen = true, sign = '', signClick = 0; a = 0, b = 0, calcNumber = document.querySelector('.calc-number');
+// let calculatorOpen = false
+let sign = '', signClick = 0; a = 0, b = 0, calcNumber = document.querySelector('.calc-number');
 function answerFunction(){
 	if(sign == '-'){
 		a = Number(b) - Number(a);
@@ -39,24 +40,23 @@ function fixCalc(){
 	}
 	if(a.length < 10){
 		calcNumber.style.fontSize = '34px';
-		console.log(1)
 		
 	}
 	if(a.length > 9 && a.length < 16){
 		calcNumber.style.fontSize = '18px';
-		console.log(2)
+
 
 	}
 	if(a.length > 16 && a.length < 20){
 		calcNumber.style.fontSize = '14px';
-		console.log(233344)
+
 	}
 	if(a.length > 20){
 		calcNumber.style.fontSize = '10px';
-		console.log(99999)
+
 	}
 }
-if(calcOpen === true){
+// if(calculatorOpen === true){
 	document.querySelector('.calc-buttons').addEventListener('click', (e) =>{
 		if(!e.target.classList.contains('calc-btn')){
 			return;
@@ -136,8 +136,8 @@ if(calcOpen === true){
 		}
 		fixCalc();
 		calcNumber.textContent = a;
-		console.log('a' , a, 'b', b, 's', sign, 'c', signClick);
-	}) 
+
+	});
 // let arrCalcCodes = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Delete', 'Enter', 'Period'];
 // let arrCalcCodesDigit = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0'];
 // 	document.addEventListener('keydown', (e) => {
@@ -186,4 +186,4 @@ if(calcOpen === true){
 // 		calcNumber.textContent = a;
 // 		console.log('a' , a, 'b', b, 's', sign, 'c', signClick)
 // 	});
-}
+// }

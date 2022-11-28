@@ -24,6 +24,7 @@ document.addEventListener('contextmenu', (event) =>{
 });
 document.addEventListener('mousedown', function (){
     contextmenu.style.display='none';
+    
 });
 
 
@@ -57,7 +58,7 @@ mainCanvas.addEventListener('mousedown', function (e){
 window.addEventListener("mousemove", function (e){
     aCanvas = e.x;
     bCanvas = e.y;
-})
+});
 window.addEventListener('mouseup', function (){
     ctx.clearRect(0, 0, 10000, 10000);
     xCanvas=undefined; yCanvas=undefined; aCanvas=undefined; bCanvas=undefined;
@@ -69,7 +70,7 @@ window.addEventListener('mouseup', function (){
 //движение настроек фона и их появление
 document.getElementById('c-btn-personalization').addEventListener("mousedown", function (){
     document.getElementById('personalization').style.display='block'
-})
+});
 let dragBackSettings = document.getElementById('drag-personalization');
 function fDragPersonalization (e){
     document.getElementById('personalization').style.left = e.pageX-xCoordinate+"px";
@@ -184,7 +185,7 @@ function timeSettings(){
     document.querySelector('.calendar-day'+numDate).style.fontWeight = '500';
     document.querySelector('.calendar-day'+numDate).style.textShadow = '0 0 2px white';
 }
-setInterval(timeSettings,100)
+setInterval(timeSettings,100);
 
 
 
@@ -208,7 +209,7 @@ function stopwatchFunction(){
                 ms = 00;
                 sec = 00;
                 min = 00;
-                clearInterval(stopwatchInterval)
+                clearInterval(stopwatchInterval);
             }
         }
     }
@@ -226,7 +227,7 @@ function lapFunction(){
                 msLap = 00;
                 secLap = 00;
                 minLap = 00;
-                clearInterval(lapInterval)
+                clearInterval(lapInterval);
             }
         }
     }
@@ -248,12 +249,12 @@ timerMin.addEventListener('input', ()=>{
         timerMin.value = 0;
     }
     timerMin.value = timerMin.value.replace(/[+,-]/g, '');
-})
+});
 timerMin.addEventListener('change', ()=>{
     if(timerMin.value === ''){
         timerMin.value = 0;
     }
-})
+});
 timerSec.addEventListener('input', ()=>{
     if(timerSec.value>59){
         timerSec.value = 59;
@@ -262,12 +263,12 @@ timerSec.addEventListener('input', ()=>{
         timerSec.value = 0;
     }
     timerSec.value = timerSec.value.replace(/[+,-]/g, '');
-})
+});
 timerSec.addEventListener('change', ()=>{
     if(timerSec.value === ''){
         timerSec.value = 0;
     }
-})
+});
 
 
 
@@ -297,7 +298,7 @@ document.addEventListener('click', (e)=>{
     //нажатие на время
     if(e.target.closest('.lil-time-holder') && openTime === true){
         document.querySelector('.time').style.bottom= -610 + 'px';
-        document.querySelector('.blackBackground').style.zIndex='-10'
+        document.querySelector('.blackBackground').style.zIndex='-10';
         document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
         openTime = false;
     }
@@ -327,18 +328,18 @@ document.addEventListener('click', (e)=>{
         document.querySelector('.timer-holder').classList.add('stopwatch-and-timer-properties');
     }
     if(e.target.closest('.start-stopwatch')){
-        document.querySelector('.start-stopwatch').style.display='none'
-        document.querySelector('.pause-stopwatch').style.display='block'
-        document.querySelector('.reset-stopwatch').style.display='none'
-        document.querySelector('.lap-stopwatch').style.display='block'
+        document.querySelector('.start-stopwatch').style.display='none';
+        document.querySelector('.pause-stopwatch').style.display='block';
+        document.querySelector('.reset-stopwatch').style.display='none';
+        document.querySelector('.lap-stopwatch').style.display='block';
         stopwatchInterval = setInterval(stopwatchFunction, 10);
         lapInterval = setInterval(lapFunction, 10);
     }
     if(e.target.closest('.pause-stopwatch')){
-        document.querySelector('.pause-stopwatch').style.display='none'
-        document.querySelector('.start-stopwatch').style.display='block'
-        document.querySelector('.lap-stopwatch').style.display='none'
-        document.querySelector('.reset-stopwatch').style.display='block'
+        document.querySelector('.pause-stopwatch').style.display='none';
+        document.querySelector('.start-stopwatch').style.display='block';
+        document.querySelector('.lap-stopwatch').style.display='none';
+        document.querySelector('.reset-stopwatch').style.display='block';
         clearInterval(stopwatchInterval);
         clearInterval(lapInterval);
     }
@@ -355,7 +356,7 @@ document.addEventListener('click', (e)=>{
             lapP = document.createElement('p');
             lapP.className = 'lap-content';
             lapP.innerHTML = lapNumArray;
-            lapSaction.append(lapP)
+            lapSaction.append(lapP);
         }
         msLap = 00, secLap = 00, minLap = 00;
     }
@@ -381,5 +382,32 @@ document.addEventListener('click', (e)=>{
         document.querySelector('.timer-sec').value = 30;
         clearInterval(timerInterval);
     }
-})
+});
 
+
+
+
+
+
+
+
+//приложения на робочем столе 
+let objectApps = {
+    calculator: 'app1',
+    notes: 'app2'
+}
+function openAppFunction(appId){
+    
+}
+let appId;
+let nodeListApp = document.querySelectorAll('.app');
+for(let appLogo of nodeListApp){
+    appLogo.addEventListener('click', ()=>{
+        console.log(appLogo);
+        appId = appLogo.id.slice(0, -5);
+        console.log(appLogo.id.slice(0, -5));
+        document.querySelector('#'+appId).style.display = 'block';
+        // let appIdOpen = appId+'Open';
+        // appIdOpen = true;
+    });
+}

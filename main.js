@@ -1,5 +1,5 @@
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    document.querySelector('.error-screen-secton').style.display = 'flex';
+    document.querySelector('.error-screen-secton').style.display = 'block';
 }
 
 
@@ -24,7 +24,6 @@ document.addEventListener('contextmenu', (event) =>{
 });
 document.addEventListener('mousedown', function (){
     contextmenu.style.display='none';
-    
 });
 
 
@@ -67,23 +66,7 @@ window.addEventListener('mouseup', function (){
 
 
 
-//движение настроек фона и их появление
-document.getElementById('c-btn-personalization').addEventListener("mousedown", function (){
-    document.getElementById('personalization').style.display='block'
-});
-let dragBackSettings = document.getElementById('drag-personalization');
-function fDragPersonalization (e){
-    document.getElementById('personalization').style.left = e.pageX-xCoordinate+"px";
-    document.getElementById('personalization').style.top = e.pageY- yCoordinate+"px";
-}
-dragBackSettings.addEventListener('mousedown', function (e) {
-    document.addEventListener('mousemove', fDragPersonalization);
-    xCoordinate = event.offsetX
-    yCoordinate = event.offsetY
-});
-document.addEventListener('mouseup', e => {
-    document.removeEventListener('mousemove', fDragPersonalization);
-});
+
 
 
 
@@ -391,23 +374,3 @@ document.addEventListener('click', (e)=>{
 
 
 
-//приложения на робочем столе 
-let objectApps = {
-    calculator: 'app1',
-    notes: 'app2'
-}
-function openAppFunction(appId){
-    
-}
-let appId;
-let nodeListApp = document.querySelectorAll('.app');
-for(let appLogo of nodeListApp){
-    appLogo.addEventListener('click', ()=>{
-        console.log(appLogo);
-        appId = appLogo.id.slice(0, -5);
-        console.log(appLogo.id.slice(0, -5));
-        document.querySelector('#'+appId).style.display = 'block';
-        // let appIdOpen = appId+'Open';
-        // appIdOpen = true;
-    });
-}

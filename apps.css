@@ -1,13 +1,40 @@
+.drag-holder{
+	display: flex;
+
+	width: 100%;
+	background-color: rgba(50, 50, 50, 0.2);
+	border-radius: 4px 4px 0 0;
+}
+.drag{
+	width: 100%;
+}
+.drag-btns-holder{
+	display: flex;
+	justify-content: space-between;
+}
+.btn-drag{
+	padding: 0.3rem 0.5rem;
+}
+.hide-btn-drag:hover{
+	background-color: rgb(40, 40, 40);
+}
+.close-btn-drag:hover{
+	background-color: rgb(200, 30, 30);
+	border-radius: 0 4px 0 0;
+}
+
 #calculator{
 	display: none;
 	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: rgb(20, 20, 20);
+	top: 25vh;
+	left: 40vw;
 	width: 220px;
 	z-index: 500;
 	color: white;
 	border-radius: 4px;
+	-webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .calc-buttons-holder{
 	padding: 1rem;
@@ -45,6 +72,4 @@
 .calc-btn:hover{
 	filter: brightness(80%);
 }
-.calc-btn:active{
-	filter: brightness(60%);
-}
+

@@ -1,5 +1,87 @@
-// call
-// let calculatorOpen = false
+//оброботчик нажатий 
+
+//приложения на робочем столе 
+
+let shortcutId;
+let nodeListShortcut = document.querySelectorAll('.shortcut');
+for(let appLogo of nodeListShortcut){
+    appLogo.addEventListener('dblclick', ()=>{
+        shortcutId = appLogo.id.slice(0, -5);
+        document.getElementById(shortcutId).style.display = 'block';
+    });
+}
+
+// document.getElementById('c-btn-personalization').addEventListener("mousedown", function (){
+//     document.getElementById('personalization').style.display='block'
+// });
+// let dragBackSettings = document.getElementById('drag-personalization');
+// function fDragPersonalization (e){
+//     document.getElementById('personalization').style.left = e.pageX-xCoordinate+"px";
+//     document.getElementById('personalization').style.top = e.pageY- yCoordinate+"px";
+// }
+// dragBackSettings.addEventListener('mousedown', function (e) {
+//     document.addEventListener('mousemove', fDragPersonalization);
+//     xCoordinate = event.offsetX
+//     yCoordinate = event.offsetY
+// });
+// document.addEventListener('mouseup', e => {
+//     document.removeEventListener('mousemove', fDragPersonalization);
+// });
+
+let nodeListDrag = document.querySelectorAll('.drag');
+for (let drag of nodeListDrag){
+	drag.addEventListener('mousedown', ()=>{
+		var dragId = drag.id;
+		var appId = dragId.slice(5);
+		console.log(drag)
+		console.log(dragId)
+		console.log(appId)
+
+
+
+
+		document.getElementById(dragId).addEventListener('mousedown', (e)=>{
+			console.log(65465)
+		// 	xCoordinate = e.offsetX;
+		// 	yCoordinate = e.offsetY;
+		// 	document.addEventListener('mousemove', (dragFunction()));
+		});
+	});
+}
+
+function dragFunction(e){
+	// document.getElementById(appId).style.left = e.pageX - xCoordinate+"px";
+	// document.getElementById(appId).style.top = e.pageY - yCoordinate+"px";
+	document.getElementById(appId).style.display = 'none'
+}
+
+
+
+
+// drag.addEventListener('mousedown', (e)=>{
+// 	console.log(65465)
+// 	xCoordinate = e.offsetX;
+// 	yCoordinate = e.offsetY;
+// 	document.addEventListener('mousemove', (dragFunction()));
+// });
+
+
+// document.addEventListener('mouseup', e => {
+//     document.removeEventListener('mousemove', dragFunction(e));
+// });
+
+
+
+
+
+
+
+
+
+
+
+// calculator
+//let calculatorOpen = false;
 let sign = '', signClick = 0; a = 0, b = 0, calcNumber = document.querySelector('.calc-number');
 function answerFunction(){
 	if(sign == '-'){
@@ -56,10 +138,19 @@ function fixCalc(){
 
 	}
 }
+function cleanBtnCalculator(){
+	document.querySelectorAll('.calc-btn').forEach((e)=>{
+		e.style.backgroundColor = 'rgb(250, 140, 0)';
+		e.style.color = 'white';
+	})
+}
 // if(calculatorOpen === true){
 	document.querySelector('.calc-buttons').addEventListener('click', (e) =>{
 		if(!e.target.classList.contains('calc-btn')){
 			return;
+		}
+		if(e.target.classList.contains('calc-btn')){
+			cleanBtnCalculator();
 		}
 		if(e.target.classList.contains('calc-btn-num')){
 			if(signClick > 0){
@@ -70,6 +161,7 @@ function fixCalc(){
 			a = '' + a + e.target.textContent;
 		}
 		if(e.target.classList.contains('calc-btn-AC')){
+			cleanBtnCalculator();
 			resetCalc();
 		}
 		if(e.target.classList.contains('calc-btn-plus-minus')){
@@ -91,9 +183,10 @@ function fixCalc(){
 			a = String(a).slice(0, -1);
 		}
 		if(e.target.classList.contains('calc-btn-exponentiate')){
-			if(signClick>0){
+			if(a!=0 && b!=0){
 				answerFunction();
 			}
+			cleanBtnCalculator();
 			sign = '';
 			a = a**2;
 		}
@@ -103,6 +196,9 @@ function fixCalc(){
 			}
 		}
 		if(e.target.classList.contains('calc-btn-minus')){
+			cleanBtnCalculator();
+			e.target.style.backgroundColor = 'white';
+			e.target.style.color = 'rgb(250, 140, 0)';
 			if(a!=0 && b!=0){
 				answerFunction();
 			}
@@ -110,6 +206,9 @@ function fixCalc(){
 			signClick++;
 		}
 		if(e.target.classList.contains('calc-btn-plus')){
+			cleanBtnCalculator();
+			e.target.style.backgroundColor = 'white';
+			e.target.style.color = 'rgb(250, 140, 0)';
 			if(a!=0 && b!=0){
 				answerFunction();
 			}
@@ -117,6 +216,9 @@ function fixCalc(){
 			signClick++;
 		}
 		if(e.target.classList.contains('calc-btn-x')){
+			cleanBtnCalculator();
+			e.target.style.backgroundColor = 'white';
+			e.target.style.color = 'rgb(250, 140, 0)';
 			if(a!=0 && b!=0){
 				answerFunction();
 			}
@@ -124,6 +226,9 @@ function fixCalc(){
 			signClick++;
 		}
 		if(e.target.classList.contains('calc-btn-divide')){
+			cleanBtnCalculator();
+			e.target.style.backgroundColor = 'white';
+			e.target.style.color = 'rgb(250, 140, 0)';
 			if(a!=0 && b!=0){
 				answerFunction();
 			}
@@ -133,10 +238,10 @@ function fixCalc(){
 		if(e.target.classList.contains('calc-btn-equal')){
 			signClick = 0;
 			answerFunction();
+			cleanBtnCalculator()
 		}
 		fixCalc();
 		calcNumber.textContent = a;
-
 	});
 // let arrCalcCodes = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Delete', 'Enter', 'Period'];
 // let arrCalcCodesDigit = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0'];

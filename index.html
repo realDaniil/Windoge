@@ -29,40 +29,15 @@
     <button id="c-btn-copy">Copy</button><br>
 </div>
 <section class="setion-apps">
-    <!-- настройка фона -->
-    <div id="personalization">
-        <div id="drag-personalization">
-                <div class="drag-symbols-holder">
-                        <p>&#8211;</p>
-                        <img src="img/double_square.svg" style="width: 20px; pointer-events: none;">
-                        <p>&times;</p>
-                </div>
-        </div>
-        <h2>Background</h2>
-        <div style="width: 180px; height: 100px; border: solid"></div>
-        <input type="checkbox" >
-        <p>gradient</p>
-        <div class="">
-            <h3>Background color selection</h3>
-            <div class="background-colors-holder">
-                <div class="color1"></div>
-                <div class="color2"></div>
-                <div class="color3"></div>
-                <div class="color4"></div>
-                <div class="color5"></div>
-                <div class="color6"></div>
-                <div class="color7"></div>
-                <div class="color8"></div>
-                <div class="color9"></div>
-                <div class="color10"></div>
-                <input type="color" class="add-color">
+    <!-- Калькулятор -->
+    <div id="calculator" class="app">
+        <div class="drag-holder">
+        <div class="drag" id="drag-calculator"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag">&mdash;</div>
+                <div class="btn-drag close-btn-drag">&times;</div>
             </div>
         </div>
-    </div>
-
-    <!-- Калькулятор -->
-    <div id="calculator">
-        
         <div class="calc-buttons-holder">
             <div class="calc-number-holder">
                 <h2 class="calc-number" style="font-size: 34px;">0</h2>
@@ -91,32 +66,46 @@
             </div>
         </div>
     </div>
+
+<!-- Notes -->
+    <div class="app" id="notes" style="display: none;">
+        <div class="drag-holder">
+            <div class="drag" id="drag-notes"></div>
+                <div class="drag-btns-holder">
+                    <div class="btn-drag hide-btn-drag">&mdash;</div>
+                    <div class="btn-drag close-btn-drag">&times;</div>
+                </div>
+            </div>
+        <textarea name="" id="" cols="30" rows="10" style="width: 30px; height: 300px;"></textarea>
+    </div>
+
+
 </section>
 
 <!-- //progi -->
 <main class="main">
-    <div id="calculator-logo" class="app app1">
+    <div id="calculator-logo" class="shortcut shortcut1">
         <div class="icon-holder">
             <img src="./img/calculator-logo.svg">
         </div>
-        <div class="app-text-holder">
-            <p class="app-text">Calculator</p>
+        <div class="shortcut-text-holder">
+            <p class="shortcut-text">Calculator</p>
         </div>
     </div>
-    <div id="notes-logo" class="app app2" style="top: 100px;">
+    <div id="notes-logo" class="shortcut shortcut2" style="top: 100px;">
         <div class="icon-holder">
             <img src="./img/notes-logo.svg">
         </div>
-        <div class="app-text-holder">
-            <p class="app-text">Notes</p>
+        <div class="shortcut-text-holder">
+            <p class="shortcut-text">Notes</p>
         </div>
     </div>
-    <div id="notes-logo" class="app app3" style="top: 200px;">
+    <div id="notes-logo" class="shortcut shortcut3" style="top: 200px;">
         <div class="icon-holder">
             <img src="./img/paint-logo.svg">
         </div>
-        <div class="app-text-holder">
-            <p class="app-text">Paint</p>
+        <div class="shortcut-text-holder">
+            <p class="shortcut-text">Paint</p>
         </div>
     </div>
 

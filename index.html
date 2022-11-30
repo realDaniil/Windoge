@@ -34,8 +34,8 @@
         <div class="drag-holder">
         <div class="drag" id="drag-calculator"></div>
             <div class="drag-btns-holder">
-                <div class="btn-drag hide-btn-drag">&mdash;</div>
-                <div class="btn-drag close-btn-drag">&times;</div>
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
             </div>
         </div>
         <div class="calc-buttons-holder">
@@ -68,17 +68,31 @@
     </div>
 
 <!-- Notes -->
-    <div class="app" id="notes" style="display: none;">
+    <div class="app" id="notes">
         <div class="drag-holder">
             <div class="drag" id="drag-notes"></div>
                 <div class="drag-btns-holder">
-                    <div class="btn-drag hide-btn-drag">&mdash;</div>
-                    <div class="btn-drag close-btn-drag">&times;</div>
+                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
+                    <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
                 </div>
             </div>
-        <textarea name="" id="" cols="30" rows="10" style="width: 30px; height: 300px;"></textarea>
+        <textarea name="" id="" cols="30" rows="10" style="width: 300px; height: 300px;"></textarea>
     </div>
 
+<!-- Paint -->
+    <div class="app" id="paint">
+        <div class="drag-holder">
+            <div class="drag" id="drag-paint"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
+            </div>
+        </div>
+        <div class="canvas-holder" style="width: 300px; height: 300px;">
+            <canvas id="canvas-paint"></canvas>
+        </div>
+    
+</div>
 
 </section>
 
@@ -100,7 +114,7 @@
             <p class="shortcut-text">Notes</p>
         </div>
     </div>
-    <div id="notes-logo" class="shortcut shortcut3" style="top: 200px;">
+    <div id="paint-logo" class="shortcut shortcut3" style="top: 200px;">
         <div class="icon-holder">
             <img src="./img/paint-logo.svg">
         </div>

@@ -1,59 +1,77 @@
-//оброботчик нажатий 
+// пофиксить калькулятор
+// 
 
-//приложения на робочем столе 
 
-let shortcutId;
+
+
+
+
+
+
+
+
+
+
+
+// открытие
 let nodeListShortcut = document.querySelectorAll('.shortcut');
 for(let appLogo of nodeListShortcut){
     appLogo.addEventListener('dblclick', ()=>{
-        shortcutId = appLogo.id.slice(0, -5);
+        let shortcutId = appLogo.id.slice(0, -5);
+		console.log(shortcutId)
         document.getElementById(shortcutId).style.display = 'block';
     });
 }
-
-// document.getElementById('c-btn-personalization').addEventListener("mousedown", function (){
-//     document.getElementById('personalization').style.display='block'
-// });
-// let dragBackSettings = document.getElementById('drag-personalization');
-// function fDragPersonalization (e){
-//     document.getElementById('personalization').style.left = e.pageX-xCoordinate+"px";
-//     document.getElementById('personalization').style.top = e.pageY- yCoordinate+"px";
-// }
-// dragBackSettings.addEventListener('mousedown', function (e) {
-//     document.addEventListener('mousemove', fDragPersonalization);
-//     xCoordinate = event.offsetX
-//     yCoordinate = event.offsetY
-// });
-// document.addEventListener('mouseup', e => {
-//     document.removeEventListener('mousemove', fDragPersonalization);
-// });
-
-let nodeListDrag = document.querySelectorAll('.drag');
+//закрытие и свертывание
+let nodeListDragBtnHolder = document.querySelectorAll('.drag-btns-holder');
+for(let dragBtnHolder of nodeListDragBtnHolder){[
+	dragBtnHolder.addEventListener('click', (e)=>{
+		if(e.target.classList.contains('hide-btn-drag')){
+			
+		}
+		if(e.target.classList.contains('close-btn-drag')){
+			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
+		}
+	})
+]}
+//передвижение
+function dragFunction(e){
+	let alignmentAppX, alignmentAppY;
+	alignmentAppX = e.pageX + appId.offsetWidth - window.innerWidth;
+	alignmentAppY = e.pageY + appId.offsetHeight - window.innerHeight;
+	document.getElementById(appId).style.left = e.pageX - xCoordinate + "px";
+	document.getElementById(appId).style.top = e.pageY - yCoordinate + "px";
+	if(e.pageY < 0){
+        document.getElementById(appId).style.top = 0 + 'px';
+    }
+	if (window.innerHeight < e.pageY + document.getElementById(appId).offsetHeight){
+        document.getElementById(appId).style.top = e.pageY - alignmentAppY + 'px';
+    }
+    if (window.innerWidth < e.pageX + document.getElementById(appId).offsetWidth){
+        document.getElementById(appId).style.left = e.pageX - alignmentAppX + 'px';
+    }
+}
+let appId, dragId, nodeListDrag = document.querySelectorAll('.drag');
 for (let drag of nodeListDrag){
-	drag.addEventListener('mousedown', ()=>{
-		var dragId = drag.id;
-		var appId = dragId.slice(5);
-		console.log(drag)
-		console.log(dragId)
-		console.log(appId)
-
-
-
-
-		document.getElementById(dragId).addEventListener('mousedown', (e)=>{
-			console.log(65465)
-		// 	xCoordinate = e.offsetX;
-		// 	yCoordinate = e.offsetY;
-		// 	document.addEventListener('mousemove', (dragFunction()));
-		});
+	drag.addEventListener('mousedown', (e)=>{
+		dragId = drag.id;
+		appId = dragId.slice(5);
+		document.addEventListener('mousemove',dragFunction);
+		xCoordinate = e.offsetX;
+		yCoordinate = e.offsetY;
 	});
 }
 
-function dragFunction(e){
-	// document.getElementById(appId).style.left = e.pageX - xCoordinate+"px";
-	// document.getElementById(appId).style.top = e.pageY - yCoordinate+"px";
-	document.getElementById(appId).style.display = 'none'
-}
+
+document.addEventListener('mouseup', ()=>{
+	document.removeEventListener('mousemove', dragFunction);
+});
+
+
+
+
+
+
 
 
 

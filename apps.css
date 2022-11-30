@@ -1,6 +1,5 @@
 .drag-holder{
 	display: flex;
-
 	width: 100%;
 	background-color: rgba(50, 50, 50, 0.2);
 	border-radius: 4px 4px 0 0;
@@ -22,12 +21,14 @@
 	background-color: rgb(200, 30, 30);
 	border-radius: 0 4px 0 0;
 }
-
-#calculator{
+.app{
 	display: none;
 	position: absolute;
+	z-index: 50;
+	left: 25vw;
 	top: 25vh;
-	left: 40vw;
+}
+#calculator{
 	width: 220px;
 	z-index: 500;
 	color: white;

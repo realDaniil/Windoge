@@ -2,43 +2,34 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
 
-
 window.addEventListener("contextmenu", e => e.preventDefault());
 let contextmenu = document.getElementById('contextmenu');
-let alignmentX, alignmentY;
+let alignmentContextmenuX, alignmentContextmenuY;
 document.addEventListener('contextmenu', (event) =>{
     contextmenu.style.display='block';
     contextmenu.style.left = event.pageX + 'px';
     contextmenu.style.top = event.pageY + 'px';
-    alignmentY = event.pageY + contextmenu.offsetHeight - window.innerHeight;
-    alignmentX = event.pageX + contextmenu.offsetWidth - window.innerWidth;
+    alignmentContextmenuY = event.pageY + contextmenu.offsetHeight - window.innerHeight;
+    alignmentContextmenuX = event.pageX + contextmenu.offsetWidth - window.innerWidth;
     if (window.innerHeight < event.pageY + contextmenu.offsetHeight){
-        contextmenu.style.top = event.pageY - alignmentY + 'px';
+        contextmenu.style.top = event.pageY - alignmentContextmenuY + 'px';
     }
     if(event.pageY < 0){
         contextmenu.style.top = 0 + 'px';
     }
     if (window.innerWidth < event.pageX + contextmenu.offsetWidth){
-        contextmenu.style.left = event.pageX - alignmentX + 'px';
+        contextmenu.style.left = event.pageX - alignmentContextmenuX + 'px';
     }
 });
-document.addEventListener('mousedown', function (){
+document.addEventListener('mousedown', ()=>{
     contextmenu.style.display='none';
 });
-
-
-
-
-
-
-
-
 
 //канвас
 let mainCanvas = document.getElementById('canvas');
 let ctx = mainCanvas.getContext('2d');
-mainCanvas.width = window.innerWidth;
-mainCanvas.height = window.innerHeight;
+mainCanvas.width = window.screen.width;
+mainCanvas.height = window.screen.height;
 ctx.fillStyle = 'rgba(5, 5, 160,0.5)';
 ctx.strokeStyle = 'black'
 let canvasInterval;
@@ -63,12 +54,6 @@ window.addEventListener('mouseup', function (){
     xCanvas=undefined; yCanvas=undefined; aCanvas=undefined; bCanvas=undefined;
     clearInterval(canvasInterval)
 });
-
-
-
-
-
-
 
 // дата и время
 let year,month,numMonth,date,numDate,day,hour,minutes,seconds;

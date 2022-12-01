@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<polygon points="47,79.6 43,79 43,21 47,20.4 "/>
-<rect x="15" y="44" width="70" height="4"/>
-<path d="M0,0v100h100V0H0z M85,85L15,75V25l70-10V85z"/>
+<style type="text/css">
+	.st0{fill:#101010;}
+</style>
+<path class="st0" d="M0,0v100h100V0H0z M15,25l28-4v23H15V25z M15,75V48h28v31L15,75z M85,85l-38-5.4V48h38V85z M85,44H47V20.4
+	L85,15V44z"/>
 </svg>

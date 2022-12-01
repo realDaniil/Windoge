@@ -131,10 +131,10 @@ footer{
     width: 35px;
     height: 35px;
 }
-.start:hover{
+.start-holder:hover > .start{
     background-color: royalblue;
-}
 
+}
 .lil-time-holder{
     padding: 0 10px 0 10px;
     position: absolute;
@@ -157,6 +157,7 @@ footer{
     bottom: -610px;
     right: 0;
     width: 300px;
+    max-height: 95%;
     height: 600px;
     background-color: rgb(31, 31, 31);
     border-top: solid rgb(76, 76, 76) 1px;

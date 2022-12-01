@@ -19,7 +19,7 @@ document.addEventListener('contextmenu', (event) =>{
     }
     if (window.innerWidth < event.pageX + contextmenu.offsetWidth){
         contextmenu.style.left = event.pageX - alignmentContextmenuX + 'px';
-    }
+    } 
 });
 document.addEventListener('mousedown', ()=>{
     contextmenu.style.display='none';
@@ -101,10 +101,10 @@ function timeSettings(){
         }
         if (month === 11){
             month = 'November';
+            document.querySelector('.calendar-day31').style.display = 'none';
         }
         if (month === 12){
             month = 'December';
-            document.querySelector('.calendar-day31').style.display = 'none';
         }
     date = new Date().getDate();
     numDate = new Date().getDate(); 

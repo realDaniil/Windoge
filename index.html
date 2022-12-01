@@ -29,6 +29,19 @@
     <button id="c-btn-copy">Copy</button><br>
 </div>
 <section class="setion-apps">
+    <!-- My computer -->
+    <div class="app" id="computer">
+        <div class="drag-holder">
+            <div class="drag" id="drag-computer"></div>
+                <div class="drag-btns-holder">
+                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-computer">&mdash;</div>
+                    <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&times;</div>
+                </div>
+            </div>
+        <div class="computer-content-holder">
+            <p>comp</p>
+        </div>
+    </div>
     <!-- Калькулятор -->
     <div id="calculator" class="app">
         <div class="drag-holder">
@@ -98,12 +111,12 @@
 
 <!-- //progi -->
 <main class="main">
-    <div id="calculator-logo" class="shortcut shortcut1">
+    <div id="computer-logo" class="shortcut shortcut1">
         <div class="icon-holder">
-            <img src="./img/calculator-logo.svg">
+            <img src="./img/my-computer-logo.svg">
         </div>
         <div class="shortcut-text-holder">
-            <p class="shortcut-text">Calculator</p>
+            <p class="shortcut-text">My computer</p>
         </div>
     </div>
     <div id="notes-logo" class="shortcut shortcut2" style="top: 100px;">
@@ -122,7 +135,14 @@
             <p class="shortcut-text">Paint</p>
         </div>
     </div>
-
+    <div id="calculator-logo" class="shortcut shortcut4" style="top: 300px;">
+        <div class="icon-holder">
+            <img src="./img/calculator-logo.svg">
+        </div>
+        <div class="shortcut-text-holder">
+            <p class="shortcut-text">Calculator</p>
+        </div>
+    </div>
 
 <canvas id="canvas"></canvas>
 </main>
@@ -132,6 +152,7 @@
         <div class="start">
         </div>
     </div>
+
     <div class="lil-time-holder">
         <p class="lil-time">00:00</p>
         <p class="lil-date">00.00.0000</p>

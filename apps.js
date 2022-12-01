@@ -39,12 +39,23 @@ function dragFunction(e){
 	//xCoordinate то на какой писксель мы нажали в самом обьекте 
 	document.getElementById(appId).style.left = e.pageX - xCoordinate + "px";
 	document.getElementById(appId).style.top = e.pageY - yCoordinate + "px";
-	console.log(e.target.offsetHeight)
-	console.log(e.pageY)
 
-if(e.pageX<e.target.offsetHeight-yCoordinate){
+
+if(e.pageY<yCoordinate){
 	document.getElementById(appId).style.top = 0 + 'px';
+	// yCoordinate = 0;
+}
+if(e.pageX<xCoordinate){
+	document.getElementById(appId).style.left = 0 + 'px';
+}
 
+if(window.innerWidth<document.getElementById(appId).clientWidth + e.pageX - xCoordinate){
+	document.getElementById(appId).style.left = window.innerWidth - document.getElementById(appId).clientWidth + 'px';
+}
+
+if(window.innerHeight - document.querySelector('footer').clientHeight< e.pageY+e.target.clientHeight-yCoordinate){
+	console.log(111)
+	document.getElementById(appId).style.top = window.innerHeight - document.querySelector('footer').clientHeight - 60 + 'px';
 }
 	let alignmentAppX, alignmentAppY;
 	alignmentAppX = e.pageX + appId.offsetWidth - window.innerWidth;
@@ -60,15 +71,7 @@ if(e.pageX<e.target.offsetHeight-yCoordinate){
 
 
 
-	// console.log('appId.offsetWidth', appId.offsetWidth)
-	// console.log('window.innerWidth', window.innerWidth)
 
-	// if (window.innerHeight < e.pageY + document.getElementById(appId).offsetHeight){
-    //     document.getElementById(appId).style.top = e.pageY - alignmentAppY + 'px';
-    // }
-    // if (window.innerWidth < e.pageX + document.getElementById(appId).offsetWidth){
-    //     document.getElementById(appId).style.left = e.pageX - alignmentAppX + 'px';
-    // }
 }
 let appId, dragId, nodeListDrag = document.querySelectorAll('.drag');
 for (let drag of nodeListDrag){

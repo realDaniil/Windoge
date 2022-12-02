@@ -115,7 +115,6 @@ footer{
     left: 0;
     position: absolute;
     display: flex;
-    justify-content: space-between;
 }
 .start-holder{
     height: 100%;
@@ -130,10 +129,28 @@ footer{
     background-color: white;
     width: 35px;
     height: 35px;
+    transition: 0.1s ease;
 }
 .start-holder:hover > .start{
     background-color: royalblue;
 
+}
+#task-bar{
+    height: 100%;
+    display: flex;
+    justify-content: start;
+}
+.task-app-holder{
+    transition: 0.1s ease;
+    height: 100%;
+    width: 45px;
+    background-image: url('./img/my-computer-logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+}
+.task-app-holder:hover{
+    background-color: rgb(39, 39, 39);
 }
 .lil-time-holder{
     padding: 0 10px 0 10px;

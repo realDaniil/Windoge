@@ -22,24 +22,39 @@ for(let appLogo of nodeListShortcut){
         document.getElementById(shortcutId).style.display = 'block';
     });
 }
+
+
 //закрытие и свертывание
+let roll = false;
 let nodeListDragBtnHolder = document.querySelectorAll('.drag-btns-holder');
 for(let dragBtnHolder of nodeListDragBtnHolder){[
 	dragBtnHolder.addEventListener('click', (e)=>{
 		if(e.target.classList.contains('hide-btn-drag')){
 			
 		}
+		if(e.target.classList.contains('roll-btn-drag')){
+			
+			if(roll === false){
+				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/square.svg")';
+				roll = true;
+			}
+			else if(roll === true){
+				roll = false;
+				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/double_square.svg")';
+			}
+		}
 		if(e.target.classList.contains('close-btn-drag')){
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
 		}
 	})
 ]}
+
 //передвижение
 function dragFunction(e){
 	//xCoordinate то на какой писксель мы нажали в самом обьекте 
 	document.getElementById(appId).style.left = e.pageX - xCoordinate + "px";
 	document.getElementById(appId).style.top = e.pageY - yCoordinate + "px";
-
+	document.querySelector('body').style.cursor = 'grabbing';
 
 if(e.pageY<yCoordinate){
 	document.getElementById(appId).style.top = 0 + 'px';
@@ -53,25 +68,12 @@ if(window.innerWidth<document.getElementById(appId).clientWidth + e.pageX - xCoo
 	document.getElementById(appId).style.left = window.innerWidth - document.getElementById(appId).clientWidth + 'px';
 }
 
-if(window.innerHeight - document.querySelector('footer').clientHeight< e.pageY+e.target.clientHeight-yCoordinate){
-	console.log(111)
-	document.getElementById(appId).style.top = window.innerHeight - document.querySelector('footer').clientHeight - 60 + 'px';
+if(window.innerHeight - document.querySelector('footer').clientHeight<e.pageY+30-yCoordinate){
+	document.getElementById(appId).style.top = window.innerHeight - document.querySelector('footer').clientHeight - 30 + 'px';
 }
 	let alignmentAppX, alignmentAppY;
 	alignmentAppX = e.pageX + appId.offsetWidth - window.innerWidth;
 	alignmentAppY = e.pageY + appId.offsetHeight - window.innerHeight;
-
-
-
-	// if(e.pageY < 0){
-    //     document.getElementById(appId).style.top = 0 + 'px';
-	// 	yCoordinate = 0;
-    // }
-
-
-
-
-
 }
 let appId, dragId, nodeListDrag = document.querySelectorAll('.drag');
 for (let drag of nodeListDrag){
@@ -87,28 +89,11 @@ for (let drag of nodeListDrag){
 
 document.addEventListener('mouseup', ()=>{
 	document.removeEventListener('mousemove', dragFunction);
+	document.querySelector('body').style.cursor = 'default';
 });
 
 
 
-
-
-
-
-
-
-
-// drag.addEventListener('mousedown', (e)=>{
-// 	console.log(65465)
-// 	xCoordinate = e.offsetX;
-// 	yCoordinate = e.offsetY;
-// 	document.addEventListener('mousemove', (dragFunction()));
-// });
-
-
-// document.addEventListener('mouseup', e => {
-//     document.removeEventListener('mousemove', dragFunction(e));
-// });
 
 
 
@@ -182,9 +167,12 @@ function cleanBtnCalculator(){
 	document.querySelectorAll('.calc-btn').forEach((e)=>{
 		e.style.backgroundColor = 'rgb(250, 140, 0)';
 		e.style.color = 'white';
+		document.querySelectorAll('.calc-black-btn').forEach((e) =>{
+			e.style.backgroundColor = 'rgb(49, 49, 49)';
+		})
 	})
 }
-// if(calculatorOpen === true){
+
 	document.querySelector('.calc-buttons').addEventListener('click', (e) =>{
 		if(!e.target.classList.contains('calc-btn')){
 			return;
@@ -278,57 +266,9 @@ function cleanBtnCalculator(){
 		if(e.target.classList.contains('calc-btn-equal')){
 			signClick = 0;
 			answerFunction();
-			cleanBtnCalculator()
+			cleanBtnCalculator();
+			sign ='';
 		}
 		fixCalc();
 		calcNumber.textContent = a;
 	});
-// let arrCalcCodes = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Delete', 'Enter', 'Period'];
-// let arrCalcCodesDigit = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0'];
-// 	document.addEventListener('keydown', (e) => {
-// 		if(!arrCalcCodes.includes(e.code, 0)){
-// 			return;
-// 		}
-// 		if(arrCalcCodesDigit.includes(e.code, 0)){
-// 			if(signClick > 0){
-// 				b = a;
-// 				a = 0;
-// 				signClick = 0;
-// 			}
-// 			a = '' + a + e.code[5];
-// 		}
-// 		if(e.code == 'Period' || e.code == 'Comma'){
-// 			if(!String(a).includes('.', 0)){
-// 				a = a + '.';
-// 			}
-// 		}
-// 		if(e.code == 'Minus'){
-// 			if(a!=0 && b!=0){
-// 				answerFunction();
-// 			}
-// 			sign = '-';
-// 			signClick++;
-// 		}
-// 		if(e.code == 'Equal'){
-// 			if(a!=0 && b!=0){
-// 				answerFunction();
-// 			}
-// 			sign = '+';
-// 			signClick++;
-// 		}
-// 		if(e.code == 'Backspace'){
-// 			a = String(a).slice(0, -1);
-// 			calcNumber.textContent = a;
-// 		}
-// 		if(e.code == 'Delete'){
-// 			resetCalc();
-// 		}
-// 		if(e.code == 'Enter'){
-// 			signClick = 0;
-// 			answerFunction();		
-// 		}
-// 		fixCalc();
-// 		calcNumber.textContent = a;
-// 		console.log('a' , a, 'b', b, 's', sign, 'c', signClick)
-// 	});
-// }

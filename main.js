@@ -2,6 +2,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
 
+
+
 window.addEventListener("contextmenu", e => e.preventDefault());
 let contextmenu = document.getElementById('contextmenu');
 let alignmentContextmenuX, alignmentContextmenuY;

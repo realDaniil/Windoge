@@ -4,6 +4,12 @@
 
 
 
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
 
 
 

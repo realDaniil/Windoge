@@ -1,3 +1,7 @@
+window.onload = ()=> {
+document.querySelector('.loading-section').style.display = 'none';
+}
+
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
@@ -6,7 +10,9 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 
 window.addEventListener("contextmenu", e => e.preventDefault());
 let contextmenu = document.getElementById('contextmenu');
+let targetContextmenu;
 let alignmentContextmenuX, alignmentContextmenuY;
+
 document.addEventListener('contextmenu', (event) =>{
     contextmenu.style.display='block';
     contextmenu.style.left = event.pageX + 'px';
@@ -21,8 +27,32 @@ document.addEventListener('contextmenu', (event) =>{
     }
     if (window.innerWidth < event.pageX + contextmenu.offsetWidth){
         contextmenu.style.left = event.pageX - alignmentContextmenuX + 'px';
-    } 
+    }
+    if(event.target.closest('#calculator')){
+        targetContextmenu = document.querySelector('.calc-number').textContent;
+        console.log(targetContextmenu)
+    }
 });
+
+contextmenu.addEventListener('mousedown', (e)=>{
+    if(e.target.closest('#c-btn-personalization')){
+        console.log('c-btn-personalization');
+    }
+    if(e.target.closest('#c-btn-create')){
+        console.log('c-btn-create');
+    }
+    if(e.target.closest('#c-btn-paste')){
+        console.log('c-btn-paste');
+    }
+    if(e.target.closest('#c-btn-copy')){
+        console.log('c-btn-copy');
+        navigator.clipboard.writeText(targetContextmenu);
+    }
+})
+
+
+
+
 document.addEventListener('mousedown', ()=>{
     contextmenu.style.display='none';
 });
@@ -32,8 +62,7 @@ let mainCanvas = document.getElementById('canvas');
 let ctx = mainCanvas.getContext('2d');
 mainCanvas.width = window.screen.width;
 mainCanvas.height = window.screen.height;
-ctx.fillStyle = 'rgba(5, 5, 160,0.5)';
-ctx.strokeStyle = 'black'
+ctx.fillStyle = 'rgba(5, 5, 160, 0.5)';
 let canvasInterval;
 let xCanvas, yCanvas, aCanvas, bCanvas;
 mainCanvas.addEventListener('mousedown', function (e){
@@ -52,9 +81,9 @@ window.addEventListener("mousemove", function (e){
     bCanvas = e.y;
 });
 window.addEventListener('mouseup', function (){
-    ctx.clearRect(0, 0, 10000, 10000);
+    ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
     xCanvas=undefined; yCanvas=undefined; aCanvas=undefined; bCanvas=undefined;
-    clearInterval(canvasInterval)
+    clearInterval(canvasInterval);
 });
 
 // дата и время
@@ -260,7 +289,7 @@ if(timerMin.value<0){
 }
 }
 
-
+document.querySelector('.lil-time-holder').style.left = window.outerWidth - document.querySelector('.lil-time-holder').offsetWidth + 'px';
 
 //обработчик нажатий в времени
 let openTime = false;

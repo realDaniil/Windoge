@@ -92,3 +92,7 @@
 	filter: brightness(80%);
 }
 
+.notes-background{
+	width: 300px;
+	height: 300px;
+}

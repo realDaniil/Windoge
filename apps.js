@@ -4,12 +4,7 @@
 
 
 
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
-// document.getElementById('task-bar').innerHTML = `<div class="task-app-holder"></div>`;
+
 
 
 
@@ -22,11 +17,14 @@
 // открытие
 let nodeListShortcut = document.querySelectorAll('.shortcut');
 for(let appLogo of nodeListShortcut){
-    appLogo.addEventListener('dblclick', ()=>{
+    appLogo.addEventListener('dblclick', (e)=>{
         let shortcutId = appLogo.id.slice(0, -5);
 		console.log(shortcutId)
+		let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");		
         document.getElementById(shortcutId).style.display = 'block';
+		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder"><img src="`+ appSrc +`"></div>`;
     });
+
 }
 
 

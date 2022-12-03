@@ -1,3 +1,5 @@
+document.querySelector('.task-bar-btn-holder').style.left = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth + 'px';
+document.querySelector('#task-bar').style.width = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth - document.querySelector('.task-bar-search-holder').offsetWidth - document.querySelector('.start-holder').offsetWidth + 'px';
 window.onload = ()=> {
 document.querySelector('.loading-section').style.display = 'none';
 }
@@ -191,6 +193,50 @@ setInterval(timeSettings,100);
 
 
 
+
+
+
+
+
+
+
+function showUpFunction(e){
+    document.querySelector(e).style.bottom=document.querySelector('footer').offsetHeight + 'px';
+    document.querySelector('.blackBackground').style.zIndex='50';
+    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
+    console.log(1111111111111111)
+
+}
+function hideFunction(e){
+    document.querySelector(e).style.bottom= -610 + 'px';
+    document.querySelector('.blackBackground').style.zIndex='-10';
+    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+}
+document.querySelector('.message-task-bar-icon').addEventListener('click', ()=>{
+    showUpFunction('.message-task-bar');
+    console.log(2222222222222);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //секундамер 
 document.querySelector('.stopwatch-numbers').innerHTML = '00:00,00';
 let lapSaction = document.querySelector('.lap-saction');
@@ -289,7 +335,6 @@ if(timerMin.value<0){
 }
 }
 
-document.querySelector('.lil-time-holder').style.left = window.outerWidth - document.querySelector('.lil-time-holder').offsetWidth + 'px';
 
 //обработчик нажатий в времени
 let openTime = false;

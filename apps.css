@@ -67,6 +67,7 @@
 }
 .calc-number{
 	text-align: end;
+	font-size: 34px;
 }
 .calc-buttons{
 	padding-top: 1rem;
@@ -91,7 +92,6 @@
 .calc-btn:hover{
 	filter: brightness(80%);
 }
-
 .notes-background{
 	width: 300px;
 	height: 300px;

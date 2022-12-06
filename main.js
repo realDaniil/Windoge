@@ -50,9 +50,7 @@ contextmenu.addEventListener('mousedown', (e)=>{
         console.log('c-btn-copy');
         navigator.clipboard.writeText(targetContextmenu);
     }
-})
-
-
+});
 
 
 document.addEventListener('mousedown', ()=>{
@@ -64,7 +62,7 @@ let mainCanvas = document.getElementById('canvas');
 let ctx = mainCanvas.getContext('2d');
 mainCanvas.width = window.screen.width;
 mainCanvas.height = window.screen.height;
-ctx.fillStyle = 'rgba(5, 5, 160, 0.5)';
+ctx.fillStyle = 'rgba(5, 5, 160, 0.6)';
 let canvasInterval;
 let xCanvas, yCanvas, aCanvas, bCanvas;
 mainCanvas.addEventListener('mousedown', function (e){
@@ -192,14 +190,6 @@ setInterval(timeSettings,100);
 
 
 
-
-
-
-
-
-
-
-
 function showUpFunction(e){
     document.querySelector(e).style.bottom=document.querySelector('footer').offsetHeight + 'px';
     document.querySelector('.blackBackground').style.zIndex='50';
@@ -211,22 +201,16 @@ function hideFunction(e){
     document.querySelector(e).style.bottom= -610 + 'px';
     document.querySelector('.blackBackground').style.zIndex='-10';
     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+    console.log(2222222222222);
+    
 }
 document.querySelector('.message-task-bar-icon').addEventListener('click', ()=>{
     showUpFunction('.message-task-bar');
-    console.log(2222222222222);
 });
 
-
-
-
-
-
-
-
-
-
-
+document.querySelector('.message-task-bar-icon').addEventListener('click', ()=>{
+    hideFunction('.message-task-bar')
+});
 
 
 
@@ -281,7 +265,6 @@ function addNumStopwatch(){
     document.querySelector('.stopwatch-numbers').innerHTML = (min > 9 ? min : '0' + min) +':'+ (sec > 9 ? sec : '0' + sec) +','+ (ms > 9 ? ms : '0' + ms);
 }
 
-
 //timer 
 let timerInterval;
 let timerMin = document.querySelector('.timer-min');
@@ -330,7 +313,7 @@ if(timerMin.value<0){
     document.querySelector('.reset-timer').style.display = 'none';
     timerMin.value = 0;
     timerSec.value = 30;
-    document.querySelector('audio').play()
+    document.querySelector('audio').play();
     clearInterval(timerInterval);
 }
 }
@@ -427,11 +410,3 @@ document.addEventListener('click', (e)=>{
         clearInterval(timerInterval);
     }
 });
-
-
-
-
-
-
-
-

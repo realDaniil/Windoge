@@ -232,10 +232,15 @@ footer{
     left: 0;
     position: absolute;
     display: flex;
+    justify-content: space-between;
+}
+.left-side-footer{
+    display: flex;
 }
 .start-holder{
     height: 40px;
     min-width: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -250,7 +255,7 @@ footer{
     transition: 0.1s ease;
 }
 .start-menu{
-    transition: 0.3s ease-in-out;
+    transition: 0.5s ease-in-out;
     z-index: 800;
     position: absolute;
     bottom: -610px;
@@ -269,12 +274,14 @@ footer{
 }
 .task-bar-search-holder{
     background-color: #ffffff;
+    border: solid 2px rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
     position: relative;
 }
+
 .search-icon{
     width: 20px;
     height: 20px;
@@ -291,11 +298,7 @@ footer{
     color: rgb(16, 16, 16);
     background-color: rgba(255, 255, 255, 0);
 }
-.search-background{
-    position: absolute;
-    height: 100%;
-    right: 0;
-}
+
 #task-bar{
     height: 100%;
     display: flex;
@@ -319,7 +322,8 @@ footer{
     background-color: rgb(39, 39, 39);
 }
 .task-bar-btn-holder{
-    position: absolute;
+    position: relative;
+    right: 0;
     height: 100%;
     display: flex;
 }

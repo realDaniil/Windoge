@@ -1,12 +1,15 @@
 // открытие
 let nodeListShortcut = document.querySelectorAll('.shortcut');
+let appSrcArray = [];
 for(let appLogo of nodeListShortcut){
     appLogo.addEventListener('dblclick', (e)=>{
         let shortcutId = appLogo.id.slice(0, -5);
-		console.log(shortcutId)
-		let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");		
+		let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");
+		if(appSrcArray.includes(appSrc)){
+			return;
+		} else document.getElementById('task-bar').innerHTML += `<div class="task-app-holder"><img class = 'task-app-icon-app'src="`+ appSrc +`"></div>`;
+		appSrcArray.push(appSrc);
         document.getElementById(shortcutId).style.display = 'block';
-		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder"><img src="`+ appSrc +`"></div>`;
     });
 }
 
@@ -25,10 +28,10 @@ for(let dragBtnHolder of nodeListDragBtnHolder){[
 				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/square.svg")';
 				roll = true;
 			}
-			else if(roll === true){
-				roll = false;
-				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/double_square.svg")';
-			}
+			// else if(roll === true){
+			// 	roll = false;
+			// 	document.getElementById(e.target.id).style.backgroundImage = 'url("./img/double_square.svg")';
+			// }
 		}
 		if(e.target.classList.contains('close-btn-drag')){
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';

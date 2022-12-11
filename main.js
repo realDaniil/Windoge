@@ -1,5 +1,5 @@
-document.querySelector('.task-bar-btn-holder').style.left = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth + 'px';
-document.querySelector('#task-bar').style.width = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth - document.querySelector('.task-bar-search-holder').offsetWidth - document.querySelector('.start-holder').offsetWidth + 'px';
+//document.querySelector('.task-bar-btn-holder').style.left = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth + 'px';
+//document.querySelector('#task-bar').style.width = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth - document.querySelector('.task-bar-search-holder').offsetWidth - document.querySelector('.start-holder').offsetWidth + 'px';
 window.onload = ()=> {
 document.querySelector('.loading-section').style.display = 'none';
 }
@@ -207,16 +207,15 @@ document.addEventListener('click', (e)=>{
     hideFunction('.time');
     hideFunction('.message-task-bar');
     hideFunction('.start-menu');
+    if(e.target.closest('.start-holder') || e.target.closest('.start-menu')){
+        showUpFunction('.start-menu');
+    }
     if(e.target.closest('.lil-time-holder') || e.target.closest('.time')){
         showUpFunction('.time');
     }
     if(e.target.closest('.message-task-bar-icon') || e.target.closest('.message-task-bar')){
         showUpFunction('.message-task-bar');
     }
-    if(e.target.closest('.start-holder') || e.target.closest('.message-task-bar')){
-        showUpFunction('.start-menu');
-    }
-    
 })
 
 

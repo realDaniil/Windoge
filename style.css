@@ -234,8 +234,8 @@ footer{
     display: flex;
 }
 .start-holder{
-    height: 100%;
-    width: 50px;
+    height: 40px;
+    min-width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -249,8 +249,23 @@ footer{
     height: 35px;
     transition: 0.1s ease;
 }
+.start-menu{
+    transition: 0.3s ease-in-out;
+    z-index: 800;
+    position: absolute;
+    bottom: -610px;
+    left: 0;
+    width: 500px;
+    max-height: 95%;
+    height: 600px;
+    background-color: rgb(31, 31, 31);
+    border-top: solid rgb(76, 76, 76) 1px;
+    border-right: solid rgb(76, 76, 76) 1px;
+    color: #ffffff;
+    padding: 1rem;
+}
 .start-holder:hover > .start{
-    background-color: royalblue;
+    background-color: rgb(60, 130, 200);
 }
 .task-bar-search-holder{
     background-color: #ffffff;
@@ -291,7 +306,6 @@ footer{
     transition: 0.2s ease;
     height: 100%;
     min-width: 45px;
-    width: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -309,6 +323,32 @@ footer{
     height: 100%;
     display: flex;
 }
+.message-task-bar-icon{
+    height: 100%;
+    width: 40px;
+    background-image: url('./img/message-task-bar-icon.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+}
+.message-task-bar-icon:hover{
+    background-color: rgb(39, 39, 39);
+}
+.message-task-bar{
+    transition: 0.5s ease-in-out;
+    z-index: 800;
+    position: absolute;
+    bottom: -610px;
+    right: 0;
+    width: 300px;
+    max-height: 95%;
+    height: 600px;
+    background-color: rgb(31, 31, 31);
+    border-top: solid rgb(76, 76, 76) 1px;
+    border-left: solid rgb(76, 76, 76) 1px;
+    color: #ffffff;
+    padding: 1rem;
+}
 .lil-time-holder{
     padding: 0 10px 0 10px;
     height: 100%;
@@ -321,18 +361,6 @@ footer{
     transition: 0.1s ease;
 }
 .lil-time-holder:hover{
-    background-color: rgb(39, 39, 39);
-}
-.message-task-bar-icon{
-    height: 100%;
-    width: 40px;
-    background-image: url('./img/message-task-bar-icon.svg');
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: center;
-}
-
-.message-task-bar-icon:hover{
     background-color: rgb(39, 39, 39);
 }
 .time{
@@ -508,19 +536,4 @@ footer{
 }
 .reset-timer:hover{
     background-color: rgb(40, 40, 40);
-}
-.message-task-bar{
-    transition: 0.5s ease-in-out;
-    z-index: 800;
-    position: absolute;
-    bottom: -610px;
-    right: 0;
-    width: 300px;
-    max-height: 95%;
-    height: 600px;
-    background-color: rgb(31, 31, 31);
-    border-top: solid rgb(76, 76, 76) 1px;
-    border-left: solid rgb(76, 76, 76) 1px;
-    color: #ffffff;
-    padding: 1rem;
 }

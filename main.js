@@ -71,7 +71,7 @@ mainCanvas.addEventListener('mousedown', function (e){
     ctx.fillRect(xCanvas, yCanvas, xCanvas-aCanvas, yCanvas-bCanvas)
     ctx.strokeRect(xCanvas, yCanvas, xCanvas-aCanvas ,yCanvas-bCanvas)
     canvasInterval = setInterval(function () {
-        ctx.clearRect(0, 0, 10000, 10000);
+        ctx.clearRect(0, 0, window.screen.width, window.screen.height);
         ctx.fillRect(xCanvas, yCanvas, aCanvas-xCanvas, bCanvas-yCanvas)
         ctx.strokeRect(xCanvas, yCanvas, aCanvas-xCanvas ,bCanvas-yCanvas)
     },1)
@@ -194,25 +194,38 @@ function showUpFunction(e){
     document.querySelector(e).style.bottom=document.querySelector('footer').offsetHeight + 'px';
     document.querySelector('.blackBackground').style.zIndex='50';
     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
-    console.log(1111111111111111)
-
 }
 function hideFunction(e){
     document.querySelector(e).style.bottom= -610 + 'px';
     document.querySelector('.blackBackground').style.zIndex='-10';
     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-    console.log(2222222222222);
-    
 }
-document.querySelector('.message-task-bar-icon').addEventListener('click', ()=>{
-    showUpFunction('.message-task-bar');
-});
+//нажатия на старт время и сообщения 
+document.addEventListener('click', (e)=>{
+    document.querySelector('.blackBackground').style.zIndex='-10';
+    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+    hideFunction('.time');
+    hideFunction('.message-task-bar');
+    hideFunction('.start-menu');
+    if(e.target.closest('.lil-time-holder') || e.target.closest('.time')){
+        showUpFunction('.time');
+    }
+    if(e.target.closest('.message-task-bar-icon') || e.target.closest('.message-task-bar')){
+        showUpFunction('.message-task-bar');
+    }
+    if(e.target.closest('.start-holder') || e.target.closest('.message-task-bar')){
+        showUpFunction('.start-menu');
+    }
+    
+})
 
-document.querySelector('.message-task-bar-icon').addEventListener('click', ()=>{
-    hideFunction('.message-task-bar')
-});
 
 
+
+// 
+//  НЕ РАБОТАЕТ ПОВТОРНОЕ НАЖАТИЕ 
+// 
+// 
 
 
 
@@ -323,24 +336,24 @@ if(timerMin.value<0){
 let openTime = false;
 document.addEventListener('click', (e)=>{
     //нажатие на время
-    if(e.target.closest('.lil-time-holder') && openTime === true){
-        document.querySelector('.time').style.bottom= -610 + 'px';
-        document.querySelector('.blackBackground').style.zIndex='-10';
-        document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-        openTime = false;
-    }
-    else if(e.target.closest('.lil-time-holder')){
-        document.querySelector('.time').style.bottom=document.querySelector('footer').offsetHeight + 'px';
-        document.querySelector('.blackBackground').style.zIndex='50';
-        document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
-        openTime = true;
-    }
-    else if(!e.target.closest('.time')){
-        document.querySelector('.time').style.bottom= -610 + 'px';
-        document.querySelector('.blackBackground').style.zIndex='-10'
-        document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-        openTime = false;
-    }
+    // if(e.target.closest('.lil-time-holder') && openTime === true){
+    //     document.querySelector('.time').style.bottom= -610 + 'px';
+    //     document.querySelector('.blackBackground').style.zIndex='-10';
+    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+    //     openTime = false;
+    // }
+    // else if(e.target.closest('.lil-time-holder')){
+    //     document.querySelector('.time').style.bottom=document.querySelector('footer').offsetHeight + 'px';
+    //     document.querySelector('.blackBackground').style.zIndex='50';
+    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
+    //     openTime = true;
+    // }
+    // else if(!e.target.closest('.time')){
+    //     document.querySelector('.time').style.bottom= -610 + 'px';
+    //     document.querySelector('.blackBackground').style.zIndex='-10'
+    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+    //     openTime = false;
+    // }
     //кнопки таймера и его кента
     if(e.target.closest('.stopwatch-holder')){
         document.querySelector('.stopwatch').style.display = 'block';

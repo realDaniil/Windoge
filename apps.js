@@ -1,33 +1,46 @@
 // открытие
 let nodeListShortcut = document.querySelectorAll('.shortcut');
-let appSrcArray = [];
+let taskBarArray = [];
 for(let appLogo of nodeListShortcut){
     appLogo.addEventListener('dblclick', (e)=>{
         let shortcutId = appLogo.id.slice(0, -5);
-		let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");
-		if(appSrcArray.includes(appSrc)){
-			return;
-		} else document.getElementById('task-bar').innerHTML += `<div class="task-app-holder"><img class = 'task-app-icon-app'src="`+ appSrc +`"></div>`;
-		appSrcArray.push(appSrc);
         document.getElementById(shortcutId).style.display = 'block';
+		// let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");
+		// if(appSrcArray.includes('task-app-holder-'+shortcutId)){
+		// 	return;
+		// } else {
+		// 	document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-`+shortcutId+`"><img class = 'task-app-icon-app'src="`+ appSrc +`"></div>`;
+		// }
+		// appSrcArray.push('task-app-holder-'+shortcutId);
+		let taskBarAppSrc = appLogo.querySelector('.app-icon').getAttribute("src");
+		if(taskBarArray.includes(shortcutId)){
+			return;
+		}
+		taskBarArray.push(shortcutId);
+		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-`+shortcutId+`"><img src="`+ taskBarAppSrc +`"></div>`;
     });
 }
 
+document.querySelector('#task-bar').addEventListener('click', (e)=>{
+	if(e.target.closest('.task-app-holder')){
+		console.log(e.target.id.slice(16))
+		document.getElementById(e.target.id.slice(16)).style.display = 'block';
+	}
+})
 
 //закрытие и свертывание
 let roll = false;
 let nodeListDragBtnHolder = document.querySelectorAll('.drag-btns-holder');
-for(let dragBtnHolder of nodeListDragBtnHolder){[
+for(let dragBtnHolder of nodeListDragBtnHolder){
 	dragBtnHolder.addEventListener('click', (e)=>{
 		if(e.target.classList.contains('hide-btn-drag')){
-			
+			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
 		}
-		if(e.target.classList.contains('roll-btn-drag')){
-			
-			if(roll === false){
-				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/square.svg")';
-				roll = true;
-			}
+		if(e.target.classList.contains('roll-btn-drag')){			
+			// if(roll === false){
+			// 	document.getElementById(e.target.id).style.backgroundImage = 'url("./img/square.svg")';
+			// 	roll = true;
+			// }
 			// else if(roll === true){
 			// 	roll = false;
 			// 	document.getElementById(e.target.id).style.backgroundImage = 'url("./img/double_square.svg")';
@@ -35,9 +48,22 @@ for(let dragBtnHolder of nodeListDragBtnHolder){[
 		}
 		if(e.target.classList.contains('close-btn-drag')){
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
+			// document.getElementById('task-app-holder-'+e.target.id.slice(15)).style.display = 'none';
+			document.getElementById('task-bar').removeChild(document.getElementById('task-app-holder-'+e.target.id.slice(15)));
+			// taskBarArray.splice(taskBarArray.findIndex((i)=>{
+			// 	return i.id == e.target.id.slice(15), console.log(e.target.id.slice(15));
+			// }), 1);
+			console.log(taskBarArray);
+			for(let i = 0; i < taskBarArray.length; i++){
+				if (taskBarArray[i] === e.target.id.slice(15)) {
+					taskBarArray.splice(i, 1);
+					console.log(taskBarArray);
+					break;
+				}
+			}
 		}
-	})
-]}
+	});
+}
 
 //передвижение
 function dragFunction(e){

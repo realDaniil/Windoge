@@ -327,6 +327,18 @@ footer{
     height: 100%;
     display: flex;
 }
+.language-holder:hover, .message-task-bar-icon:hover, .lil-time-holder:hover{
+    background-color: rgb(39, 39, 39);
+}
+.language-holder{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 0.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.1s ease;
+}
 .message-task-bar-icon{
     height: 100%;
     width: 40px;
@@ -334,9 +346,17 @@ footer{
     background-repeat: no-repeat;
     background-size: 20px;
     background-position: center;
+    transition: 0.1s ease;
 }
-.message-task-bar-icon:hover{
-    background-color: rgb(39, 39, 39);
+#new-message-indicator{
+	display: none;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	position: relative;
+	left: 25px;
+	top: 5px;
+	background-color: rgb(160, 45, 45);
 }
 .message-task-bar{
     transition: 0.5s ease-in-out;
@@ -363,9 +383,6 @@ footer{
     justify-content: center;
     font-size: 12px;
     transition: 0.1s ease;
-}
-.lil-time-holder:hover{
-    background-color: rgb(39, 39, 39);
 }
 .time{
     transition: 0.5s ease-in-out;

@@ -29,16 +29,7 @@
 	background-position: center;
 	background-size: 1rem;
 }
-#new-message-indicator{
-	display: none;
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	position: relative;
-	left: 25px;
-	top: 5px;
-	background-color: rgb(160, 45, 45);
-}
+
 .hide-btn-drag:hover, .roll-btn-drag:hover{
 	background-color: rgb(49, 49, 49);
 }

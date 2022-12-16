@@ -263,8 +263,6 @@ footer{
     max-height: 95%;
     height: 600px;
     background-color: rgb(31, 31, 31);
-    border-top: solid rgb(76, 76, 76) 1px;
-    border-right: solid rgb(76, 76, 76) 1px;
     color: #ffffff;
     display: grid;
     grid-template-columns: 50px 1fr 1fr;
@@ -299,6 +297,23 @@ footer{
 #document-start-btn{
     background-image: url('./img/start-document-logo.svg');
 }
+.start-menu-app-section{
+    overflow-y: scroll;
+    padding: 1rem;
+}
+.start-menu-app-holder{
+    display: flex;
+    align-items: center;
+}
+.start-menu-app-img{
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#start-menu-app-calculator{
+    background-image: url('./img/calculator-logo.svg');
+}
 .task-bar-search-holder{
     background-color: #ffffff;
     border: solid 2px rgba(0, 0, 0, 0.6);
@@ -324,7 +339,6 @@ footer{
     color: rgb(16, 16, 16);
     background-color: rgba(255, 255, 255, 0);
 }
-
 #task-bar{
     height: 100%;
     display: flex;

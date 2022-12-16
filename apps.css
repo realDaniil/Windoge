@@ -29,7 +29,6 @@
 	background-position: center;
 	background-size: 1rem;
 }
-
 .hide-btn-drag:hover, .roll-btn-drag:hover{
 	background-color: rgb(49, 49, 49);
 }

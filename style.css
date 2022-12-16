@@ -240,7 +240,6 @@ footer{
 .start-holder{
     height: 40px;
     min-width: 50px;
-    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -250,8 +249,8 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
     background-color: white;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     transition: 0.1s ease;
 }
 .start-menu{
@@ -267,10 +266,38 @@ footer{
     border-top: solid rgb(76, 76, 76) 1px;
     border-right: solid rgb(76, 76, 76) 1px;
     color: #ffffff;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr;
 }
 .start-holder:hover > .start{
     background-color: rgb(60, 130, 200);
+}
+.start-menu-btn-section{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.start-menu-btn{
+    width: 100%;
+    height: 50px;
+    transition: 0.1s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+}
+.start-menu-btn:hover{
+    background-color: rgb(39, 39, 39);
+}
+#shutdown-start-btn{
+    background-image: url('./img/start-shutdown-logo.svg');
+}
+#setting-start-btn{
+    background-image: url('./img/start-setting-logo.svg');
+}
+#img-start-btn{
+    background-image: url('./img/start-img-logo.svg');
+}
+#document-start-btn{
+    background-image: url('./img/start-document-logo.svg');
 }
 .task-bar-search-holder{
     background-color: #ffffff;
@@ -281,7 +308,6 @@ footer{
     height: 100%;
     position: relative;
 }
-
 .search-icon{
     width: 20px;
     height: 20px;
@@ -335,7 +361,7 @@ footer{
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    padding: 0.2rem;
+    padding: 0.4rem;
     font-family: Arial, Helvetica, sans-serif;
     transition: 0.1s ease;
 }
@@ -356,7 +382,7 @@ footer{
 	position: relative;
 	left: 25px;
 	top: 5px;
-	background-color: rgb(160, 45, 45);
+	background-color: red;
 }
 .message-task-bar{
     transition: 0.5s ease-in-out;

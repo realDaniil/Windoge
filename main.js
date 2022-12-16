@@ -12,7 +12,6 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 let tickMessage = 0;
 messageInterval = setInterval(function(){
     tickMessage++;
-    console.log(tickMessage)
     if(tickMessage === 30){
         document.querySelector('#new-message-indicator').style.display = 'block';
         document.querySelector('#area-message').innerHTML = `<p>If you find a bug, then everything is as intended)</p>`;

@@ -396,6 +396,19 @@ document.addEventListener('click', (e)=>{
     hideFunction('.message-task-bar');
     hideFunction('.start-menu');
     document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+    if(e.target.closest('#shutdown-start-btn')){
+        let errorTick = 0;
+        errorTickInterval = setInterval(function(){
+            console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
+            errorTick++;
+            if(errorTick === 10){
+            location.reload();
+            clearInterval(errorTickInterval);
+            }
+        }, 1000);
+        document.querySelector('body').style.backgroundColor = 'rgb(35, 105, 180)';
+        document.querySelector('body').innerHTML = `<img style="width: 100vw; height: 100vh;" src="./img/blue-screen-of-death.png">`;
+    }
     if(e.target.closest('.start-menu-btn')){
         openStart = false;
         hideFunction('.start-holder');
@@ -457,20 +470,6 @@ document.addEventListener('click', (e)=>{
     }
     if(!e.target.closest('.message-task-bar-icon') && !e.target.closest('.message-task-bar')){
         openMessage = false;
-    }
-    //выкл пк
-    if(e.target.closest('#shutdown-start-btn')){
-        let errorTick = 0;
-        errorTickInterval = setInterval(function(){
-            console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
-            errorTick++;
-            if(errorTick === 10){
-            location.reload();
-            clearInterval(errorTickInterval);
-            }
-        }, 1000);
-        document.querySelector('body').style.backgroundColor = 'rgb(35, 105, 180)';
-        document.querySelector('body').innerHTML = `<img style="width: 100vw; height: 100vh;" src="./img/blue-screen-of-death.png">`;
     }
     //сообщения
     if(e.target.closest('.del-messages-btn')){

@@ -15,6 +15,8 @@ messageInterval = setInterval(function(){
     if(tickMessage === 30){
         document.querySelector('#new-message-indicator').style.display = 'block';
         document.querySelector('#area-message').innerHTML = `<p>If you find a bug, then everything is as intended)</p>`;
+        document.querySelector('#area-message').innerHTML += `<p>Press the W key</p>`;
+        document.querySelector('.message-task-bar').innerHTML += `<button class="del-messages-btn">Delete all messages</button>`;
         clearInterval(messageInterval);
     }
 }, 1000);
@@ -66,6 +68,7 @@ document.addEventListener('mousedown', ()=>{
     contextmenu.style.display='none';
 });
 
+
 //канвас
 let mainCanvas = document.getElementById('canvas');
 let ctx = mainCanvas.getContext('2d');
@@ -73,27 +76,91 @@ mainCanvas.width = window.screen.width;
 mainCanvas.height = window.screen.height;
 ctx.fillStyle = 'rgba(5, 5, 160, 0.6)';
 let canvasInterval;
-let xCanvas, yCanvas, aCanvas, bCanvas;
-mainCanvas.addEventListener('mousedown', function (e){
+let xCanvas, yCanvas, wCanvas, hCanvas;
+mainCanvas.addEventListener('mousedown', canvasFunction);
+function getCoordinateFunction(a, b){
+    if(wCanvas<0 && hCanvas>=0){
+        if (
+            a.x < xCanvas + wCanvas*-1 &&
+            a.x + a.width > xCanvas-wCanvas*-1 &&
+            a.y < yCanvas + hCanvas &&
+            a.height + a.y > yCanvas
+        ) {
+            b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
+            b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
+        }
+    }
+    else if(hCanvas<0 && wCanvas>=0){
+        if (
+            a.x < xCanvas + wCanvas &&
+            a.x + a.width > xCanvas &&
+            a.y < yCanvas + hCanvas*-1 &&
+            a.height + a.y > yCanvas-hCanvas*-1
+        ) {
+            b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
+            b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
+        }
+    }
+    else if(hCanvas<0 && wCanvas<0){
+        if (
+            a.x < xCanvas + wCanvas*-1 &&
+            a.x + a.width > xCanvas-wCanvas*-1 &&
+            a.y < yCanvas + hCanvas*-1 &&
+            a.height + a.y > yCanvas + hCanvas
+        ) {
+            b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
+            b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
+        }
+    }
+    else if(hCanvas>0 && wCanvas>0){
+        if(
+            a.x < xCanvas + wCanvas &&
+            a.x + a.width > xCanvas &&
+            a.y < yCanvas + hCanvas &&
+            a.height + a.y > yCanvas
+        ) {
+            b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
+            b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
+        }
+    } else {
+        b.style.backgroundColor = 'transparent';
+        b.style.border = 'solid 2px transparent';
+    }
+    //а ладно потом сделаю возможно
+}
+function canvasFunction(e){
+    mainCanvas.style.zIndex = 100;
     xCanvas = e.x;
     yCanvas = e.y;
-    ctx.fillRect(xCanvas, yCanvas, xCanvas-aCanvas, yCanvas-bCanvas)
-    ctx.strokeRect(xCanvas, yCanvas, xCanvas-aCanvas ,yCanvas-bCanvas)
     canvasInterval = setInterval(function () {
         ctx.clearRect(0, 0, window.screen.width, window.screen.height);
-        ctx.fillRect(xCanvas, yCanvas, aCanvas-xCanvas, bCanvas-yCanvas)
-        ctx.strokeRect(xCanvas, yCanvas, aCanvas-xCanvas ,bCanvas-yCanvas)
-    },1)
-})
+        ctx.fillRect(xCanvas, yCanvas, wCanvas, hCanvas);
+        ctx.strokeRect(xCanvas, yCanvas, wCanvas, hCanvas);
+        // let appSup = document.getElementById('computer-logo').getBoundingClientRect();
+        
+        getCoordinateFunction(document.getElementById('notes-logo').getBoundingClientRect(), document.getElementById('notes-logo'));
+        getCoordinateFunction(document.getElementById('computer-logo').getBoundingClientRect(), document.getElementById('computer-logo'));
+        getCoordinateFunction(document.getElementById('calculator-logo').getBoundingClientRect(), document.getElementById('calculator-logo'));
+        getCoordinateFunction(document.getElementById('paint-logo').getBoundingClientRect(), document.getElementById('paint-logo'));
+
+//Потом доделаю 
+
+},1);
+}
 window.addEventListener("mousemove", function (e){
-    aCanvas = e.x;
-    bCanvas = e.y;
+    wCanvas = e.x - xCanvas;
+    hCanvas = e.y - yCanvas;
+
 });
 window.addEventListener('mouseup', function (){
-    ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
-    xCanvas=undefined; yCanvas=undefined; aCanvas=undefined; bCanvas=undefined;
+    mainCanvas.style.zIndex = 0;
     clearInterval(canvasInterval);
+    ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+    xCanvas=undefined; yCanvas=undefined; wCanvas=undefined; hCanvas=undefined;
 });
+
+
+
 
 // дата и время
 let year,month,numMonth,date,numDate,day,hour,minutes,seconds;
@@ -197,51 +264,6 @@ setInterval(timeSettings,100);
 
 
 
-
-
-function showUpFunction(e){
-    document.querySelector(e).style.bottom=document.querySelector('footer').offsetHeight + 'px';
-    document.querySelector('.blackBackground').style.zIndex='50';
-    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
-}
-function hideFunction(e){
-    document.querySelector(e).style.bottom= -610 + 'px';
-    document.querySelector('.blackBackground').style.zIndex='-10';
-    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-}
-//нажатия на старт время и сообщения 
-document.addEventListener('click', (e)=>{
-    document.querySelector('.blackBackground').style.zIndex='-10';
-    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-    hideFunction('.time');
-    hideFunction('.message-task-bar');
-    hideFunction('.start-menu');
-    if(e.target.closest('.start-holder') || e.target.closest('.start-menu')){
-        showUpFunction('.start-menu');
-    }
-    if(e.target.closest('.lil-time-holder') || e.target.closest('.time')){
-        showUpFunction('.time');
-    }
-    if(e.target.closest('.message-task-bar-icon') || e.target.closest('.message-task-bar')){
-        showUpFunction('.message-task-bar');
-    }
-})
-
-
-
-
-// 
-//  НЕ РАБОТАЕТ ПОВТОРНОЕ НАЖАТИЕ 
-// 
-// 
-
-
-
-
-
-
-
-
 //секундамер 
 document.querySelector('.stopwatch-numbers').innerHTML = '00:00,00';
 let lapSaction = document.querySelector('.lap-saction');
@@ -336,32 +358,128 @@ if(timerMin.value<0){
     timerSec.value = 30;
     document.querySelector('audio').play();
     clearInterval(timerInterval);
-}
-}
+}}
 
 
-//обработчик нажатий в времени
-let openTime = false;
+function showUpFunction(e){
+    document.querySelector(e).style.bottom=document.querySelector('footer').offsetHeight + 'px';
+    document.querySelector('.blackBackground').style.zIndex='700';
+    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
+}
+function hideFunction(e){
+    document.querySelector(e).style.bottom= -610 + 'px';
+    document.querySelector('.blackBackground').style.zIndex='-10';
+    document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
+}
+let openTime = false, openStart = false, openMessage = false;
+//специальные клавиши
+document.addEventListener('keydown', (e)=>{
+    hideFunction('.time');
+    hideFunction('.message-task-bar');
+    openTime = false, openMessage = false;
+    if(e.code == 'KeyW'){
+        if(openStart === true){
+            openStart = false;
+            hideFunction('.start-menu');
+            document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+        }
+        else if(openStart === false){
+            openStart = true;
+            showUpFunction('.start-menu');
+            document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
+        }
+    }
+});
+//обработчик нажатий
 document.addEventListener('click', (e)=>{
-    //нажатие на время
-    // if(e.target.closest('.lil-time-holder') && openTime === true){
-    //     document.querySelector('.time').style.bottom= -610 + 'px';
-    //     document.querySelector('.blackBackground').style.zIndex='-10';
-    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-    //     openTime = false;
-    // }
-    // else if(e.target.closest('.lil-time-holder')){
-    //     document.querySelector('.time').style.bottom=document.querySelector('footer').offsetHeight + 'px';
-    //     document.querySelector('.blackBackground').style.zIndex='50';
-    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0.8)';
-    //     openTime = true;
-    // }
-    // else if(!e.target.closest('.time')){
-    //     document.querySelector('.time').style.bottom= -610 + 'px';
-    //     document.querySelector('.blackBackground').style.zIndex='-10'
-    //     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
-    //     openTime = false;
-    // }
+    hideFunction('.time');
+    hideFunction('.message-task-bar');
+    hideFunction('.start-menu');
+    document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+    if(e.target.closest('.start-menu-btn')){
+        openStart = false;
+        hideFunction('.start-holder');
+        document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+        return;
+    }
+    if(e.target.closest('.start-holder')){
+        if(openStart === true){
+            openStart = false;
+            hideFunction('.start-holder');
+            document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+        }
+        else if(openStart === false){
+            openStart = true;
+            showUpFunction('.start-menu');
+            document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
+        }
+    }
+    if(e.target.closest('.start-menu')){
+        openStart = true;
+        showUpFunction('.start-menu');
+        document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
+    }
+    if(!e.target.closest('.start-holder') && !e.target.closest('.start-menu')){
+        openStart = false;
+    }
+
+    if(e.target.closest('.lil-time-holder')){
+        if(openTime === true){
+            openTime = false;
+            hideFunction('.time');
+        }
+        else if(openTime === false){
+            openTime = true;
+            showUpFunction('.time');
+        }
+    }
+    if(e.target.closest('.time')){
+        showUpFunction('.time');
+        openTime = true;
+    }
+    if(!e.target.closest('.lil-time-holder') && !e.target.closest('.time')){
+        openTime = false;
+    }
+
+    if(e.target.closest('.message-task-bar-icon')){
+        if(openMessage === true){
+            openMessage = false;
+            hideFunction('.message-task-bar');
+        }
+        else if(openMessage === false){
+            openMessage = true;
+            showUpFunction('.message-task-bar');
+        }
+    }
+    if(e.target.closest('.message-task-bar')){
+        showUpFunction('.message-task-bar');
+        openMessage = true;
+    }
+    if(!e.target.closest('.message-task-bar-icon') && !e.target.closest('.message-task-bar')){
+        openMessage = false;
+    }
+    //выкл пк
+    if(e.target.closest('#shutdown-start-btn')){
+        let errorTick = 0;
+        errorTickInterval = setInterval(function(){
+            console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
+            errorTick++;
+            if(errorTick === 10){
+            location.reload();
+            clearInterval(errorTickInterval);
+            }
+        }, 1000);
+        document.querySelector('body').style.backgroundColor = 'rgb(35, 105, 180)';
+        document.querySelector('body').innerHTML = `<img style="width: 100vw; height: 100vh;" src="./img/blue-screen-of-death.png">`;
+    }
+    //сообщения
+    if(e.target.closest('.del-messages-btn')){
+        openMessage = false;
+        document.querySelector('#area-message').innerHTML = `<p>No messages yet</p>`;
+        document.querySelector('.del-messages-btn').style.display = 'none';
+        document.querySelector('#new-message-indicator').style.display = 'none';
+        hideFunction('.message-task-bar');
+    }
     //кнопки таймера и его кента
     if(e.target.closest('.stopwatch-holder')){
         document.querySelector('.stopwatch').style.display = 'block';

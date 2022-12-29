@@ -28,6 +28,7 @@ body{
     user-select: none;
     overflow: hidden;
     background-size: cover;
+    background-color: rgb(16, 16, 16);
 }
 .loading-section{
     position: absolute;
@@ -186,9 +187,10 @@ main {
     z-index: 10;
     display: block;
     height: 100px;
+    border: solid 2px transparent;
 }
 .shortcut:hover{
-    background-color: rgba(20, 80, 210, 0.5);
+    /* background-color: rgba(20, 80, 210, 0.5); */
 }
 .shortcut-text-holder{
     display: flex;
@@ -200,6 +202,7 @@ main {
     text-align: center;
     font-size: 14px;
     color: white;
+    padding-bottom: 4px;
 }
 #contextmenu{
     z-index: 1000;
@@ -243,15 +246,16 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.2s ease;
 }
 .start{
     background-image: url("./img/start.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: white;
-    width: 30px;
-    height: 30px;
-    transition: 0.1s ease;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    transition: 0.2s ease;
 }
 .start-menu{
     transition: 0.5s ease-in-out;
@@ -268,7 +272,10 @@ footer{
     grid-template-columns: 50px 1fr 1fr;
 }
 .start-holder:hover > .start{
-    background-color: rgb(60, 130, 200);
+    background-image: url('./img/start-blue.svg');
+}
+.start-holder:hover{
+    background-color: rgb(31, 31, 31);
 }
 .start-menu-btn-section{
     display: flex;
@@ -281,22 +288,18 @@ footer{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 18px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.start-menu-btn > img{
+    width: 20px;
+    height: 20px;
 }
 .start-menu-btn:hover{
     background-color: rgb(39, 39, 39);
 }
-#shutdown-start-btn{
-    background-image: url('./img/start-shutdown-logo.svg');
-}
-#setting-start-btn{
-    background-image: url('./img/start-setting-logo.svg');
-}
-#img-start-btn{
-    background-image: url('./img/start-img-logo.svg');
-}
-#document-start-btn{
-    background-image: url('./img/start-document-logo.svg');
-}
+
 .start-menu-app-section{
     overflow-y: scroll;
     padding: 1rem;
@@ -412,6 +415,21 @@ footer{
     border-left: solid rgb(76, 76, 76) 1px;
     color: #ffffff;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.del-messages-btn{
+    border-radius: 0;
+    border: none;
+    padding: 0.5rem;
+    font-size: 16px;
+    background-color: white;
+    transition: 0.2s ease;
+}
+.del-messages-btn:hover{
+    background-color: rgb(200, 200, 200);
+    cursor: pointer;
 }
 .lil-time-holder{
     padding: 0 10px 0 10px;

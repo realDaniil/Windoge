@@ -14,8 +14,10 @@
 </head>
 <body>
 <section class="loading-section">
+    <img src="./img/start.svg" alt="" style="width: 80px; height: 80px; position: absolute; top: 10vh;">
+    <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px; left: 0; z-index: 1   ;" alt="">
     <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <h2>Wait please</h2>
+    <h2 style="margin-top: 2rem;">Wait please</h2>
 </section>
 <section class="error-screen-secton">
     <div class="error-screen-content-holder">
@@ -110,10 +112,9 @@
             </div>
         </div>
         <div class="canvas-holder" style="width: 300px; height: 300px;">
-            <canvas id="canvas-paint"></canvas>
+        <canvas id="canvas-paint"></canvas>
         </div>
-    
-</div>
+    </div>
 
 </section>
 
@@ -183,10 +184,18 @@
 </footer>
 <div class="start-menu">
     <div class="start-menu-btn-section">
-        <div class="start-menu-btn" id="shutdown-start-btn"></div>
-        <div class="start-menu-btn" id="setting-start-btn"></div>
-        <div class="start-menu-btn" id="img-start-btn"></div>
-        <div class="start-menu-btn" id="document-start-btn"></div>
+        <div class="start-menu-btn" id="shutdown-start-btn">
+            <img class="img-btn-start" src="./img/start-shutdown-logo.svg" alt="">
+        </div>
+        <div class="start-menu-btn" id="settings-start-btn">
+            <img class="img-btn-start" src="./img/start-settings-logo.svg" alt="">
+        </div>
+        <div class="start-menu-btn" id="images-start-btn">
+            <img class="img-btn-start" src="./img/start-images-logo.svg" alt="">
+        </div>
+        <div class="start-menu-btn" id="document-start-btn">
+            <img class="img-btn-start" src="./img/start-document-logo.svg" alt="">
+        </div>
     </div>
     <div class="start-menu-app-section">
         <div class="start-menu-app-holder">
@@ -199,11 +208,54 @@
     </div>
 </div>
 <div class="message-task-bar">
-    <h2 style="border-bottom: solid 1px white; margin-bottom: 1rem;">Messages</h2>
-    <div id="area-message">
-        <p>No messages yet</p>
+    <div>
+        <h2 style="border-bottom: solid 1px white; margin-bottom: 1rem;">Messages</h2>
+        <div id="area-message">
+            <p>No messages yet</p>
+        </div>
     </div>
 </div>
+
+<div class="app" id="settings">
+    <div class="drag-holder">
+        <div class="drag" id="drag-settings"></div>
+        <div class="drag-btns-holder">
+            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-settings">&mdash;</div>
+            <div class="btn-drag close-btn-drag" id="close-btn-drag-settings">&times;</div>
+        </div>
+    </div>
+    <h1>settings</h1>
+    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+</div>
+
+<div class="app" id="images">
+    <div class="drag-holder">
+        <div class="drag" id="drag-images"></div>
+        <div class="drag-btns-holder">
+            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-images">&mdash;</div>
+            <div class="btn-drag close-btn-drag" id="close-btn-drag-images">&times;</div>
+        </div>
+    </div>
+    <h1>images</h1>
+    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+</div>
+
+<div class="app" id="document">
+    <div class="drag-holder">
+        <div class="drag" id="drag-document"></div>
+        <div class="drag-btns-holder">
+            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-document">&mdash;</div>
+            <div class="btn-drag close-btn-drag" id="close-btn-drag-document">&times;</div>
+        </div>
+    </div>
+    <h1>document</h1>
+    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+</div>
+
+
+
+
+
 <div class="time">
     <div class="big-time-holder">
         <div class="big-time">00:00</div>

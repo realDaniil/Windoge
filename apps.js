@@ -1,17 +1,9 @@
 // открытие
-let nodeListShortcut = document.querySelectorAll('.shortcut');
 let taskBarArray = [];
-for(let appLogo of nodeListShortcut){
+for(let appLogo of document.querySelectorAll('.shortcut')){
     appLogo.addEventListener('dblclick', (e)=>{
         let shortcutId = appLogo.id.slice(0, -5);
         document.getElementById(shortcutId).style.display = 'block';
-		// let appSrc = appLogo.querySelector('.app-icon').getAttribute("src");
-		// if(appSrcArray.includes('task-app-holder-'+shortcutId)){
-		// 	return;
-		// } else {
-		// 	document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-`+shortcutId+`"><img class = 'task-app-icon-app'src="`+ appSrc +`"></div>`;
-		// }
-		// appSrcArray.push('task-app-holder-'+shortcutId);
 		let taskBarAppSrc = appLogo.querySelector('.app-icon').getAttribute("src");
 		if(taskBarArray.includes(shortcutId)){
 			return;
@@ -21,9 +13,29 @@ for(let appLogo of nodeListShortcut){
     });
 }
 
+
+
+for(let appLogo of document.querySelectorAll('.start-menu-btn')){
+	appLogo.addEventListener('click', function(e){
+		let shortcutId = this.id.slice(0, -10);
+		document.getElementById(shortcutId).style.display = 'block';
+		let taskBarAppSrc = appLogo.querySelector('.img-btn-start').getAttribute("src");
+		if(taskBarArray.includes(shortcutId)){
+			return;
+		}
+		taskBarArray.push(shortcutId);
+		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-`+shortcutId+`"><img style="width: 20px; height: 20px;" src="`+ taskBarAppSrc +`"></div>`;
+	});
+}
+
+
+
+
+
+
+
 document.querySelector('#task-bar').addEventListener('click', (e)=>{
 	if(e.target.closest('.task-app-holder')){
-		console.log(e.target.id.slice(16))
 		document.getElementById(e.target.id.slice(16)).style.display = 'block';
 	}
 })
@@ -53,11 +65,9 @@ for(let dragBtnHolder of nodeListDragBtnHolder){
 			// taskBarArray.splice(taskBarArray.findIndex((i)=>{
 			// 	return i.id == e.target.id.slice(15), console.log(e.target.id.slice(15));
 			// }), 1);
-			console.log(taskBarArray);
 			for(let i = 0; i < taskBarArray.length; i++){
 				if (taskBarArray[i] === e.target.id.slice(15)) {
 					taskBarArray.splice(i, 1);
-					console.log(taskBarArray);
 					break;
 				}
 			}
@@ -232,9 +242,6 @@ document.querySelector('.calc-buttons').addEventListener('click', (e) =>{
 		}
 		if(a == ''){
 			a = 0;
-		}
-		if(a === Infinity || a === -Infinity){
-			a = 'Very big number';
 		}
 		if(Number.isNaN(a)){
 			a = 0;

@@ -1,14 +1,15 @@
 //document.querySelector('.task-bar-btn-holder').style.left = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth + 'px';
 //document.querySelector('#task-bar').style.width = window.outerWidth - document.querySelector('.task-bar-btn-holder').offsetWidth - document.querySelector('.task-bar-search-holder').offsetWidth - document.querySelector('.start-holder').offsetWidth + 'px';
+
 window.onload = ()=> {
 document.querySelector('.loading-section').style.display = 'none';
 }
-
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
-
-
+console.log('The site may have problems when using macOS devices or when using the Firefox browser');
+// document.getElementById('camera').style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 'px';
+document.getElementById('video-camera').style.maxHeight = window.innerHeight - document.querySelector('footer').offsetHeight - 100 + 'px';
 let tickMessage = 0;
 messageInterval = setInterval(function(){
     tickMessage++;
@@ -372,12 +373,57 @@ function hideFunction(e){
     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
 }
 let openTime = false, openStart = false, openMessage = false;
+let canvasVideo = document.querySelector('#video-canvas');
+canvasVideo.style.borderRadius = '4px';
+let videoContext = canvasVideo.getContext('2d');
+videoContext.fillStyle = 'black';
+videoContext.fillRect(0, 0, canvasVideo.width, canvasVideo.height);
+let videoCamera = document.querySelector('#video-camera');
+let cameraOpen = false;
+let changeCameraClick = 0;
+let cameraArray = [];
+navigator.mediaDevices.enumerateDevices().then(function (devices) {
+    for(let i = 0; i < devices.length; i++){
+        if (devices[i].kind === 'videoinput') {
+            cameraArray.push(devices[i]);
+        }
+    }
+});
+function cameraFunction(){
+    if(cameraOpen === true){
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            navigator.mediaDevices.getUserMedia({video: cameraArray[changeCameraClick]}).then(stream =>{
+                cameraArray = [];
+                navigator.mediaDevices.enumerateDevices().then(function (devices) {
+                    for(let i = 0; i < devices.length; i++){
+                        if (devices[i].kind === 'videoinput') {
+                            cameraArray.push(devices[i]);
+                        }
+                    }
+                });
+                videoCamera.srcObject = stream;
+            }).catch(err =>{
+                console.log(err);
+            });
+        }
+    }
+    if(cameraOpen === false){
+        navigator.mediaDevices.getUserMedia({video: true}).then(stream =>{
+            videoCamera.srcObject = stream;
+            stream.getTracks().forEach(track => track.stop());
+            console.log('The camera turns off with a delay');
+        });
+    }
+}
+
+
+
 //специальные клавиши
 document.addEventListener('keydown', (e)=>{
-    hideFunction('.time');
-    hideFunction('.message-task-bar');
-    openTime = false, openMessage = false;
     if(e.code == 'KeyW'){
+        hideFunction('.message-task-bar');
+        hideFunction('.time');
+        openTime = false, openMessage = false;
         if(openStart === true){
             openStart = false;
             hideFunction('.start-menu');
@@ -389,6 +435,16 @@ document.addEventListener('keydown', (e)=>{
             document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
         }
     }
+    if(e.code == 'Tab'){
+        let tabTick = 0;
+        let tabTimer =setInterval(()=>{
+            tabTick++;
+            if(tabTick === 2){
+                scroll(0,0);
+                clearInterval(tabTimer);
+            }
+        }, 1);
+    }
 });
 //обработчик нажатий
 document.addEventListener('click', (e)=>{
@@ -396,18 +452,46 @@ document.addEventListener('click', (e)=>{
     hideFunction('.message-task-bar');
     hideFunction('.start-menu');
     document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+    if(e.target.closest('#change-camera-btn')){
+        if(cameraArray.length <= 1){
+        } else {
+            let deg = 0;
+            let changeBtnTimer = setInterval(()=>{
+                deg = deg+5;
+                document.querySelector('#change-camera-btn').style.transform = 'rotate('+deg+'deg)';               
+                if(deg >= 360){
+                    clearInterval(changeBtnTimer);
+                }
+            }, 1);
+        changeCameraClick++;
+        if(changeCameraClick > cameraArray.length-1){
+            changeCameraClick = 0;
+            cameraFunction();
+        }
+        if(changeCameraClick < cameraArray.length){
+            cameraFunction();
+        }
+    }
+    }
+    if(e.target.closest('#take-photo-btn')){
+        videoContext.drawImage(videoCamera, 0, 0, canvasVideo.width, canvasVideo.height);
+    }
     if(e.target.closest('#shutdown-start-btn')){
         let errorTick = 0;
         errorTickInterval = setInterval(function(){
             console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
             errorTick++;
             if(errorTick === 10){
-            location.reload();
-            clearInterval(errorTickInterval);
+                location.reload();
+                clearInterval(errorTickInterval);
             }
         }, 1000);
         document.querySelector('body').style.backgroundColor = 'rgb(35, 105, 180)';
         document.querySelector('body').innerHTML = `<img style="width: 100vw; height: 100vh;" src="./img/blue-screen-of-death.png">`;
+    }
+    if(e.target.closest('#camera-start-btn')){
+        cameraOpen = true;
+        cameraFunction();
     }
     if(e.target.closest('.start-menu-btn')){
         openStart = false;

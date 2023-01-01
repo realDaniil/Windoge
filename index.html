@@ -28,7 +28,7 @@
 </section>
 
 <div class="blackBackground"></div>
-
+<button id="tabFix" style="z-index: -1; position: absolute; top: 0; left: 0;"></button>
 <div id="contextmenu">
     <button id="c-btn-personalization">Personalization</button><br>
     <button id="c-btn-create">Create</button><br>
@@ -196,6 +196,9 @@
         <div class="start-menu-btn" id="document-start-btn">
             <img class="img-btn-start" src="./img/start-document-logo.svg" alt="">
         </div>
+        <div class="start-menu-btn" id="camera-start-btn">
+            <img class="img-btn-start" src="./img/start-camera-logo.svg" alt="">
+        </div>
     </div>
     <div class="start-menu-app-section">
         <div class="start-menu-app-holder">
@@ -252,8 +255,28 @@
     <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
 </div>
 
-
-
+<div class="app" id="camera">
+    <div class="big-drag-holder">
+        <div class="big-drag" id="drag-camera"></div>
+        <div class="drag-btns-holder">
+            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-camera">&mdash;</div>
+            <div class="btn-drag close-btn-drag" id="close-btn-drag-camera">&times;</div>
+        </div>
+    </div>
+    <div class="camera-child-holder">
+        <video id="video-camera" height="200%" style="margin-top: 20px;" autoplay></video>
+        <div style="display: flex; justify-content: space-between; width: 50%; position: absolute; bottom: 20px;">
+            <div class="change-camera-btn-holder">
+                <button id="change-camera-btn"></button>
+            </div>
+            <div class="take-photo-btn-holder">
+                <button id="take-photo-btn"></button>
+            </div>
+            <canvas id="video-canvas" width="50px" height="50px"></canvas>
+        </div>
+        
+    </div>
+</div>
 
 
 <div class="time">

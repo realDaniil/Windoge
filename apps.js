@@ -35,10 +35,14 @@ for(let appLogo of document.querySelectorAll('.start-menu-btn')){
 
 
 document.querySelector('#task-bar').addEventListener('click', (e)=>{
+	if(e.target.id.slice(16) === 'camera'){
+		cameraOpen = true;
+		cameraFunction();
+	}
 	if(e.target.closest('.task-app-holder')){
 		document.getElementById(e.target.id.slice(16)).style.display = 'block';
 	}
-})
+});
 
 //закрытие и свертывание
 let roll = false;
@@ -47,6 +51,10 @@ for(let dragBtnHolder of nodeListDragBtnHolder){
 	dragBtnHolder.addEventListener('click', (e)=>{
 		if(e.target.classList.contains('hide-btn-drag')){
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
+			if(e.target.id.split("-").pop() === 'camera'){
+				cameraOpen = false;
+				cameraFunction();
+			}
 		}
 		if(e.target.classList.contains('roll-btn-drag')){			
 			// if(roll === false){
@@ -60,11 +68,11 @@ for(let dragBtnHolder of nodeListDragBtnHolder){
 		}
 		if(e.target.classList.contains('close-btn-drag')){
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
-			// document.getElementById('task-app-holder-'+e.target.id.slice(15)).style.display = 'none';
+			if(e.target.id.split("-").pop() === 'camera'){
+				cameraOpen = false;
+				cameraFunction();
+			}
 			document.getElementById('task-bar').removeChild(document.getElementById('task-app-holder-'+e.target.id.slice(15)));
-			// taskBarArray.splice(taskBarArray.findIndex((i)=>{
-			// 	return i.id == e.target.id.slice(15), console.log(e.target.id.slice(15));
-			// }), 1);
 			for(let i = 0; i < taskBarArray.length; i++){
 				if (taskBarArray[i] === e.target.id.slice(15)) {
 					taskBarArray.splice(i, 1);
@@ -80,8 +88,6 @@ function dragFunction(e){
 	//xCoordinate то на какой писксель мы нажали в самом обьекте 
 	document.getElementById(appId).style.left = e.pageX - xCoordinate + "px";
 	document.getElementById(appId).style.top = e.pageY - yCoordinate + "px";
-	document.querySelector('body').style.cursor = 'grabbing';
-
 if(e.pageY<yCoordinate){
 	document.getElementById(appId).style.top = 0 + 'px';
 }
@@ -114,7 +120,6 @@ for (let drag of nodeListDrag){
 
 document.addEventListener('mouseup', ()=>{
 	document.removeEventListener('mousemove', dragFunction);
-	document.querySelector('body').style.cursor = 'default';
 });
 
 

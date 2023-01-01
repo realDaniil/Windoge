@@ -15,7 +15,9 @@
 <body>
 <section class="loading-section">
     <img src="./img/start.svg" alt="" style="width: 80px; height: 80px; position: absolute; top: 10vh;">
-    <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px; left: 0; z-index: 1   ;" alt="">
+    <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
+    <img src="./img/double_square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
+    <img src="./img/square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
     <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <h2 style="margin-top: 2rem;">Wait please</h2>
 </section>
@@ -28,6 +30,7 @@
 </section>
 
 <div class="blackBackground"></div>
+<div class="sleep-section" style="background-color: rgba(0, 0, 0, 0); z-index: -1; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; transition: 0.5s ease-in-out;"></div>
 <button id="tabFix" style="z-index: -1; position: absolute; top: 0; left: 0;"></button>
 <div id="contextmenu">
     <button id="c-btn-personalization">Personalization</button><br>
@@ -165,7 +168,7 @@
         </div>
         <div class="task-bar-search-holder">
             <img src="./img/search-icon.svg" alt="🔎" class="search-icon">
-            <input type="text" class="search-input" placeholder="Enter text to search">
+            <input type="text" class="search-input" placeholder="Type here to search">
         </div>
         <div id="task-bar"></div>
     </div>
@@ -184,7 +187,21 @@
 </footer>
 <div class="start-menu">
     <div class="start-menu-btn-section">
-        <div class="start-menu-btn" id="shutdown-start-btn">
+        <div class="shutdown-btns-holder">
+            <div class="shutdown-btns" id="start-restart-btn">
+                <img src="./img/start-restart-logo.svg" alt="">
+                <p>Restart</p>
+            </div>
+            <div class="shutdown-btns" id="real-shutdown-btn">
+                <img src="./img/start-shutdown-logo.svg" alt="">
+                <p>Shut down</p>
+            </div>
+            <div class="shutdown-btns" id="start-sleep-btn">
+                <img src="./img/start-sleep-logo.svg" alt="">
+                <p>Sleep</p>
+            </div>
+        </div>
+        <div id="shutdown-start-btn">
             <img class="img-btn-start" src="./img/start-shutdown-logo.svg" alt="">
         </div>
         <div class="start-menu-btn" id="settings-start-btn">

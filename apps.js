@@ -11,6 +11,14 @@ for(let appLogo of document.querySelectorAll('.shortcut')){
 		taskBarArray.push(shortcutId);
 		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-`+shortcutId+`"><img src="`+ taskBarAppSrc +`"></div>`;
     });
+	appLogo.addEventListener('mousemove', function(){
+			this.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
+			this.style.border = 'solid 2px rgba(20, 20, 20, 0.7)';
+	});
+	appLogo.addEventListener('mouseout', function(){
+		this.style.backgroundColor = 'rgba(45, 75, 185, 0)';
+		this.style.border = 'solid 2px rgba(20, 20, 20, 0)';
+});
 }
 
 
@@ -252,7 +260,6 @@ document.querySelector('.calc-buttons').addEventListener('click', (e) =>{
 			a = 0;
 			b = 0;
 		}
-		console.log(a, b, sign)
 		calcNumber.textContent = a;
 		if(calcNumber.textContent.length < 10){
 			calcNumber.style.fontSize = '34px';

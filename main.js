@@ -80,7 +80,7 @@ let canvasInterval;
 let xCanvas, yCanvas, wCanvas, hCanvas;
 mainCanvas.addEventListener('mousedown', canvasFunction);
 function getCoordinateFunction(a, b){
-    if(wCanvas<0 && hCanvas>=0){
+    if(wCanvas<=0 && hCanvas>=0){
         if (
             a.x < xCanvas + wCanvas*-1 &&
             a.x + a.width > xCanvas-wCanvas*-1 &&
@@ -91,7 +91,7 @@ function getCoordinateFunction(a, b){
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if(hCanvas<0 && wCanvas>=0){
+    else if(hCanvas<=0 && wCanvas>=0){
         if (
             a.x < xCanvas + wCanvas &&
             a.x + a.width > xCanvas &&
@@ -102,7 +102,7 @@ function getCoordinateFunction(a, b){
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if(hCanvas<0 && wCanvas<0){
+    else if(hCanvas<=0 && wCanvas<=0){
         if (
             a.x < xCanvas + wCanvas*-1 &&
             a.x + a.width > xCanvas-wCanvas*-1 &&
@@ -113,7 +113,7 @@ function getCoordinateFunction(a, b){
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if(hCanvas>0 && wCanvas>0){
+    else if(hCanvas>=0 && wCanvas>=0){
         if(
             a.x < xCanvas + wCanvas &&
             a.x + a.width > xCanvas &&
@@ -138,7 +138,6 @@ function canvasFunction(e){
         ctx.fillRect(xCanvas, yCanvas, wCanvas, hCanvas);
         ctx.strokeRect(xCanvas, yCanvas, wCanvas, hCanvas);
         // let appSup = document.getElementById('computer-logo').getBoundingClientRect();
-        
         getCoordinateFunction(document.getElementById('notes-logo').getBoundingClientRect(), document.getElementById('notes-logo'));
         getCoordinateFunction(document.getElementById('computer-logo').getBoundingClientRect(), document.getElementById('computer-logo'));
         getCoordinateFunction(document.getElementById('calculator-logo').getBoundingClientRect(), document.getElementById('calculator-logo'));
@@ -151,7 +150,6 @@ function canvasFunction(e){
 window.addEventListener("mousemove", function (e){
     wCanvas = e.x - xCanvas;
     hCanvas = e.y - yCanvas;
-
 });
 window.addEventListener('mouseup', function (){
     mainCanvas.style.zIndex = 0;
@@ -372,7 +370,7 @@ function hideFunction(e){
     document.querySelector('.blackBackground').style.zIndex='-10';
     document.querySelector('.blackBackground').style.backgroundColor='rgba(0, 0, 0, 0)';
 }
-let openTime = false, openStart = false, openMessage = false;
+let openTime = false, openStart = false, openMessage = false, openShutdown = false;
 let canvasVideo = document.querySelector('#video-canvas');
 canvasVideo.style.borderRadius = '4px';
 let videoContext = canvasVideo.getContext('2d');
@@ -417,16 +415,29 @@ function cameraFunction(){
 }
 
 
-
+//прочее
+let firstInputValue = document.querySelector('.search-input').value;
+let secondInputValue = null;
+document.querySelector('.search-input').addEventListener('input', (e)=>{
+    firstInputValue = document.querySelector('.search-input').value;
+});
+document.querySelector('.search-input').addEventListener('change', (e)=>{
+    secondInputValue = document.querySelector('.search-input').value;
+});
 //специальные клавиши
 document.addEventListener('keydown', (e)=>{
-    if(e.code == 'KeyW'){
+    if(firstInputValue != secondInputValue){
+        return;
+    }
+    else if(e.code == 'KeyW'){
         hideFunction('.message-task-bar');
         hideFunction('.time');
         openTime = false, openMessage = false;
         if(openStart === true){
             openStart = false;
             hideFunction('.start-menu');
+            document.querySelector('.shutdown-btns-holder').style.left = -250 + 'px';
+            openShutdown = false;
             document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
         }
         else if(openStart === false){
@@ -477,6 +488,23 @@ document.addEventListener('click', (e)=>{
         videoContext.drawImage(videoCamera, 0, 0, canvasVideo.width, canvasVideo.height);
     }
     if(e.target.closest('#shutdown-start-btn')){
+        if(openShutdown === false){
+            document.querySelector('.shutdown-btns-holder').style.left = 0;
+            openShutdown = true;
+        }
+        else if(openShutdown === true){
+            document.querySelector('.shutdown-btns-holder').style.left = -250 + 'px';
+            openShutdown = false;
+        }
+    }
+    if(!e.target.closest('#shutdown-start-btn')){
+        document.querySelector('.shutdown-btns-holder').style.left = -250 + 'px';
+        openShutdown = false;
+    }
+    if(e.target.closest('#start-restart-btn')){
+        location.reload();
+    }
+    if(e.target.closest('#real-shutdown-btn')){
         let errorTick = 0;
         errorTickInterval = setInterval(function(){
             console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
@@ -488,6 +516,22 @@ document.addEventListener('click', (e)=>{
         }, 1000);
         document.querySelector('body').style.backgroundColor = 'rgb(35, 105, 180)';
         document.querySelector('body').innerHTML = `<img style="width: 100vw; height: 100vh;" src="./img/blue-screen-of-death.png">`;
+    }
+    if(e.target.closest('#start-sleep-btn')){
+        hideFunction('.time');
+        hideFunction('.message-task-bar');
+        hideFunction('.start-menu');
+        openShutdown = false, openStart = false;
+        document.querySelector('.shutdown-btns-holder').style.left = -250 + 'px';
+        document.querySelector('.sleep-section').style.zIndex = 10000;
+        document.querySelector('.sleep-section').style.backgroundColor = 'rgba(0, 0, 0, 1)';
+        document.querySelector('body').style.cursor = 'url("./img/start-sleep-logo.svg"), auto';
+        return;
+    }
+    if(e.target.closest('.sleep-section')){
+        document.querySelector('.sleep-section').style.zIndex = -1;
+        document.querySelector('.sleep-section').style.backgroundColor = 'rgba(0, 0, 0, 0)';
+        document.querySelector('body').style.cursor = 'default';
     }
     if(e.target.closest('#camera-start-btn')){
         cameraOpen = true;
@@ -511,15 +555,18 @@ document.addEventListener('click', (e)=>{
             document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
         }
     }
-    if(e.target.closest('.start-menu')){
+    if(e.target.closest('.start-menu') || e.target.closest('.task-bar-search-holder')){
         openStart = true;
         showUpFunction('.start-menu');
         document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
     }
-    if(!e.target.closest('.start-holder') && !e.target.closest('.start-menu')){
+    if(!e.target.closest('.start-holder') && !e.target.closest('.start-menu') && !e.target.closest('.task-bar-search-holder')){
         openStart = false;
     }
-
+    if(e.target.closest('.task-bar-search-holder')){
+        firstInputValue = document.querySelector('.search-input').value;
+        secondInputValue = null;
+    }
     if(e.target.closest('.lil-time-holder')){
         if(openTime === true){
             openTime = false;

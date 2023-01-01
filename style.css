@@ -189,10 +189,6 @@ main {
     height: 100px;
     border: solid 2px transparent;
 }
-.shortcut:hover{
-    background-color: rgba(45, 75, 185, 0.7);
-    border: solid 2px rgba(20, 20, 20, 0.7);
-}
 .shortcut-text-holder{
     display: flex;
     align-items: center;
@@ -241,6 +237,33 @@ footer{
 .left-side-footer{
     display: flex;
 }
+.shutdown-btns-holder{
+    background-color: rgb(47, 47, 47);
+    display: flex;
+    flex-direction: column-reverse;
+    width: 200px;
+    font-size: 15px;
+    z-index: 850;
+    box-shadow: 0 0 1px black;
+    padding: 5px 0 5px 0;
+    position: absolute;
+    bottom: 50px;
+    left: -250px;
+    transition: 0.2s ease;
+}
+.shutdown-btns{
+    display: flex;
+    align-items: center;
+    transition: 0.1s ease;
+}
+.shutdown-btns:hover{
+    background-color: rgb(55, 55, 55);
+}
+.shutdown-btns > img{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
 .start-holder{
     height: 40px;
     min-width: 50px;
@@ -282,7 +305,7 @@ footer{
     display: flex;
     flex-direction: column-reverse;
 }
-.start-menu-btn{
+.start-menu-btn, #shutdown-start-btn{
     width: 100%;
     height: 50px;
     transition: 0.1s ease;
@@ -293,11 +316,11 @@ footer{
     justify-content: center;
     align-items: center;
 }
-.start-menu-btn > img{
+.start-menu-btn > img, #shutdown-start-btn > img{
     width: 20px;
     height: 20px;
 }
-.start-menu-btn:hover{
+.start-menu-btn:hover, #shutdown-start-btn:hover{
     background-color: rgb(39, 39, 39);
 }
 

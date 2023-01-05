@@ -1,60 +1,83 @@
-.drag-holder, .big-drag-holder{
+.drag-holder,
+.big-drag-holder {
 	display: flex;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 4px 4px 0 0;
 }
-.big-drag-holder{
+
+.big-drag-holder {
 	background-color: rgb(0, 0, 0);
 	border-radius: 0;
 }
-.drag, .big-drag{
+
+.drag,
+.big-drag {
 	width: 100%;
 	height: 30px;
 }
-.drag-btns-holder{
+
+.drag-btns-holder {
 	display: flex;
 	justify-content: space-between;
 }
-.btn-drag{
+
+.btn-drag {
 	padding: 0.3rem 0.5rem;
 	width: 1rem;
 	text-align: center;
+	color: white;
 }
-.roll-btn-drag{
+
+.roll-btn-drag {
 	background-image: url('./img/double_square.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1rem;
 }
-.hide-btn-drag:hover, .roll-btn-drag:hover{
+
+.hide-btn-drag:hover,
+.roll-btn-drag:hover {
 	background-color: rgba(100, 100, 100, 0.3);
 }
-.close-btn-drag:hover{
+
+.close-btn-drag:hover {
 	background-color: rgba(180, 30, 30);
 	border-radius: 0 4px 0 0;
 }
-.app{
+
+.app {
 	display: none;
 	position: absolute;
 	z-index: 50;
 	left: 25vw;
 	top: 25vh;
 }
-#calculator{
+
+.big-app {
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100vw;
+	height: 100vh;
+}
+
+#calculator {
 	width: 220px;
 	z-index: 500;
 	color: white;
 	border-radius: 4px;
 	-webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(10px);
+	background-color: rgba(0, 0, 0, 0.8);
 }
-.calc-buttons-holder{
+
+.calc-buttons-holder {
 	padding: 1rem;
 	margin: auto;
 }
-.calc-number-holder{
+
+.calc-number-holder {
 	min-height: 40px;
 	max-width: 210px;
 	margin: auto;
@@ -63,54 +86,58 @@
 	justify-content: flex-end;
 	overflow-x: hidden;
 }
-.calc-number{
+
+.calc-number {
 	text-align: end;
 	font-size: 34px;
 }
-.calc-buttons{
+
+.calc-buttons {
 	padding-top: 1rem;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	justify-items: center;
 }
-.calc-btn{
+
+.calc-btn {
 	width: 40px;
 	height: 40px;
 	color: white;
 	margin: 2px;
 	transition: 0.1s ease;
 	border: none;
-    font: inherit;
+	font: inherit;
 	border-radius: 2px;
 	background-color: rgb(250, 140, 0);
 }
-.calc-black-btn{
+
+.calc-black-btn {
 	background-color: rgb(49, 49, 49);
 }
-.calc-btn:hover{
+
+.calc-btn:hover {
 	filter: brightness(80%);
 }
-.notes-background{
+
+.notes-background {
 	width: 300px;
 	height: 300px;
 }
-#camera{
-	width: 100vw;
-	height: 100vh;
+
+#camera {
 	background-color: rgb(31, 31, 31);
 	color: white;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-}
-.camera-child-holder{
-	display: flex;
-	justify-content: center;
-    flex-direction: column;
-    align-items: center;
 }
 
-.take-photo-btn-holder{
+.camera-children-holder {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(31, 31, 31);
+}
+
+.take-photo-btn-holder {
 	border-radius: 50%;
 	background-color: white;
 	width: 50px;
@@ -119,20 +146,24 @@
 	align-items: center;
 	justify-content: center;
 }
-#take-photo-btn{
+
+#take-photo-btn {
 	border-radius: 50%;
 	background-color: white;
 	border-radius: 3px solid rgb(31, 31, 31);
 	width: 45px;
 	height: 45px;
 }
-#take-photo-btn:hover{
+
+#take-photo-btn:hover {
 	background-color: rgb(220, 220, 220);
 }
-#take-photo-btn:active{
+
+#take-photo-btn:active {
 	background-color: rgb(180, 180, 180);
 }
-.change-camera-btn-holder{
+
+.change-camera-btn-holder {
 	border-radius: 50%;
 	background-color: white;
 	width: 50px;
@@ -141,7 +172,8 @@
 	align-items: center;
 	justify-content: center;
 }
-#change-camera-btn{
+
+#change-camera-btn {
 	border-radius: 50%;
 	background-color: white;
 	border-radius: 3px solid rgb(31, 31, 31);
@@ -150,8 +182,115 @@
 	background-image: url('./img/change-camera-btn.svg');
 	transition: 0.5 ease-in-out;
 }
-#change-camera-btn:hover{
+
+#change-camera-btn:hover {
 	background-color: rgb(220, 220, 220);
 }
 
+.images-children-holder {
+	background-color: rgb(250, 250, 250);
+	width: 100%;
+	height: 100%;
+}
 
+input[type=file] {
+	display: none;
+}
+
+.images-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 1rem 0 1rem;
+	overflow-y: scroll;
+	height: 85%;
+	width: 95%;
+	margin: auto;
+}
+
+.image-holder {
+	width: 150px;
+	height: 150px;
+	margin: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.image-holder:hover .image-remove {
+	opacity: 1;
+}
+
+.image-holder:hover .image-info {
+	bottom: 0;
+}
+
+.removing {
+	transform: scale(0);
+	transition: transform 0.2s;
+}
+
+.image {
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.add-img-holder {
+	box-shadow: 0 0 4px black;
+	background-color: white;
+	position: absolute;
+	bottom: 0;
+	border-top: solid 1px rgb(90, 90, 90);
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.add-image-btn {
+	margin-right: 1rem;
+	border-radius: 2px;
+	outline: none;
+	color: white;
+	border: none;
+	font-weight: 500;
+	padding: 0.3rem 0.5rem;
+	background-color: rgb(90, 90, 90);
+}
+
+.add-image-btn:hover {
+	background-color: rgb(80, 80, 80);
+}
+
+.image-remove {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.image-info {
+	height: 25px;
+	width: 100%;
+	position: absolute;
+	bottom: -30px;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 300;
+	font-size: 10px;
+	transition: bottom 0.2s;
+}

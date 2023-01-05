@@ -1,306 +1,328 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./apps.css">
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
     <title>Windoge</title>
 </head>
-<body>
-<section class="loading-section">
-    <img src="./img/start.svg" alt="" style="width: 80px; height: 80px; position: absolute; top: 10vh;">
-    <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
-    <img src="./img/double_square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
-    <img src="./img/square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
-    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <h2 style="margin-top: 2rem;">Wait please</h2>
-</section>
-<section class="error-screen-secton">
-    <div class="error-screen-content-holder">
-        <h2 style="font-size: 60px;">:(</h2>
-        <h3 style="font-size: 40px;">Oops</h3>
-        <p>This site is not supported on mobile devices.</p>
-    </div>
-</section>
 
-<div class="blackBackground"></div>
-<div class="sleep-section" style="background-color: rgba(0, 0, 0, 0); z-index: -1; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; transition: 0.5s ease-in-out;"></div>
-<button id="tabFix" style="z-index: -1; position: absolute; top: 0; left: 0;"></button>
-<div id="contextmenu">
-    <button id="c-btn-personalization">Personalization</button><br>
-    <button id="c-btn-create">Create</button><br>
-    <button id="c-btn-paste">Paste</button><br>
-    <button id="c-btn-copy">Copy</button><br>
-</div>
-<section class="setion-apps">
-    <!-- My computer -->
-    <div class="app" id="computer">
-        <div class="drag-holder">
-            <div class="drag" id="drag-computer"></div>
+<body>
+    <section class="loading-section">
+        <img src="./img/start.svg" alt="" style="width: 80px; height: 80px; position: absolute; top: 10vh;">
+        <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
+        <img src="./img/double_square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
+        <img src="./img/square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2 style="margin-top: 2rem;">Wait please</h2>
+    </section>
+    <section class="error-screen-secton">
+        <div class="error-screen-content-holder">
+            <h2 style="font-size: 60px;">:(</h2>
+            <h3 style="font-size: 40px;">Oops</h3>
+            <p>This site is not supported on mobile devices.</p>
+        </div>
+    </section>
+    <div class="backgroundImage">
+        <p style="font-size: 12px; position: absolute; top: 2px; left: 2px; color: rgb(90, 90, 90);">Press Z &#8592;
+            &#8594; &#8593; &#8595;</p>
+        <img src="" alt="" class="openImage">
+    </div>
+    <div class="blackBackground"></div>
+    <div class="sleep-section"
+        style="background-color: rgba(0, 0, 0, 0); z-index: -1; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; transition: 0.5s ease-in-out;">
+    </div>
+    <button id="tabFix" style="z-index: -1; position: absolute; top: 0; left: 0;"></button>
+    <div id="contextmenu">
+        <button id="c-btn-personalization">Personalization</button><br>
+        <button id="c-btn-create">Create</button><br>
+        <button id="c-btn-paste">Paste</button><br>
+        <button id="c-btn-copy">Copy</button><br>
+    </div>
+    <section class="setion-apps">
+        <!-- My computer -->
+        <div class="app" id="computer">
+            <div class="drag-holder">
+                <div class="drag" id="drag-computer"></div>
                 <div class="drag-btns-holder">
                     <div class="btn-drag hide-btn-drag" id="hide-btn-drag-computer">&mdash;</div>
                     <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&times;</div>
                 </div>
             </div>
-        <div class="computer-content-holder">
-            <p>comp</p>
-        </div>
-    </div>
-    <!-- Калькулятор -->
-    <div id="calculator" class="app">
-        <div class="drag-holder">
-        <div class="drag" id="drag-calculator"></div>
-            <div class="drag-btns-holder">
-                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
+            <div class="computer-content-holder">
+                <p>comp</p>
             </div>
         </div>
-        <div class="calc-buttons-holder">
-            <div class="calc-number-holder">
-                <h2 class="calc-number">0</h2>
+        <!-- Калькулятор -->
+        <div id="calculator" class="app">
+            <div class="drag-holder">
+                <div class="drag" id="drag-calculator"></div>
+                <div class="drag-btns-holder">
+                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
+                    <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
+                </div>
             </div>
+            <div class="calc-buttons-holder">
+                <div class="calc-number-holder">
+                    <h2 class="calc-number">0</h2>
+                </div>
                 <div class="calc-buttons">
-                <button class="calc-btn calc-btn-AC">AC</button>
-                <button class="calc-btn calc-btn-plus-minus">&#177;</button>
-                <button class="calc-btn calc-btn-exponentiate">x&sup2;</button>
-                <button class="calc-btn calc-btn-divide">&#247;</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">7</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">8</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">9</button>
-                <button class="calc-btn calc-btn-x">&#215;</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">4</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">5</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">6</button>
-                <button class="calc-btn calc-btn-minus">-</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">1</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">2</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">3</button>
-                <button class="calc-btn calc-btn-plus">+</button>
-                <button class="calc-btn calc-btn-num calc-black-btn">0</button>
-                <button class="calc-btn calc-btn-dot calc-black-btn">.</button>
-                <button class="calc-btn calc-btn-del calc-black-btn">&#8249;-</button>
-                <button class="calc-btn calc-btn-equal">=</button>
+                    <button class="calc-btn calc-btn-AC">AC</button>
+                    <button class="calc-btn calc-btn-plus-minus">&#177;</button>
+                    <button class="calc-btn calc-btn-exponentiate">x&sup2;</button>
+                    <button class="calc-btn calc-btn-divide">&#247;</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">7</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">8</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">9</button>
+                    <button class="calc-btn calc-btn-x">&#215;</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">4</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">5</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">6</button>
+                    <button class="calc-btn calc-btn-minus">-</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">1</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">2</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">3</button>
+                    <button class="calc-btn calc-btn-plus">+</button>
+                    <button class="calc-btn calc-btn-num calc-black-btn">0</button>
+                    <button class="calc-btn calc-btn-dot calc-black-btn">.</button>
+                    <button class="calc-btn calc-btn-del calc-black-btn">&#8249;-</button>
+                    <button class="calc-btn calc-btn-equal">=</button>
+                </div>
             </div>
         </div>
-    </div>
 
-<!-- Notes -->
-    <div class="app" id="notes">
-        <div class="drag-holder">
-            <div class="drag" id="drag-notes"></div>
+        <!-- Notes -->
+        <div class="app" id="notes">
+            <div class="drag-holder">
+                <div class="drag" id="drag-notes"></div>
                 <div class="drag-btns-holder">
                     <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
                     <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"></div>
                     <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
                 </div>
             </div>
-        <div class="notes-background">
-            <h2>Notes</h2>
+            <div class="notes-background">
+                <h2>Notes</h2>
+            </div>
         </div>
-    </div>
 
-<!-- Paint -->
-    <div class="app" id="paint">
-        <div class="drag-holder">
-            <div class="drag" id="drag-paint"></div>
-            <div class="drag-btns-holder">
-                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
+        <!-- Paint -->
+        <div class="app" id="paint">
+            <div class="drag-holder">
+                <div class="drag" id="drag-paint"></div>
+                <div class="drag-btns-holder">
+                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
+                    <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
+                </div>
+            </div>
+            <div class="canvas-holder" style="width: 300px; height: 300px;">
+                <canvas id="canvas-paint"></canvas>
             </div>
         </div>
-        <div class="canvas-holder" style="width: 300px; height: 300px;">
-        <canvas id="canvas-paint"></canvas>
-        </div>
-    </div>
 
-</section>
-
-<!-- //progi -->
-<main class="main">
-    <section class="app-icons-holder">
-        <div id="computer-logo" class="shortcut shortcut1">
-            <div class="icon-holder">
-                <img class="app-icon" src="./img/my-computer-logo.svg">
-            </div>
-            <div class="shortcut-text-holder">
-                <p class="shortcut-text">My computer</p>
-            </div>
-        </div>
-        <div id="notes-logo" class="shortcut shortcut2">
-            <div class="icon-holder">
-                <img class="app-icon" src="./img/notes-logo.svg">
-            </div>
-            <div class="shortcut-text-holder">
-                <p class="shortcut-text">Notes</p>
-            </div>
-        </div>
-        <div id="paint-logo" class="shortcut shortcut3">
-            <div class="icon-holder">
-                <img class="app-icon" src="./img/paint-logo.svg">
-            </div>
-            <div class="shortcut-text-holder">
-                <p class="shortcut-text">Paint</p>
-            </div>
-        </div>
-        <div id="calculator-logo" class="shortcut shortcut4">
-            <div class="icon-holder">
-                <img class="app-icon" src="./img/calculator-logo.svg">
-            </div>
-            <div class="shortcut-text-holder">
-                <p class="shortcut-text">Calculator</p>
-            </div>
-        </div>
     </section>
-<canvas id="canvas"></canvas>
-</main>
 
-<footer class="footer">
-    <div class="left-side-footer">
-        <div class="start-holder">
-            <div class="start">
+    <!-- //progi -->
+    <main class="main">
+        <section class="app-icons-holder">
+            <div id="computer-logo" class="shortcut shortcut1">
+                <div class="icon-holder">
+                    <img class="app-icon" src="./img/my-computer-logo.svg">
+                </div>
+                <div class="shortcut-text-holder">
+                    <p class="shortcut-text">My computer</p>
+                </div>
+            </div>
+            <div id="notes-logo" class="shortcut shortcut2">
+                <div class="icon-holder">
+                    <img class="app-icon" src="./img/notes-logo.svg">
+                </div>
+                <div class="shortcut-text-holder">
+                    <p class="shortcut-text">Notes</p>
+                </div>
+            </div>
+            <div id="paint-logo" class="shortcut shortcut3">
+                <div class="icon-holder">
+                    <img class="app-icon" src="./img/paint-logo.svg">
+                </div>
+                <div class="shortcut-text-holder">
+                    <p class="shortcut-text">Paint</p>
+                </div>
+            </div>
+            <div id="calculator-logo" class="shortcut shortcut4">
+                <div class="icon-holder">
+                    <img class="app-icon" src="./img/calculator-logo.svg">
+                </div>
+                <div class="shortcut-text-holder">
+                    <p class="shortcut-text">Calculator</p>
+                </div>
+            </div>
+        </section>
+        <canvas id="canvas"></canvas>
+    </main>
+
+    <footer class="footer">
+        <div class="left-side-footer">
+            <div class="start-holder">
+                <div class="start">
+                </div>
+            </div>
+            <div class="task-bar-search-holder">
+                <img src="./img/search-icon.svg" alt="🔎" class="search-icon">
+                <input type="text" class="search-input" placeholder="Type here to search">
+            </div>
+            <div id="task-bar"></div>
+        </div>
+        <div class="task-bar-btn-holder">
+            <div class="language-holder">
+                <p>ENG</p>
+            </div>
+            <div class="lil-time-holder">
+                <p class="lil-time">00:00</p>
+                <p class="lil-date">00.00.0000</p>
+            </div>
+            <div class="message-task-bar-icon">
+                <div id="new-message-indicator"></div>
             </div>
         </div>
-        <div class="task-bar-search-holder">
-            <img src="./img/search-icon.svg" alt="🔎" class="search-icon">
-            <input type="text" class="search-input" placeholder="Type here to search">
-        </div>
-        <div id="task-bar"></div>
-    </div>
-    <div class="task-bar-btn-holder">
-        <div class="language-holder">
-            <p>ENG</p>
-        </div>
-        <div class="lil-time-holder">
-            <p class="lil-time">00:00</p>
-            <p class="lil-date">00.00.0000</p>
-        </div>
-        <div class="message-task-bar-icon">
-            <div id="new-message-indicator"></div>
-        </div>
-    </div>
-</footer>
-<div class="start-menu">
-    <div class="start-menu-btn-section">
-        <div class="shutdown-btns-holder">
-            <div class="shutdown-btns" id="start-restart-btn">
-                <img src="./img/start-restart-logo.svg" alt="">
-                <p>Restart</p>
+    </footer>
+    <div class="start-menu">
+        <div class="start-menu-btn-section">
+            <div class="shutdown-btns-holder">
+                <div class="shutdown-btns" id="start-restart-btn">
+                    <img src="./img/start-restart-logo.svg" alt="">
+                    <p>Restart</p>
+                </div>
+                <div class="shutdown-btns" id="real-shutdown-btn">
+                    <img src="./img/start-shutdown-logo.svg" alt="">
+                    <p>Shut down</p>
+                </div>
+                <div class="shutdown-btns" id="start-sleep-btn">
+                    <img src="./img/start-sleep-logo.svg" alt="">
+                    <p>Sleep</p>
+                </div>
             </div>
-            <div class="shutdown-btns" id="real-shutdown-btn">
-                <img src="./img/start-shutdown-logo.svg" alt="">
-                <p>Shut down</p>
+            <div id="shutdown-start-btn">
+                <img class="img-btn-start" src="./img/start-shutdown-logo.svg" alt="">
             </div>
-            <div class="shutdown-btns" id="start-sleep-btn">
-                <img src="./img/start-sleep-logo.svg" alt="">
-                <p>Sleep</p>
+            <div class="start-menu-btn" id="settings-start-btn">
+                <img class="img-btn-start" src="./img/start-settings-logo.svg" alt="">
+            </div>
+            <div class="start-menu-btn" id="images-start-btn">
+                <img class="img-btn-start" src="./img/start-images-logo.svg" alt="">
+            </div>
+            <div class="start-menu-btn" id="document-start-btn">
+                <img class="img-btn-start" src="./img/start-document-logo.svg" alt="">
+            </div>
+            <div class="start-menu-btn" id="camera-start-btn">
+                <img class="img-btn-start" src="./img/start-camera-logo.svg" alt="">
             </div>
         </div>
-        <div id="shutdown-start-btn">
-            <img class="img-btn-start" src="./img/start-shutdown-logo.svg" alt="">
-        </div>
-        <div class="start-menu-btn" id="settings-start-btn">
-            <img class="img-btn-start" src="./img/start-settings-logo.svg" alt="">
-        </div>
-        <div class="start-menu-btn" id="images-start-btn">
-            <img class="img-btn-start" src="./img/start-images-logo.svg" alt="">
-        </div>
-        <div class="start-menu-btn" id="document-start-btn">
-            <img class="img-btn-start" src="./img/start-document-logo.svg" alt="">
-        </div>
-        <div class="start-menu-btn" id="camera-start-btn">
-            <img class="img-btn-start" src="./img/start-camera-logo.svg" alt="">
+        <div class="start-menu-app-section"></div>
+        <div class="start-menu-other-holder">
         </div>
     </div>
-    <div class="start-menu-app-section">
-        <div class="start-menu-app-holder">
-            <div class="start-menu-app-img" id="start-menu-app-calculator"></div>
-            <p>Calculator</p>
-        </div>
-    </div>
-    <div class="start-menu-other-holder">
-
-    </div>
-</div>
-<div class="message-task-bar">
-    <div>
-        <h2 style="border-bottom: solid 1px white; margin-bottom: 1rem;">Messages</h2>
-        <div id="area-message">
-            <p>No messages yet</p>
-        </div>
-    </div>
-</div>
-
-<div class="app" id="settings">
-    <div class="drag-holder">
-        <div class="drag" id="drag-settings"></div>
-        <div class="drag-btns-holder">
-            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-settings">&mdash;</div>
-            <div class="btn-drag close-btn-drag" id="close-btn-drag-settings">&times;</div>
-        </div>
-    </div>
-    <h1>settings</h1>
-    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
-</div>
-
-<div class="app" id="images">
-    <div class="drag-holder">
-        <div class="drag" id="drag-images"></div>
-        <div class="drag-btns-holder">
-            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-images">&mdash;</div>
-            <div class="btn-drag close-btn-drag" id="close-btn-drag-images">&times;</div>
-        </div>
-    </div>
-    <h1>images</h1>
-    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
-</div>
-
-<div class="app" id="document">
-    <div class="drag-holder">
-        <div class="drag" id="drag-document"></div>
-        <div class="drag-btns-holder">
-            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-document">&mdash;</div>
-            <div class="btn-drag close-btn-drag" id="close-btn-drag-document">&times;</div>
-        </div>
-    </div>
-    <h1>document</h1>
-    <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
-</div>
-
-<div class="app" id="camera">
-    <div class="big-drag-holder">
-        <div class="big-drag" id="drag-camera"></div>
-        <div class="drag-btns-holder">
-            <div class="btn-drag hide-btn-drag" id="hide-btn-drag-camera">&mdash;</div>
-            <div class="btn-drag close-btn-drag" id="close-btn-drag-camera">&times;</div>
-        </div>
-    </div>
-    <div class="camera-child-holder">
-        <video id="video-camera" height="200%" style="margin-top: 20px;" autoplay></video>
-        <div style="display: flex; justify-content: space-between; width: 50%; position: absolute; bottom: 20px;">
-            <div class="change-camera-btn-holder">
-                <button id="change-camera-btn"></button>
+    <div class="message-task-bar">
+        <div>
+            <h2 style="border-bottom: solid 1px white; margin-bottom: 1rem;">Messages</h2>
+            <div id="area-message">
+                <p>No messages yet</p>
             </div>
-            <div class="take-photo-btn-holder">
-                <button id="take-photo-btn"></button>
-            </div>
-            <canvas id="video-canvas" width="50px" height="50px"></canvas>
         </div>
-        
     </div>
-</div>
+
+    <div class="app" id="settings">
+        <div class="drag-holder">
+            <div class="drag" id="drag-settings"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-settings">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-settings">&times;</div>
+            </div>
+        </div>
+        <h1>settings</h1>
+        <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+    </div>
+
+    <div class="app big-app" id="images">
+        <div class="big-drag-holder">
+            <div class="big-drag" id="drag-images"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-images">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-images">&times;</div>
+            </div>
+        </div>
+        <div class="images-children-holder">
+            <div class="images-section">
+                <p class="dontHaveImg" style="font-size: 22px; font-weight: 500; color: rgb(30, 30, 30);">You don't have
+                    any images</p>
+            </div>
+            <div class="add-img-holder">
+                <input type="file" id="add-image">
+            </div>
+        </div>
+    </div>
+
+    <div class="app" id="document">
+        <div class="drag-holder">
+            <div class="drag" id="drag-document"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-document">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-document">&times;</div>
+            </div>
+        </div>
+        <h1>document</h1>
+        <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+    </div>
+
+    <div class="app big-app" id="camera">
+        <div class="big-drag-holder">
+            <div class="big-drag" id="drag-camera"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-camera">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-camera">&times;</div>
+            </div>
+        </div>
+        <div class="camera-children-holder">
+            <video id="video-camera" style="margin-top: 20px;" autoplay></video>
+            <canvas id="big-video-canvas"
+                style="position: absolute; top: -1000px; left: -1000px; z-index: -100;"></canvas>
+            <div style="display: flex; justify-content: space-between; width: 50%; position: absolute; bottom: 20px;">
+                <div class="change-camera-btn-holder">
+                    <button id="change-camera-btn"></button>
+                </div>
+                <div class="take-photo-btn-holder">
+                    <button id="take-photo-btn"></button>
+                </div>
+                <canvas id="video-canvas" width="50px" height="50px"></canvas>
+            </div>
+        </div>
+    </div>
 
 
-<div class="time">
-    <div class="big-time-holder">
-        <div class="big-time">00:00</div>
-        <div class="big-date"></div>
-    </div>
+    <div class="time">
+        <div class="big-time-holder">
+            <div class="big-time">00:00</div>
+            <div class="big-date"></div>
+        </div>
         <div class="calendar">
             <div class="days-holder">
                 <div class="calendar-day calendar-day1">1</div>
@@ -346,40 +368,51 @@
                 <button class="start-stopwatch stopwatch-button">
                     <p>Start</p>
                 </button>
-            <button class="pause-stopwatch stopwatch-button">
-                <p>Pause</p>
-            </button>
-            <button class="reset-stopwatch stopwatch-button">
-                <p>Reset</p>
-            </button>
-            <button class="lap-stopwatch stopwatch-button">
-                <p>Lap</p>
-            </button>
-        </div>
-        <div class="lap-saction"></div>
+                <button class="pause-stopwatch stopwatch-button">
+                    <p>Pause</p>
+                </button>
+                <button class="reset-stopwatch stopwatch-button">
+                    <p>Reset</p>
+                </button>
+                <button class="lap-stopwatch stopwatch-button">
+                    <p>Lap</p>
+                </button>
+            </div>
+            <div class="lap-saction"></div>
         </div>
         <div class="timer">
             <audio>
-            <source src="./audio/zvukovoy-signal-tsifrovogo-budilnika-26709.mp3" type="audio/mpeg">
+                <source src="./audio/zvukovoy-signal-tsifrovogo-budilnika-26709.mp3" type="audio/mpeg">
             </audio>
-            <div class="timer-num-holder"  style="margin-top: 1rem;">
+            <div class="timer-num-holder" style="margin-top: 1rem;">
                 <div class="dont-click-timer"></div>
-                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" max="60" value="0" maxlength="2" class="timer-min">
-                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" max="59" value="30" maxlength="2" class="timer-sec">
+                <input type="number"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    min="0" max="60" value="0" maxlength="2" class="timer-min">
+                <input type="number"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    min="0" max="59" value="30" maxlength="2" class="timer-sec">
             </div>
-            <div class="timer-num-holder"  style="margin-bottom: 1rem;">
+            <div class="timer-num-holder" style="margin-bottom: 1rem;">
                 <p style="padding: 0 2rem; font-size: 10px;">Min</p>
                 <p style="padding: 0 1rem; font-size: 10px;">Sec</p>
             </div>
             <div class="timer-buttons">
-                <button class="start-timer stopwatch-button"><p>Start</p></button>
-                <button class="stop-timer stopwatch-button"><p>Stop</p></button>
-                <button class="reset-timer stopwatch-button"><p>Reset</p></button>
+                <button class="start-timer stopwatch-button">
+                    <p>Start</p>
+                </button>
+                <button class="stop-timer stopwatch-button">
+                    <p>Stop</p>
+                </button>
+                <button class="reset-timer stopwatch-button">
+                    <p>Reset</p>
+                </button>
             </div>
 
+        </div>
     </div>
-</div>
-<script src="./main.js"></script>
-<script src="./apps.js"></script>
+    <script src="./main.js"></script>
+    <script src="./apps.js"></script>
 </body>
+
 </html>

@@ -1,28 +1,33 @@
-*{
+* {
     margin: 0;
     padding: 0;
     list-style: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
-*::-webkit-scrollbar{
+
+*::-webkit-scrollbar {
     width: 5px;
     height: 5px;
     border-radius: 5px;
     background-color: rgba(76, 76, 76, 0)
 }
-*::-webkit-scrollbar-thumb{
+
+*::-webkit-scrollbar-thumb {
     background-color: rgb(76, 76, 76);
     border-radius: 5px;
 }
-*::-webkit-scrollbar-thumb:hover{
+
+*::-webkit-scrollbar-thumb:hover {
     background-color: rgb(90, 90, 90);
     border-radius: 5px;
 }
-img{
+
+img {
     pointer-events: none;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
     user-select: none;
@@ -30,7 +35,26 @@ body{
     background-size: cover;
     background-color: rgb(16, 16, 16);
 }
-.loading-section{
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.openImage {
+    max-height: 95vh;
+    max-width: 95vw;
+}
+
+.loading-section {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,19 +65,22 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 100000;
     color: #fff;
 }
+
 .lds-roller {
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
 }
+
 .lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px;
 }
+
 .lds-roller div:after {
     content: " ";
     display: block;
@@ -64,86 +91,107 @@ body{
     background: #fff;
     margin: -4px 0 0 -4px;
 }
+
 .lds-roller div:nth-child(1) {
     animation-delay: -0.036s;
 }
+
 .lds-roller div:nth-child(1):after {
     top: 63px;
     left: 63px;
 }
+
 .lds-roller div:nth-child(2) {
     animation-delay: -0.072s;
 }
+
 .lds-roller div:nth-child(2):after {
     top: 68px;
     left: 56px;
 }
+
 .lds-roller div:nth-child(3) {
     animation-delay: -0.108s;
 }
+
 .lds-roller div:nth-child(3):after {
     top: 71px;
     left: 48px;
 }
+
 .lds-roller div:nth-child(4) {
     animation-delay: -0.144s;
 }
+
 .lds-roller div:nth-child(4):after {
     top: 72px;
     left: 40px;
 }
+
 .lds-roller div:nth-child(5) {
     animation-delay: -0.18s;
 }
+
 .lds-roller div:nth-child(5):after {
     top: 71px;
     left: 32px;
 }
+
 .lds-roller div:nth-child(6) {
     animation-delay: -0.216s;
 }
+
 .lds-roller div:nth-child(6):after {
     top: 68px;
     left: 24px;
 }
+
 .lds-roller div:nth-child(7) {
     animation-delay: -0.252s;
 }
+
 .lds-roller div:nth-child(7):after {
     top: 63px;
     left: 17px;
 }
+
 .lds-roller div:nth-child(8) {
     animation-delay: -0.288s;
 }
+
 .lds-roller div:nth-child(8):after {
     top: 56px;
     left: 12px;
 }
+
 @keyframes lds-roller {
     0% {
-    transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-    transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
-.error-screen-secton{
+
+.error-screen-secton {
     background-color: rgb(35, 105, 180);
     position: absolute;
     top: 0;
     left: 0;
     width: 1000%;
     height: 1000%;
-    z-index: 10000;
+    z-index: 100000;
     color: #ffffff;
     display: none;
 }
-.error-screen-content-holder{
+
+.error-screen-content-holder {
     position: fixed;
     top: 0;
     left: 0;
 }
+
 main {
     background-image: url("./img/background.jpg");
     background-size: cover;
@@ -152,7 +200,8 @@ main {
     width: 100%;
     height: 100%;
 }
-.app-icons-holder{
+
+.app-icons-holder {
     width: 100%;
     height: 100%;
     display: flex;
@@ -161,7 +210,8 @@ main {
     align-items: flex-start;
     align-content: flex-start;
 }
-.blackBackground{
+
+.blackBackground {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -169,12 +219,14 @@ main {
     z-index: -10;
     transition: 0.5s ease-in-out;
 }
-#canvas{
+
+#canvas {
     position: absolute;
     top: 0;
     z-index: 0;
 }
-.icon-holder{
+
+.icon-holder {
     width: 70%;
     height: 70%;
     margin: auto;
@@ -182,27 +234,31 @@ main {
     align-items: center;
     justify-content: center;
 }
-.shortcut{
+
+.shortcut {
     width: 80px;
     z-index: 10;
     display: block;
     height: 100px;
     border: solid 2px transparent;
 }
-.shortcut-text-holder{
+
+.shortcut-text-holder {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 30%;
 }
-.shortcut-text{
+
+.shortcut-text {
     text-align: center;
     font-size: 14px;
     color: white;
     padding-bottom: 4px;
 }
-#contextmenu{
-    z-index: 1000;
+
+#contextmenu {
+    z-index: 10001;
     position: absolute;
     display: none;
     border: #4f4f4f 1px;
@@ -212,18 +268,21 @@ main {
     padding: 0.5rem 0;
     box-shadow: 1px 1px 5px black;
 }
-#contextmenu button{
+
+#contextmenu button {
     text-align: left;
     padding: 2px 10px 2px 10px;
     border: none;
     border-radius: 0;
     width: 100%;
 }
-#contextmenu button:hover{
+
+#contextmenu button:hover {
     background-color: rgba(255 255 255);
 }
-footer{
-    z-index: 900;
+
+footer {
+    z-index: 10000;
     color: white;
     background: rgb(16, 16, 16);
     width: 100%;
@@ -234,10 +293,12 @@ footer{
     display: flex;
     justify-content: space-between;
 }
-.left-side-footer{
+
+.left-side-footer {
     display: flex;
 }
-.shutdown-btns-holder{
+
+.shutdown-btns-holder {
     background-color: rgb(47, 47, 47);
     display: flex;
     flex-direction: column-reverse;
@@ -251,20 +312,24 @@ footer{
     left: -250px;
     transition: 0.2s ease;
 }
-.shutdown-btns{
+
+.shutdown-btns {
     display: flex;
     align-items: center;
     transition: 0.1s ease;
 }
-.shutdown-btns:hover{
+
+.shutdown-btns:hover {
     background-color: rgb(55, 55, 55);
 }
-.shutdown-btns > img{
+
+.shutdown-btns>img {
     width: 20px;
     height: 20px;
     padding: 10px;
 }
-.start-holder{
+
+.start-holder {
     height: 40px;
     min-width: 50px;
     display: flex;
@@ -272,7 +337,8 @@ footer{
     align-items: center;
     transition: 0.2s ease;
 }
-.start{
+
+.start {
     background-image: url("./img/start.svg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -281,9 +347,10 @@ footer{
     height: 20px;
     transition: 0.2s ease;
 }
-.start-menu{
+
+.start-menu {
     transition: 0.5s ease-in-out;
-    z-index: 800;
+    z-index: 9999;
     position: absolute;
     bottom: -610px;
     left: 0;
@@ -295,17 +362,22 @@ footer{
     display: grid;
     grid-template-columns: 50px 1fr 1fr;
 }
-.start-holder:hover > .start{
+
+.start-holder:hover>.start {
     background-image: url('./img/start-blue.svg');
 }
-.start-holder:hover{
+
+.start-holder:hover {
     background-color: rgb(31, 31, 31);
 }
-.start-menu-btn-section{
+
+.start-menu-btn-section {
     display: flex;
     flex-direction: column-reverse;
 }
-.start-menu-btn, #shutdown-start-btn{
+
+.start-menu-btn,
+#shutdown-start-btn {
     width: 100%;
     height: 50px;
     transition: 0.1s ease;
@@ -316,32 +388,35 @@ footer{
     justify-content: center;
     align-items: center;
 }
-.start-menu-btn > img, #shutdown-start-btn > img{
+
+.start-menu-btn>img,
+#shutdown-start-btn>img {
     width: 20px;
     height: 20px;
 }
-.start-menu-btn:hover, #shutdown-start-btn:hover{
+
+.start-menu-btn:hover,
+#shutdown-start-btn:hover {
     background-color: rgb(39, 39, 39);
 }
 
-.start-menu-app-section{
+.start-menu-app-section {
     overflow-y: scroll;
     padding: 1rem;
 }
-.start-menu-app-holder{
+
+.start-menu-app-holder {
     display: flex;
     align-items: center;
+    transition: 0.2s ease;
+    margin-bottom: 10px;
 }
-.start-menu-app-img{
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+
+.start-menu-app-holder:hover {
+    background-color: rgb(61, 61, 61);
 }
-#start-menu-app-calculator{
-    background-image: url('./img/calculator-logo.svg');
-}
-.task-bar-search-holder{
+
+.task-bar-search-holder {
     background-color: #ffffff;
     border: solid 2px rgba(0, 0, 0, 0.6);
     display: flex;
@@ -350,13 +425,15 @@ footer{
     height: 100%;
     position: relative;
 }
-.search-icon{
+
+.search-icon {
     width: 20px;
     height: 20px;
     position: absolute;
     left: 10px;
 }
-.search-input{
+
+.search-input {
     border: none;
     outline: none;
     height: 100%;
@@ -366,13 +443,15 @@ footer{
     color: rgb(16, 16, 16);
     background-color: rgba(255, 255, 255, 0);
 }
-#task-bar{
+
+#task-bar {
     height: 100%;
     display: flex;
     overflow-y: scroll;
     flex-wrap: wrap;
 }
-.task-app-holder{
+
+.task-app-holder {
     transition: 0.2s ease;
     height: 100%;
     min-width: 45px;
@@ -381,24 +460,31 @@ footer{
     justify-content: center;
     background-color: rgb(29, 29, 29);
 }
-.task-app-holder img{
+
+.task-app-holder img {
     width: 30px;
     width: 30px;
 }
-.task-app-holder:hover{
+
+.task-app-holder:hover {
     background-color: rgb(39, 39, 39);
 }
-.task-bar-btn-holder{
+
+.task-bar-btn-holder {
     position: relative;
     right: 0;
     height: 100%;
     display: flex;
 }
-.language-holder:hover, .message-task-bar-icon:hover, .lil-time-holder:hover{
+
+.language-holder:hover,
+.message-task-bar-icon:hover,
+.lil-time-holder:hover {
     background-color: rgb(39, 39, 39);
 }
-.language-holder{
-	display: flex;
+
+.language-holder {
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 12px;
@@ -406,7 +492,8 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     transition: 0.1s ease;
 }
-.message-task-bar-icon{
+
+.message-task-bar-icon {
     height: 100%;
     width: 40px;
     background-image: url('./img/message-task-bar-icon.svg');
@@ -415,19 +502,21 @@ footer{
     background-position: center;
     transition: 0.1s ease;
 }
-#new-message-indicator{
-	display: none;
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	position: relative;
-	left: 25px;
-	top: 5px;
-	background-color: red;
+
+#new-message-indicator {
+    display: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    left: 25px;
+    top: 5px;
+    background-color: red;
 }
-.message-task-bar{
+
+.message-task-bar {
     transition: 0.5s ease-in-out;
-    z-index: 800;
+    z-index: 9999;
     position: absolute;
     bottom: -610px;
     right: 0;
@@ -443,7 +532,8 @@ footer{
     flex-direction: column;
     justify-content: space-between;
 }
-.del-messages-btn{
+
+.del-messages-btn {
     border-radius: 0;
     border: none;
     padding: 0.5rem;
@@ -451,11 +541,13 @@ footer{
     background-color: white;
     transition: 0.2s ease;
 }
-.del-messages-btn:hover{
+
+.del-messages-btn:hover {
     background-color: rgb(200, 200, 200);
     cursor: pointer;
 }
-.lil-time-holder{
+
+.lil-time-holder {
     padding: 0 10px 0 10px;
     height: 100%;
     width: 4rem;
@@ -466,9 +558,10 @@ footer{
     font-size: 12px;
     transition: 0.1s ease;
 }
-.time{
+
+.time {
     transition: 0.5s ease-in-out;
-    z-index: 800;
+    z-index: 9999;
     position: absolute;
     bottom: -610px;
     right: 0;
@@ -480,26 +573,31 @@ footer{
     border-left: solid rgb(76, 76, 76) 1px;
     color: #ffffff;
 }
-.big-time-holder{
+
+.big-time-holder {
     padding: 1rem;
     border-bottom: solid rgb(76, 76, 76) 1px;
 }
-.big-time{
+
+.big-time {
     font-size: 38px;
     font-weight: 200;
 }
-.big-date{
+
+.big-date {
     font-size: 20px;
     font-weight: 300;
 }
-.days-holder{
+
+.days-holder {
     padding: 1rem 0 0 0;
     margin: auto;
     width: 95%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr) ;
+    grid-template-columns: repeat(5, 1fr);
 }
-.calendar-day{
+
+.calendar-day {
     padding: 2px;
     height: 25px;
     font-weight: 300;
@@ -508,7 +606,8 @@ footer{
     justify-content: center;
     align-items: center;
 }
-.stopwatch-and-timer-holder{
+
+.stopwatch-and-timer-holder {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -516,7 +615,9 @@ footer{
     width: 90%;
     margin: auto;
 }
-.stopwatch-holder, .timer-holder{
+
+.stopwatch-holder,
+.timer-holder {
     width: 40%;
     border: 1px solid rgba(31, 31, 31, 0);
     text-align: center;
@@ -524,7 +625,8 @@ footer{
     bottom: -1px;
     padding: 0.5rem;
 }
-.stopwatch-and-timer-properties{
+
+.stopwatch-and-timer-properties {
     border-top: solid 1px rgb(76, 76, 76);
     border-left: solid 1px rgb(76, 76, 76);
     border-right: solid 1px rgb(76, 76, 76);
@@ -533,110 +635,135 @@ footer{
     position: relative;
     bottom: -1px;
 }
-.stopwatch{
+
+.stopwatch {
     width: 90%;
     margin: auto;
 }
-.stopwatch-button-holder{
+
+.stopwatch-button-holder {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-.stopwatch-button{
+
+.stopwatch-button {
     border: none;
     border-radius: 2px;
     padding: 0.2rem;
     width: 60px;
     align-items: center;
 }
-.start-stopwatch{
+
+.start-stopwatch {
     background-color: rgb(10, 42, 18);
     color: rgb(72, 186, 114);
 }
-.start-stopwatch:hover{
+
+.start-stopwatch:hover {
     background-color: rgba(10, 32, 10);
 }
-.pause-stopwatch{
+
+.pause-stopwatch {
     display: none;
     background-color: rgb(52, 14, 13);
     color: rgb(212, 82, 86);
 }
-.pause-stopwatch:hover{
+
+.pause-stopwatch:hover {
     background-color: rgba(42, 21, 0);
 }
-.reset-stopwatch{
+
+.reset-stopwatch {
     display: none;
     background-color: rgb(52, 52, 52);
     color: white;
 }
-.reset-stopwatch:hover, .lap-stopwatch:hover{
+
+.reset-stopwatch:hover,
+.lap-stopwatch:hover {
     background-color: rgba(40, 40, 40);
 }
-.lap-stopwatch{
+
+.lap-stopwatch {
     background-color: rgb(52, 52, 52);
     color: white;
 }
-.lap-saction{
+
+.lap-saction {
     overflow-y: scroll;
     height: 140px;
 }
-.lap-content{
+
+.lap-content {
     margin: auto;
     text-align: center;
     border-bottom: 1px solid rgb(76, 76, 76);
 }
-.timer{
+
+.timer {
     display: none;
 }
-.timer-num-holder{
+
+.timer-num-holder {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.dont-click-timer{
+
+.dont-click-timer {
     width: 100%;
     height: 60px;
     position: absolute;
     display: none;
 }
-.timer-min, .timer-sec{
+
+.timer-min,
+.timer-sec {
     background-color: rgb(31, 31, 31);
     color: white;
     border: none;
     font-size: 28px;
-    outline:none;
-    padding:0;
+    outline: none;
+    padding: 0;
     cursor: default;
     width: 60px;
     text-align: center;
 }
-.timer-buttons{
+
+.timer-buttons {
     width: 90%;
     margin-top: 2rem;
     display: flex;
     justify-content: space-around;
     margin: auto;
 }
-.start-timer{
+
+.start-timer {
     background-color: rgb(10, 42, 18);
     color: rgb(72, 186, 114);
 }
-.start-timer:hover{
+
+.start-timer:hover {
     background-color: rgb(10, 32, 10);
 }
-.stop-timer{
+
+.stop-timer {
     display: none;
     background-color: rgb(52, 31, 4);
     color: rgb(249, 156, 8);
 }
-.stop-timer:hover{
+
+.stop-timer:hover {
     background-color: rgb(42, 21, 0);
 }
-.reset-timer{
+
+.reset-timer {
     display: none;
     background-color: rgb(52, 52, 52);
     color: white;
 }
-.reset-timer:hover{
+
+.reset-timer:hover {
     background-color: rgb(40, 40, 40);
 }

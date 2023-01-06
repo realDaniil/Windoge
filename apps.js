@@ -95,7 +95,13 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 			}
 		}
 		if (e.target.classList.contains('close-btn-drag')) {
-			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
+			document.getElementById(e.target.id.split("-").pop()).style.transition = '0.2s';
+			document.getElementById(e.target.id.split("-").pop()).style.transform = 'scale(0)';
+			setTimeout(() => {
+				document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
+				document.getElementById(e.target.id.split("-").pop()).style.transition = 'none';
+				document.getElementById(e.target.id.split("-").pop()).style.transform = 'scale(1)';
+			}, 200);
 			if (e.target.id.split("-").pop() === 'camera') {
 				cameraOpen = false;
 				cameraFunction();
@@ -295,5 +301,42 @@ document.querySelector('.calc-buttons').addEventListener('click', (e) => {
 	}
 	if (calcNumber.textContent.length > 31) {
 		calcNumber.style.overflowX = 'scroll';
+	}
+});
+// notes
+let addNotesClick = 0;
+let notesColors = ['#ff88ab', '#abff88', '#a188ff', '#ffdc88'];
+document.querySelector('.notes-section').addEventListener('click', (e) => {
+	if (e.target.closest('#add-notes')) {
+		addNotesClick++;
+		document.getElementById('add-notes').insertAdjacentHTML('afterend', `
+		<div class="notes" id="note-${addNotesClick}">
+			<input class="note-input" id="note-input-${addNotesClick}" type="text" placeholder="New note">
+			<textarea class="note-textarea" id="note-textarea-${addNotesClick}" name="" cols="30" rows="10" placeholder="Text"></textarea>
+            <div class="notes-btn-holder">
+                <button id="copy-note-${addNotesClick}" class="notes-btn">Copy</button>
+                <button id="del-note-${addNotesClick}" class="notes-btn">Delete</button>
+            </div>
+        </div>
+		`);
+		let randomNotesColor = notesColors[Math.floor(Math.random() * notesColors.length)];
+		document.getElementById('note-' + addNotesClick).style.backgroundColor = randomNotesColor;
+		document.getElementById('note-input-' + addNotesClick).style.backgroundColor = randomNotesColor;
+		document.getElementById('note-textarea-' + addNotesClick).style.backgroundColor = randomNotesColor;
+	}
+	if (e.target.closest('.notes-btn')) {
+		if (e.target.closest('.notes-btn').id[0] == 'c') {
+			let idTextarea = 'note-textarea-' + e.target.closest('.notes-btn').id.split('-')[2];
+			let contentTextarea = document.getElementById(idTextarea).value;
+			navigator.clipboard.writeText(contentTextarea);
+			document.getElementById(e.target.closest('.notes-btn').id).innerHTML = 'Copied!';
+			setTimeout(() => { document.getElementById(e.target.closest('.notes-btn').id).innerHTML = 'Copy' }, 2000);
+		}
+		if (e.target.closest('.notes-btn').id[0] == 'd') {
+			let idNote = 'note-' + e.target.closest('.notes-btn').id.split('-')[2];
+			document.getElementById(idNote).style.transform = 'scale(0)';
+			setTimeout(() => { document.getElementById(idNote).style.display = 'none' }, 200);
+			setTimeout(() => { document.getElementById(idNote).remove(); }, 2000);
+		}
 	}
 });

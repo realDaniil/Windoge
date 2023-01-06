@@ -58,88 +58,92 @@
         <button id="c-btn-paste">Paste</button><br>
         <button id="c-btn-copy">Copy</button><br>
     </div>
-    <section class="setion-apps">
-        <!-- My computer -->
-        <div class="app" id="computer">
-            <div class="drag-holder">
-                <div class="drag" id="drag-computer"></div>
-                <div class="drag-btns-holder">
-                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-computer">&mdash;</div>
-                    <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&times;</div>
-                </div>
-            </div>
-            <div class="computer-content-holder">
-                <p>comp</p>
+    <!-- My computer -->
+    <div class="app" id="computer">
+        <div class="drag-holder">
+            <div class="drag" id="drag-computer"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-computer">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&times;</div>
             </div>
         </div>
-        <!-- Калькулятор -->
-        <div id="calculator" class="app">
-            <div class="drag-holder">
-                <div class="drag" id="drag-calculator"></div>
-                <div class="drag-btns-holder">
-                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
-                    <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
-                </div>
-            </div>
-            <div class="calc-buttons-holder">
-                <div class="calc-number-holder">
-                    <h2 class="calc-number">0</h2>
-                </div>
-                <div class="calc-buttons">
-                    <button class="calc-btn calc-btn-AC">AC</button>
-                    <button class="calc-btn calc-btn-plus-minus">&#177;</button>
-                    <button class="calc-btn calc-btn-exponentiate">x&sup2;</button>
-                    <button class="calc-btn calc-btn-divide">&#247;</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">7</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">8</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">9</button>
-                    <button class="calc-btn calc-btn-x">&#215;</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">4</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">5</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">6</button>
-                    <button class="calc-btn calc-btn-minus">-</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">1</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">2</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">3</button>
-                    <button class="calc-btn calc-btn-plus">+</button>
-                    <button class="calc-btn calc-btn-num calc-black-btn">0</button>
-                    <button class="calc-btn calc-btn-dot calc-black-btn">.</button>
-                    <button class="calc-btn calc-btn-del calc-black-btn">&#8249;-</button>
-                    <button class="calc-btn calc-btn-equal">=</button>
-                </div>
+        <div class="computer-content-holder">
+            <p>comp</p>
+        </div>
+    </div>
+    <!-- Калькулятор -->
+    <div id="calculator" class="app">
+        <div class="drag-holder">
+            <div class="drag" id="drag-calculator"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
             </div>
         </div>
+        <div class="calc-buttons-holder">
+            <div class="calc-number-holder">
+                <h2 class="calc-number">0</h2>
+            </div>
+            <div class="calc-buttons">
+                <button class="calc-btn calc-btn-AC">AC</button>
+                <button class="calc-btn calc-btn-plus-minus">&#177;</button>
+                <button class="calc-btn calc-btn-exponentiate">x&sup2;</button>
+                <button class="calc-btn calc-btn-divide">&#247;</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">7</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">8</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">9</button>
+                <button class="calc-btn calc-btn-x">&#215;</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">4</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">5</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">6</button>
+                <button class="calc-btn calc-btn-minus">-</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">1</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">2</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">3</button>
+                <button class="calc-btn calc-btn-plus">+</button>
+                <button class="calc-btn calc-btn-num calc-black-btn">0</button>
+                <button class="calc-btn calc-btn-dot calc-black-btn">.</button>
+                <button class="calc-btn calc-btn-del calc-black-btn">&#8249;-</button>
+                <button class="calc-btn calc-btn-equal">=</button>
+            </div>
+        </div>
+    </div>
 
-        <!-- Notes -->
-        <div class="app" id="notes">
-            <div class="drag-holder">
-                <div class="drag" id="drag-notes"></div>
-                <div class="drag-btns-holder">
-                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
-                    <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"></div>
-                    <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
-                </div>
-            </div>
-            <div class="notes-background">
-                <h2>Notes</h2>
+    <!-- Notes -->
+    <div class="app big-app" id="notes">
+        <div class="big-drag-holder">
+            <div class="big-drag" id="drag-notes"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
+                <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"></div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
             </div>
         </div>
-
-        <!-- Paint -->
-        <div class="app" id="paint">
-            <div class="drag-holder">
-                <div class="drag" id="drag-paint"></div>
-                <div class="drag-btns-holder">
-                    <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
-                    <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
+        <div class="notes-children-holder app-children-holder">
+            <div class="notes-section">
+                <div id="add-notes" class="notes">
+                    <div class="add-notes-circle">
+                        <p>+</p>
+                    </div>
+                    <p class="add-notes-text">Add new note</p>
                 </div>
             </div>
-            <div class="canvas-holder" style="width: 300px; height: 300px;">
-                <canvas id="canvas-paint"></canvas>
+        </div>
+    </div>
+    <!-- Paint -->
+    <div class="app" id="paint">
+        <div class="drag-holder">
+            <div class="drag" id="drag-paint"></div>
+            <div class="drag-btns-holder">
+                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
             </div>
         </div>
+        <div class="canvas-holder" style="width: 300px; height: 300px;">
+            <canvas id="canvas-paint"></canvas>
+        </div>
+    </div>
 
-    </section>
 
     <!-- //progi -->
     <main class="main">
@@ -281,16 +285,15 @@
         </div>
     </div>
 
-    <div class="app" id="document">
-        <div class="drag-holder">
-            <div class="drag" id="drag-document"></div>
+    <div class="app big-app" id="document">
+        <div class="big-drag-holder">
+            <div class="big-drag" id="drag-document"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-document">&mdash;</div>
                 <div class="btn-drag close-btn-drag" id="close-btn-drag-document">&times;</div>
             </div>
         </div>
         <h1>document</h1>
-        <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
     </div>
 
     <div class="app big-app" id="camera">

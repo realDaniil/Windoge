@@ -7,9 +7,11 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 console.log('The site may have problems when using macOS devices or when using the Firefox browser');
 setInterval(() => {
     scroll(0, 0);
-    document.querySelectorAll('.big-app').forEach((e) => { e.style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 'px' });
+    document.querySelector('main').style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 'px';
+    document.querySelectorAll('.big-app').forEach((e) => { e.style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 1 + 'px' });
     document.getElementById('video-camera').style.maxHeight = window.innerHeight - document.querySelector('footer').offsetHeight - 150 + 'px';
-}, 1000);
+    document.querySelector('.notes-section').style.height = window.innerHeight - document.querySelector('.big-drag-holder').offsetHeight - document.querySelector('footer').offsetHeight + 'px';
+}, 100);
 let tickMessage = 0;
 messageInterval = setInterval(function () {
     tickMessage++;
@@ -518,8 +520,9 @@ document.querySelector('.search-input').addEventListener('change', (e) => {
 let zoomClickArray = [1, 1.25, 1.5, 1.75, 2];
 let zoomClick = 0;
 let imagesLeft = 0;
+let notesApp = document.getElementById('notes');
 document.addEventListener('keydown', (e) => {
-    if (firstInputValue != secondInputValue) {
+    if (firstInputValue != secondInputValue || notesApp.style.display == 'block') {
         return;
     }
     else if (e.code == 'KeyW') {
@@ -765,6 +768,7 @@ document.addEventListener('click', (e) => {
     if (e.target.closest('.start-menu-app-holder') || e.target.closest('.start-menu-btn')) {
         hideFunction('.start-menu');
         openStart = false;
+        document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
     }
     //сообщения
     if (e.target.closest('.del-messages-btn')) {

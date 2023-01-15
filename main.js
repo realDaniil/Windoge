@@ -1,6 +1,7 @@
 window.onload = () => {
     document.querySelector('.loading-section').style.display = 'none';
 }
+
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
@@ -11,6 +12,7 @@ setInterval(() => {
     document.querySelectorAll('.big-app').forEach((e) => { e.style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 1 + 'px' });
     document.getElementById('video-camera').style.maxHeight = window.innerHeight - document.querySelector('footer').offsetHeight - 150 + 'px';
     document.querySelector('.notes-section').style.height = window.innerHeight - document.querySelector('.big-drag-holder').offsetHeight - document.querySelector('footer').offsetHeight + 'px';
+    document.querySelector('.document-input-holder').style.height = window.innerHeight - document.querySelector('.top-task-bar-document').offsetHeight - document.querySelector('#drag-document').offsetHeight - document.querySelector('footer').offsetHeight + 'px';
 }, 100);
 let tickMessage = 0;
 messageInterval = setInterval(function () {
@@ -18,7 +20,6 @@ messageInterval = setInterval(function () {
     if (tickMessage === 30) {
         document.querySelector('#new-message-indicator').style.display = 'block';
         document.querySelector('#area-message').innerHTML = `<p>If you find a bug, then everything is as intended)</p>`;
-        document.querySelector('#area-message').innerHTML += `<p>Press the W key</p>`;
         document.querySelector('.message-task-bar').innerHTML += `<button class="del-messages-btn">Delete all messages</button>`;
         clearInterval(messageInterval);
     }
@@ -77,76 +78,63 @@ let mainCanvas = document.getElementById('canvas');
 let ctx = mainCanvas.getContext('2d');
 mainCanvas.width = window.screen.width;
 mainCanvas.height = window.screen.height;
-ctx.fillStyle = 'rgba(5, 5, 160, 0.6)';
+ctx.fillStyle = 'rgba(5, 5, 160, 0.5)';
 let canvasInterval;
 let xCanvas, yCanvas, wCanvas, hCanvas;
 mainCanvas.addEventListener('mousedown', canvasFunction);
-function getCoordinateFunction(a, b) {
-    if (wCanvas <= 0 && hCanvas >= 0) {
-        if (
-            a.x < xCanvas + wCanvas * -1 &&
-            a.x + a.width > xCanvas - wCanvas * -1 &&
-            a.y < yCanvas + hCanvas &&
-            a.height + a.y > yCanvas
-        ) {
+function RectsColliding(a, b) {
+    if (isNaN(wCanvas) || isNaN(hCanvas)) {
+        wCanvas = 0;
+        hCanvas = 0;
+    }
+    if (wCanvas > 0 && hCanvas > 0) {
+        if (xCanvas > a.x + a.width || yCanvas > a.y + a.height) {
+        }
+        else if (xCanvas + wCanvas > a.x && yCanvas + hCanvas > a.y) {
             b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if (hCanvas <= 0 && wCanvas >= 0) {
-        if (
-            a.x < xCanvas + wCanvas &&
-            a.x + a.width > xCanvas &&
-            a.y < yCanvas + hCanvas * -1 &&
-            a.height + a.y > yCanvas - hCanvas * -1
-        ) {
+    if (wCanvas > 0 && hCanvas < 0) {
+        if (xCanvas > a.x + a.width || yCanvas < a.y) {
+        }
+        else if (xCanvas + wCanvas > a.x && yCanvas + hCanvas < a.y + a.height) {
             b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if (hCanvas <= 0 && wCanvas <= 0) {
-        if (
-            a.x < xCanvas + wCanvas * -1 &&
-            a.x + a.width > xCanvas - wCanvas * -1 &&
-            a.y < yCanvas + hCanvas * -1 &&
-            a.height + a.y > yCanvas + hCanvas
-        ) {
+    if (wCanvas < 0 && hCanvas < 0) {
+        if (xCanvas < a.x || yCanvas < a.y) {
+        }
+        else if (xCanvas + wCanvas < a.x + a.width && yCanvas + hCanvas < a.y + a.height) {
             b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    else if (hCanvas >= 0 && wCanvas >= 0) {
-        if (
-            a.x < xCanvas + wCanvas &&
-            a.x + a.width > xCanvas &&
-            a.y < yCanvas + hCanvas &&
-            a.height + a.y > yCanvas
-        ) {
+    if (wCanvas < 0 && hCanvas > 0) {
+        if (xCanvas < a.x || yCanvas > a.y + a.height) {
+        }
+        else if (xCanvas + wCanvas < a.x + a.width && yCanvas + hCanvas > a.y) {
             b.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
-    } else {
-        b.style.backgroundColor = 'transparent';
-        b.style.border = 'solid 2px transparent';
     }
-    //а ладно потом сделаю возможно
 }
+let selectedAppArr = [];
 function canvasFunction(e) {
     mainCanvas.style.zIndex = 100;
     xCanvas = e.x;
     yCanvas = e.y;
     canvasInterval = setInterval(function () {
+        selectedAppArr = [];
         ctx.clearRect(0, 0, window.screen.width, window.screen.height);
         ctx.fillRect(xCanvas, yCanvas, wCanvas, hCanvas);
         ctx.strokeRect(xCanvas, yCanvas, wCanvas, hCanvas);
-        // let appSup = document.getElementById('computer-logo').getBoundingClientRect();
-        getCoordinateFunction(document.getElementById('notes-logo').getBoundingClientRect(), document.getElementById('notes-logo'));
-        getCoordinateFunction(document.getElementById('computer-logo').getBoundingClientRect(), document.getElementById('computer-logo'));
-        getCoordinateFunction(document.getElementById('calculator-logo').getBoundingClientRect(), document.getElementById('calculator-logo'));
-        getCoordinateFunction(document.getElementById('paint-logo').getBoundingClientRect(), document.getElementById('paint-logo'));
-
-        //Потом доделаю 
-
+        for (let appShortcut of document.querySelectorAll('.shortcut')) {
+            document.getElementById(appShortcut.id).style.backgroundColor = 'transparent';
+            document.getElementById(appShortcut.id).style.border = 'solid 2px transparent';
+            RectsColliding(document.getElementById(appShortcut.id).getBoundingClientRect(), document.getElementById(appShortcut.id));
+        }
     }, 1);
 }
 window.addEventListener("mousemove", function (e) {
@@ -357,7 +345,7 @@ function timerFunction() {
         document.querySelector('.reset-timer').style.display = 'none';
         timerMin.value = 0;
         timerSec.value = 30;
-        document.querySelector('audio').play();
+        document.querySelector('.time-audio').play();
         clearInterval(timerInterval);
     }
 }
@@ -373,7 +361,7 @@ function hideFunction(e) {
     document.querySelector('.blackBackground').style.zIndex = '-10';
     document.querySelector('.blackBackground').style.backgroundColor = 'rgba(0, 0, 0, 0)';
 }
-let openTime = false, openStart = false, openMessage = false, openShutdown = false;
+let openTime = false, openStart = false, openMessage = false, openShutdown = false, openSound = false;
 let canvasVideo = document.querySelector('#video-canvas');
 let bigVideoCanvas = document.querySelector('#big-video-canvas');
 let videoContext = canvasVideo.getContext('2d');
@@ -509,26 +497,50 @@ upload('#add-image', {
     accept: ['.png', '.jpg', '.jpeg']
 });
 //прочее
-let firstInputValue = null, secondInputValue = null;
-document.querySelector('.search-input').addEventListener('input', (e) => {
-    firstInputValue = document.querySelector('.search-input').value;
+document.querySelector('.sound-range').value = 1;
+document.querySelector('.lower-sound-range').value = 1;
+document.querySelector('.sound-range').addEventListener('input', () => {
+    let soundNewValue = document.querySelector('.sound-range').value;
+    document.querySelector('.lower-sound-range').value = soundNewValue;
+    if (soundNewValue == 1) {
+        soundNewValue = 100;
+    }
+    else if (soundNewValue == 0.1 || soundNewValue == 0.2 || soundNewValue == 0.3 || soundNewValue == 0.4 ||
+        soundNewValue == 0.5 || soundNewValue == 0.6 || soundNewValue == 0.7 || soundNewValue == 0.8 ||
+        soundNewValue == 0.9) {
+        soundNewValue = soundNewValue.slice(2) + '0';
+    }
+    else if (0 < soundNewValue && soundNewValue < 0.10) {
+        soundNewValue = soundNewValue.slice(3)
+    }
+    else if (0.09 < soundNewValue && soundNewValue < 1) {
+        soundNewValue = soundNewValue.slice(2)
+    }
+    document.querySelector('.sound-volume').innerHTML = soundNewValue;
+    document.querySelectorAll('audio').forEach((e) => { e.volume = document.querySelector('.sound-range').value });
+    if (document.querySelector('.sound-range').value == 0) {
+        document.querySelector('.sound-holder p').style.display = 'block';
+    } else document.querySelector('.sound-holder p').style.display = 'none';
 });
-document.querySelector('.search-input').addEventListener('change', (e) => {
-    secondInputValue = document.querySelector('.search-input').value;
+document.querySelector('.sound-range').addEventListener('mouseup', () => {
+    document.querySelector('.sound-audio').play();
 });
 //специальные клавиши
 let zoomClickArray = [1, 1.25, 1.5, 1.75, 2];
 let zoomClick = 0;
 let imagesLeft = 0;
 let notesApp = document.getElementById('notes');
+let documentApp = document.getElementById('document');
+let searchInput = document.querySelector('.search-input');
 document.addEventListener('keydown', (e) => {
-    if (firstInputValue != secondInputValue || notesApp.style.display == 'block') {
+    if (notesApp.style.display == 'block' || documentApp.style.display == 'block' || document.activeElement === searchInput) {
         return;
     }
     else if (e.code == 'KeyW') {
         hideFunction('.message-task-bar');
         hideFunction('.time');
-        openTime = false, openMessage = false;
+        hideFunction('.sound-setting');
+        openTime = false, openMessage = false, openSound = false;
         if (openStart === true) {
             openStart = false;
             hideFunction('.start-menu');
@@ -585,7 +597,25 @@ document.addEventListener('click', (e) => {
     hideFunction('.time');
     hideFunction('.message-task-bar');
     hideFunction('.start-menu');
+    hideFunction('.sound-setting');
     document.querySelector('.start-holder').style.backgroundColor = 'rgb(16, 16, 16)';
+    if (e.target.closest('.sound-holder')) {
+        if (openSound === true) {
+            openSound = false;
+            hideFunction('.sound-setting');
+        }
+        else if (openSound === false) {
+            openSound = true;
+            showUpFunction('.sound-setting');
+        }
+    }
+    if (e.target.closest('.sound-setting')) {
+        showUpFunction('.sound-setting');
+        openSound = true;
+    }
+    if (!e.target.closest('.sound-holder') && !e.target.closest('.sound-setting')) {
+        openSound = false;
+    }
     if (e.target.closest('.image-holder') && !e.target.closest('.image-remove')) {
         document.querySelector('.backgroundImage').style.zIndex = 2000;
         document.querySelector('.openImage').src = e.target.closest('.image-holder').childNodes[3].src;
@@ -693,9 +723,9 @@ document.addEventListener('click', (e) => {
         hideFunction('.start-menu');
         openShutdown = false, openStart = false;
         document.querySelector('.shutdown-btns-holder').style.left = -250 + 'px';
-        document.querySelector('.sleep-section').style.zIndex = 10000;
+        document.querySelector('.sleep-section').style.zIndex = 100000;
         document.querySelector('.sleep-section').style.backgroundColor = 'rgba(0, 0, 0, 1)';
-        document.querySelector('body').style.cursor = 'url("./img/start-sleep-logo.svg"), auto';
+        document.querySelector('body').style.cursor = 'none';
         return;
     }
     if (e.target.closest('.sleep-section')) {
@@ -726,10 +756,6 @@ document.addEventListener('click', (e) => {
     }
     if (!e.target.closest('.start-holder') && !e.target.closest('.start-menu') && !e.target.closest('.task-bar-search-holder')) {
         openStart = false;
-    }
-    if (e.target.closest('.task-bar-search-holder')) {
-        firstInputValue = document.querySelector('.search-input').value;
-        secondInputValue = null;
     }
     if (e.target.closest('.lil-time-holder')) {
         if (openTime === true) {

@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./apps.css">
@@ -21,8 +22,6 @@
     <section class="loading-section">
         <img src="./img/start.svg" alt="" style="width: 80px; height: 80px; position: absolute; top: 10vh;">
         <img src="./img/start-blue.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
-        <img src="./img/double_square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
-        <img src="./img/square.svg" style="width: 10px; height: 10px; position: absolute; top: -20px;" alt="">
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -115,7 +114,7 @@
             <div class="big-drag" id="drag-notes"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
-                <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"></div>
+                <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"><i class="fa-regular fa-clone"></i></div>
                 <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
             </div>
         </div>
@@ -186,7 +185,7 @@
 
     <footer class="footer">
         <div class="left-side-footer">
-            <div class="start-holder">
+            <div class="start-holder" title="press W">
                 <div class="start">
                 </div>
             </div>
@@ -197,8 +196,12 @@
             <div id="task-bar"></div>
         </div>
         <div class="task-bar-btn-holder">
-            <div class="language-holder">
-                <p>ENG</p>
+            <div class="sound-holder">
+                <img src="./img/sound-icon.svg" alt="">
+                <p>&#215;</p>
+                <audio class="sound-audio">
+                    <source src="./audio/sound_04681.mp3" type="audio/mpeg">
+                </audio>
             </div>
             <div class="lil-time-holder">
                 <p class="lil-time">00:00</p>
@@ -214,31 +217,39 @@
             <div class="shutdown-btns-holder">
                 <div class="shutdown-btns" id="start-restart-btn">
                     <img src="./img/start-restart-logo.svg" alt="">
+                    <!-- <i class="fa-solid fa-rotate-right"></i> -->
                     <p>Restart</p>
                 </div>
                 <div class="shutdown-btns" id="real-shutdown-btn">
                     <img src="./img/start-shutdown-logo.svg" alt="">
+                    <!-- <i class="fa-solid fa-power-off"></i> -->
                     <p>Shut down</p>
                 </div>
                 <div class="shutdown-btns" id="start-sleep-btn">
                     <img src="./img/start-sleep-logo.svg" alt="">
+                    <!-- <i class="fa-regular fa-moon"></i> -->
                     <p>Sleep</p>
                 </div>
             </div>
             <div id="shutdown-start-btn">
                 <img class="img-btn-start" src="./img/start-shutdown-logo.svg" alt="">
+                <!-- <i class="fa-solid fa-power-off"></i> -->
             </div>
             <div class="start-menu-btn" id="settings-start-btn">
                 <img class="img-btn-start" src="./img/start-settings-logo.svg" alt="">
+                <!-- <i class="fa-solid fa-gear"></i> -->
             </div>
             <div class="start-menu-btn" id="images-start-btn">
                 <img class="img-btn-start" src="./img/start-images-logo.svg" alt="">
+                <!-- <i class="fa-solid fa-image"></i> -->
             </div>
             <div class="start-menu-btn" id="document-start-btn">
                 <img class="img-btn-start" src="./img/start-document-logo.svg" alt="">
+                <!-- <i class="fa-regular fa-file"></i> -->
             </div>
             <div class="start-menu-btn" id="camera-start-btn">
                 <img class="img-btn-start" src="./img/start-camera-logo.svg" alt="">
+                <!-- <i class="fa-solid fa-camera"></i> -->
             </div>
         </div>
         <div class="start-menu-app-section"></div>
@@ -289,11 +300,42 @@
         <div class="big-drag-holder">
             <div class="big-drag" id="drag-document"></div>
             <div class="drag-btns-holder">
-                <div class="btn-drag hide-btn-drag" id="hide-btn-drag-document">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-document">&times;</div>
+                <div class="btn-drag hide-btn-drag" style="user-select: none;" id="hide-btn-drag-document">&mdash;</div>
+                <div class="btn-drag close-btn-drag" style="user-select: none;" id="close-btn-drag-document">&times;
+                </div>
             </div>
         </div>
-        <h1>document</h1>
+        <div class="top-task-bar-document">
+            <i class="fa-solid fa-broom document-btn" id="removeFormat-document"></i>
+            <i class="fa-solid fa-rotate-left document-btn" id="undo-document"></i>
+            <i class="fa-solid fa-rotate-right document-btn" id="redo-document"></i>
+            <select class="document-size-btn">
+                <option class="document-size-option" value="1">1</option>
+                <option class="document-size-option" value="2">2</option>
+                <option class="document-size-option" value="3" selected="selected">3</option>
+                <option class="document-size-option" value="4">4</option>
+                <option class="document-size-option" value="5">5</option>
+                <option class="document-size-option" value="6">6</option>
+                <option class="document-size-option" value="7">7</option>
+            </select>
+            <i class="fa-solid fa-bold document-btn" id="bold-document"></i>
+            <i class="fa-solid fa-italic document-btn" id="italic-document"></i>
+            <i class="fa-solid fa-underline document-btn" id="underline-document"></i>
+            <i class="fa-solid fa-align-left document-btn" id="justifyLeft-document"></i>
+            <i class="fa-solid fa-align-center document-btn" id="justifyCenter-document"></i>
+            <i class="fa-solid fa-align-right document-btn" id="justifyRight-document"></i>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <p style="font-weight: 500; padding: 0 5px;">Aa</p>
+                <input type="color" class="document-color-btn" value="#000000" id="foreColor-document">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <i style="padding: 0 5px;" class="fa-solid fa-brush"></i>
+                <input type="color" class="document-color-btn" value="#ffffff" id="hiliteColor-document">
+            </div>
+        </div>
+        <div class="document-input-holder">
+            <div id="text-input-document" contenteditable="true"></div>
+        </div>
     </div>
 
     <div class="app big-app" id="camera">
@@ -320,6 +362,13 @@
         </div>
     </div>
 
+    <div class="sound-setting">
+        <div class="range-holder">
+            <input type="range" value="1" max="1" step="0.01" min="0" class="lower-sound-range">
+            <input type="range" value="1" max="1" step="0.01" min="0" class="sound-range">
+        </div>
+        <p class="sound-volume">100</p>
+    </div>
 
     <div class="time">
         <div class="big-time-holder">
@@ -366,7 +415,7 @@
             <p class="timer-holder">Timer</p>
         </div>
         <div class="stopwatch">
-            <h2 class="stopwatch-numbers" style="text-align: center; margin: 1rem 0;"></h2>
+            <h2 class="stopwatch-numbers" style="font-weight: 400; text-align: center; margin: 1rem 0;"></h2>
             <div class="stopwatch-button-holder">
                 <button class="start-stopwatch stopwatch-button">
                     <p>Start</p>
@@ -384,7 +433,7 @@
             <div class="lap-saction"></div>
         </div>
         <div class="timer">
-            <audio>
+            <audio class="time-audio">
                 <source src="./audio/zvukovoy-signal-tsifrovogo-budilnika-26709.mp3" type="audio/mpeg">
             </audio>
             <div class="timer-num-holder" style="margin-top: 1rem;">

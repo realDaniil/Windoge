@@ -86,12 +86,20 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 		}
 		if (e.target.classList.contains('roll-btn-drag')) {
 			if (roll === false) {
-				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/square.svg")';
+				document.getElementById(e.target.id).innerHTML = '<i class="fa-regular fa-square"></i>';
 				roll = true;
-			}
-			else if (roll === true) {
+			} else {
 				roll = false;
-				document.getElementById(e.target.id).style.backgroundImage = 'url("./img/double_square.svg")';
+				document.getElementById(e.target.id).innerHTML = '<i class="fa-regular fa-clone"></i>';
+			}
+		}
+		if (e.target.closest('.fa-regular')) {
+			if (roll === false) {
+				e.target.parentNode.innerHTML = '<i class="fa-regular fa-square"></i>';
+				roll = true;
+			} else {
+				roll = false;
+				e.target.parentNode.innerHTML = '<i class="fa-regular fa-clone"></i>';
 			}
 		}
 		if (e.target.classList.contains('close-btn-drag')) {
@@ -312,7 +320,7 @@ document.querySelector('.notes-section').addEventListener('click', (e) => {
 		document.getElementById('add-notes').insertAdjacentHTML('afterend', `
 		<div class="notes" id="note-${addNotesClick}">
 			<input class="note-input" id="note-input-${addNotesClick}" type="text" placeholder="New note">
-			<textarea class="note-textarea" id="note-textarea-${addNotesClick}" name="" cols="30" rows="10" placeholder="Text"></textarea>
+			<textarea class="note-textarea" id="note-textarea-${addNotesClick}" placeholder="Text"></textarea>
             <div class="notes-btn-holder">
                 <button id="copy-note-${addNotesClick}" class="notes-btn">Copy</button>
                 <button id="del-note-${addNotesClick}" class="notes-btn">Delete</button>
@@ -339,4 +347,27 @@ document.querySelector('.notes-section').addEventListener('click', (e) => {
 			setTimeout(() => { document.getElementById(idNote).remove(); }, 2000);
 		}
 	}
+});
+
+//document
+function modifyText(command, defaultUi, value) {
+	document.execCommand(command, defaultUi, value);
+};
+document.querySelectorAll('.document-btn').forEach((button) => {
+	button.addEventListener("click", () => {
+		modifyText(button.id.slice(0, -9), false, null);
+		if (button.id.slice(0, -9) == 'removeFormat') {
+			document.querySelector('.document-size-btn').value = 3;
+		}
+		document.querySelector('#text-input-document').focus();
+	});
+});
+document.querySelectorAll('.document-color-btn').forEach((button) => {
+	button.addEventListener("change", () => {
+		modifyText(button.id.slice(0, -9), false, button.value);
+	});
+});
+document.querySelector('.document-size-btn').addEventListener("change", function () {
+	document.querySelector('#text-input-document').focus();
+	modifyText('fontSize', false, this.value);
 });

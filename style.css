@@ -3,7 +3,6 @@
     padding: 0;
     list-style: none;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
 }
 
 *::-webkit-scrollbar {
@@ -440,8 +439,14 @@ footer {
     width: 300px;
     padding-left: 40px;
     font-size: 14px;
-    color: rgb(16, 16, 16);
-    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    background-color: white;
+    transition: 0.1s ease;
+}
+
+.search-input:focus::placeholder,
+.search-input:hover::placeholder {
+    color: black;
 }
 
 #task-bar {
@@ -477,20 +482,114 @@ footer {
     display: flex;
 }
 
-.language-holder:hover,
 .message-task-bar-icon:hover,
-.lil-time-holder:hover {
+.lil-time-holder:hover,
+.sound-holder:hover {
     background-color: rgb(39, 39, 39);
 }
 
-.language-holder {
+.sound-holder {
     display: flex;
-    justify-content: center;
+    position: relative;
     align-items: center;
-    font-size: 12px;
-    padding: 0.4rem;
-    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    height: 100%;
+    padding: 0 0.4rem;
     transition: 0.1s ease;
+}
+
+.sound-holder img {
+    height: 12px;
+    width: 12px;
+}
+
+.sound-holder p {
+    display: none;
+    position: absolute;
+    background-color: rgb(16, 16, 16);
+    left: 12px;
+    padding-left: 1px;
+    top: 9px;
+    font-weight: 300;
+    transition: 0.1s ease;
+}
+
+.sound-holder:hover p {
+    background-color: rgb(39, 39, 39);
+}
+
+.range-holder {
+    display: flex;
+    align-items: center;
+}
+
+.range-holder input[type=range] {
+    position: absolute;
+    -webkit-appearance: none;
+    width: 200px;
+    height: 3px;
+}
+
+.sound-range:hover::-webkit-slider-thumb {
+    background: white;
+}
+
+.sound-range {
+    outline: none;
+}
+
+.sound-range {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.lower-sound-range {
+    overflow: hidden;
+    background-color: rgb(121, 121, 121);
+}
+
+.lower-sound-range::-webkit-slider-thumb {
+    box-shadow: -100px 0 0 100px rgb(66, 156, 227);
+}
+
+.sound-range::-webkit-slider-thumb {
+    height: 20px;
+    width: 8px;
+    background-color: rgb(0, 120, 215);
+}
+
+.range-holder input[type=range]::-webkit-slider-thumb {
+    border-radius: 28px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+
+.range-holder input[type=range]::-webkit-slider-runnable-track {
+    height: 6.4px;
+}
+
+.range-holder input[type=range]::-moz-range-track {
+    height: 6.4px;
+}
+
+.range-holder input[type=range]::-ms-track {
+    height: 6.4px;
+}
+
+.range-holder input[type=range]::-webkit-slider-thumb {
+    height: 20px;
+    width: 8px;
+}
+
+.range-holder input[type=range]::-moz-range-thumb {
+    height: 20px;
+    width: 8px;
+}
+
+.range-holder input[type=range]::-ms-thumb {
+    height: 20px;
+    width: 8px;
 }
 
 .message-task-bar-icon {
@@ -766,4 +865,27 @@ footer {
 
 .reset-timer:hover {
     background-color: rgb(40, 40, 40);
+}
+
+.sound-setting {
+    background-color: rgb(31, 31, 31);
+    transition: 0.3s ease-in-out;
+    z-index: 9999;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom: -610px;
+    border-top: solid rgb(76, 76, 76) 1px;
+    border-left: solid rgb(76, 76, 76) 1px;
+    color: #ffffff;
+    padding: 0 2rem;
+}
+
+.sound-setting p {
+    font-size: 20px;
+    font-weight: 500;
 }

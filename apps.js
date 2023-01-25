@@ -371,3 +371,160 @@ document.querySelector('.document-size-btn').addEventListener("change", function
 	document.querySelector('#text-input-document').focus();
 	modifyText('fontSize', false, this.value);
 });
+
+//password
+
+let allPasswordArr = {
+	lowerCase: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
+	upperCase: ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+	numbersArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+	signsArr: ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '.', ',', '<', '>']
+}
+
+let passwordLength = document.querySelector('#password-length');
+
+passwordLength.addEventListener('input', e => {
+	if (e.target.value > 999) {
+		e.target.value = 999;
+	}
+	e.target.value = e.target.value.replace(/[+,-]/g, '');
+});
+
+passwordLength.addEventListener('change', e => {
+	if (e.target.value < 1) {
+		e.target.value = 1;
+	}
+	if (e.target.value === '') {
+		e.target.value = 1;
+	}
+});
+
+
+
+document.querySelector('.password-children-holder').addEventListener('click', (e) => {
+	if (e.target.closest('#password-generate')) {
+		document.querySelector('#password-input').value = '';
+		for (let i = 0; i < passwordLength.value; i++) {
+			let randomArr = allPasswordArr[Object.keys(allPasswordArr)[Math.floor(Math.random() * Object.keys(allPasswordArr).length)]]
+			document.querySelector('#password-input').value += randomArr[Math.floor(Math.random() * randomArr.length)];
+		}
+	}
+	if (e.target.closest('#password-copy')) {
+		navigator.clipboard.writeText(document.querySelector('#password-input').value);
+		e.target.innerHTML = 'Copied!'
+		setTimeout(() => { e.target.innerHTML = 'Copy' }, 2000);
+	}
+});
+document.querySelector('#password-input').value = 'qwerty';
+let checkboxSign = document.querySelector('#checkbox-sign');
+let checkboxNumber = document.querySelector('#checkbox-number');
+let checkboxUpper = document.querySelector('#checkbox-upperCase');
+
+document.querySelectorAll('.custom-checkbox-password').forEach(e => {
+	e.addEventListener('click', () => {
+		let chekSign = e.children[0];
+		if (chekSign.style.display === 'none') {
+			chekSign.style.display = 'block';
+			e.style.backgroundColor = '#DD2222';
+			e.style.boxShadow = 'none';
+		} else {
+			chekSign.style.display = 'none';
+			e.style.backgroundColor = '#ffffff';
+			e.style.boxShadow = 'inset 0 1px 2px 0 rgb(0 0 0 / 25%)';
+		}
+		document.getElementById(e.className.slice(0, -32)).click();
+		if (checkboxSign.checked) {
+			allPasswordArr.signsArr = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '.', ',', '<', '>'];
+		} else {
+			delete allPasswordArr.signsArr;
+		}
+		if (checkboxNumber.checked) {
+			allPasswordArr.numbersArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+		} else {
+			delete allPasswordArr.numbersArr;
+		}
+		if (checkboxUpper.checked) {
+			allPasswordArr.upperCase = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+		} else {
+			delete allPasswordArr.upperCase;
+		}
+	});
+});
+
+
+
+
+
+
+//paint
+let paintCanvas = document.querySelector('#canvas-paint');
+let ctxPaint = paintCanvas.getContext("2d");
+let mouse = { x: 0, y: 0 };
+let draw = false, eraser = false, drawEraser = false;
+
+document.getElementById('color-paint').addEventListener('input', e => {
+	ctxPaint.strokeStyle = e.target.value;
+});
+document.querySelector('.paint-task-bar').addEventListener('click', e => {
+	draw = false;
+	drawEraser = false;
+	if (e.target.closest('#paint-eraser')) {
+		document.getElementById('paint-eraser').style.display = 'none';
+		document.getElementById('paint-brush').style.display = 'block';
+		ctxPaint.strokeStyle = paintCanvas.style.backgroundColor;
+		eraser = true;
+	}
+	if (e.target.closest('#paint-brush')) {
+		document.getElementById('paint-eraser').style.display = 'block';
+		document.getElementById('paint-brush').style.display = 'none';
+		ctxPaint.strokeStyle = document.getElementById('color-paint').value;
+		eraser = false;
+	}
+	if (e.target.closest('#paint-clean')) {
+		ctxPaint.clearRect(0, 0, window.screen.width, window.screen.height);
+	}
+});
+ctxPaint.strokeStyle = document.querySelector('#color-paint').value;
+paintCanvas.style.backgroundColor = '#ffffff';
+paintCanvas.width = window.screen.width - window.screen.width / 5;
+paintCanvas.height = window.screen.height - window.screen.height / 4;
+paintCanvas.addEventListener("mousedown", function (e) {
+	if (eraser) {
+		drawEraser = true;
+	}
+	let ClientRect = this.getBoundingClientRect();
+	mouse.x = e.clientX - ClientRect.left;
+	mouse.y = e.clientY - ClientRect.top;
+	draw = true;
+	ctxPaint.beginPath();
+	ctxPaint.moveTo(mouse.x, mouse.y);
+});
+paintCanvas.addEventListener("mousemove", function (e) {
+	if (draw && !drawEraser) {
+		let ClientRect = this.getBoundingClientRect();
+		mouse.x = e.clientX - ClientRect.left;
+		mouse.y = e.clientY - ClientRect.top;
+		ctxPaint.lineTo(mouse.x, mouse.y);
+		ctxPaint.stroke();
+	}
+	if (drawEraser) {
+		let ClientRect = this.getBoundingClientRect();
+		mouse.x = e.clientX - ClientRect.left;
+		mouse.y = e.clientY - ClientRect.top;
+		ctxPaint.beginPath();
+		ctxPaint.arc(mouse.x, mouse.y, 15, 0, 2 * Math.PI, true);
+		ctxPaint.fillStyle = paintCanvas.style.backgroundColor;
+		ctxPaint.fill();
+	}
+});
+
+paintCanvas.addEventListener("mouseup", function (e) {
+	let ClientRect = this.getBoundingClientRect();
+	mouse.x = e.clientX - ClientRect.left;
+	mouse.y = e.clientY - ClientRect.top;
+	ctxPaint.lineTo(mouse.x, mouse.y);
+	ctxPaint.stroke();
+	ctxPaint.closePath();
+	draw = false;
+	drawEraser = false;
+});

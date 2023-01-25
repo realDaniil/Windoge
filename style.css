@@ -404,6 +404,12 @@ footer {
     padding: 1rem;
 }
 
+.start-menu-search-section {
+    overflow-y: scroll;
+    padding: 1rem;
+    display: none;
+}
+
 .start-menu-app-holder {
     display: flex;
     align-items: center;

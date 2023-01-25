@@ -6,12 +6,14 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
     document.querySelector('.error-screen-secton').style.display = 'block';
 }
 console.log('The site may have problems when using macOS devices or when using the Firefox browser');
+document.querySelectorAll('button').forEach(btn => { btn.tabIndex = -1 });
+document.querySelectorAll('input').forEach(input => { input.tabIndex = -1 });
 setInterval(() => {
     scroll(0, 0);
     document.querySelector('main').style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 'px';
     document.querySelectorAll('.big-app').forEach((e) => { e.style.height = window.innerHeight - document.querySelector('footer').offsetHeight + 1 + 'px' });
     document.getElementById('video-camera').style.maxHeight = window.innerHeight - document.querySelector('footer').offsetHeight - 150 + 'px';
-    document.querySelector('.notes-section').style.height = window.innerHeight - document.querySelector('.big-drag-holder').offsetHeight - document.querySelector('footer').offsetHeight + 'px';
+    document.querySelectorAll('.big-app-children-holder').forEach((e) => { e.style.height = window.innerHeight - 30 - document.querySelector('footer').offsetHeight + 'px' });
     document.querySelector('.document-input-holder').style.height = window.innerHeight - document.querySelector('.top-task-bar-document').offsetHeight - document.querySelector('#drag-document').offsetHeight - document.querySelector('footer').offsetHeight + 'px';
 }, 100);
 let tickMessage = 0;
@@ -87,7 +89,7 @@ function RectsColliding(a, b) {
         wCanvas = 0;
         hCanvas = 0;
     }
-    if (wCanvas > 0 && hCanvas > 0) {
+    if (wCanvas >= 0 && hCanvas >= 0) {
         if (xCanvas > a.x + a.width || yCanvas > a.y + a.height) {
         }
         else if (xCanvas + wCanvas > a.x && yCanvas + hCanvas > a.y) {
@@ -95,7 +97,7 @@ function RectsColliding(a, b) {
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    if (wCanvas > 0 && hCanvas < 0) {
+    if (wCanvas >= 0 && hCanvas <= 0) {
         if (xCanvas > a.x + a.width || yCanvas < a.y) {
         }
         else if (xCanvas + wCanvas > a.x && yCanvas + hCanvas < a.y + a.height) {
@@ -103,7 +105,7 @@ function RectsColliding(a, b) {
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    if (wCanvas < 0 && hCanvas < 0) {
+    if (wCanvas <= 0 && hCanvas <= 0) {
         if (xCanvas < a.x || yCanvas < a.y) {
         }
         else if (xCanvas + wCanvas < a.x + a.width && yCanvas + hCanvas < a.y + a.height) {
@@ -111,7 +113,7 @@ function RectsColliding(a, b) {
             b.style.border = 'solid 2px rgba(0, 0, 0, 0.7)';
         }
     }
-    if (wCanvas < 0 && hCanvas > 0) {
+    if (wCanvas <= 0 && hCanvas >= 0) {
         if (xCanvas < a.x || yCanvas > a.y + a.height) {
         }
         else if (xCanvas + wCanvas < a.x + a.width && yCanvas + hCanvas > a.y) {
@@ -131,8 +133,8 @@ function canvasFunction(e) {
         ctx.fillRect(xCanvas, yCanvas, wCanvas, hCanvas);
         ctx.strokeRect(xCanvas, yCanvas, wCanvas, hCanvas);
         for (let appShortcut of document.querySelectorAll('.shortcut')) {
-            document.getElementById(appShortcut.id).style.backgroundColor = 'transparent';
-            document.getElementById(appShortcut.id).style.border = 'solid 2px transparent';
+            appShortcut.style.backgroundColor = 'transparent';
+            appShortcut.style.border = 'solid 2px transparent';
             RectsColliding(document.getElementById(appShortcut.id).getBoundingClientRect(), document.getElementById(appShortcut.id));
         }
     }, 1);
@@ -146,6 +148,11 @@ window.addEventListener('mouseup', function () {
     clearInterval(canvasInterval);
     ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
     xCanvas = undefined; yCanvas = undefined; wCanvas = undefined; hCanvas = undefined;
+    for (let appShortcut of document.querySelectorAll('.shortcut')) {
+        if (appShortcut.style.backgroundColor == 'rgba(45, 75, 185, 0.7)') {
+            selectedAppArr.push(appShortcut);
+        }
+    }
 });
 
 
@@ -531,9 +538,17 @@ let zoomClick = 0;
 let imagesLeft = 0;
 let notesApp = document.getElementById('notes');
 let documentApp = document.getElementById('document');
-let searchInput = document.querySelector('.search-input');
+document.querySelector('.search-input').addEventListener('input', e => {
+    let searchValue = e.target.value.toLowerCase();
+    let appName = document.querySelectorAll('.start-menu-app-holder p');
+    appName.forEach(name => {
+        if (name.textContent.toLowerCase().includes(searchValue)) {
+            name.parentNode.style.display = 'flex';
+        } else { name.parentNode.style.display = 'none'; }
+    });
+});
 document.addEventListener('keydown', (e) => {
-    if (notesApp.style.display == 'block' || documentApp.style.display == 'block' || document.activeElement === searchInput) {
+    if (notesApp.style.display == 'block' || documentApp.style.display == 'block' || document.activeElement.tagName === 'INPUT') {
         return;
     }
     else if (e.code == 'KeyW') {
@@ -553,11 +568,6 @@ document.addEventListener('keydown', (e) => {
             showUpFunction('.start-menu');
             document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
         }
-    }
-    if (e.code == 'Tab') {
-        setTimeout(() => {
-            scroll(0, 0);
-        }, 1);
     }
     if (e.code == 'KeyZ' || e.code == 'ArrowUp' && document.querySelector('.backgroundImage').style.zIndex == '2000') {
         if (zoomClick > 3) {

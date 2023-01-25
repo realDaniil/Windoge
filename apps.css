@@ -547,7 +547,8 @@ input[type=color]::-moz-color-swatch {
 	border: none;
 }
 
-#password-input::selection {
+#password-input::selection,
+#password-length::selection {
 	background-color: #DD2222;
 	color: white;
 }

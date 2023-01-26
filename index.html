@@ -62,7 +62,7 @@
             <div class="big-drag" id="drag-computer"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-computer">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-computer">&#10005;</div>
             </div>
         </div>
         <div class="computer-content-holder big-app-children-holder">
@@ -75,7 +75,7 @@
             <div class="drag" id="drag-calculator"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-calculator">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-calculator">&#10005;</div>
             </div>
         </div>
         <div class="calc-buttons-holder">
@@ -114,11 +114,11 @@
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-notes">&mdash;</div>
                 <div class="btn-drag roll-btn-drag" id="roll-btn-drag-notes"><i class="fa-regular fa-clone"></i></div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-notes">&#10005;</div>
             </div>
         </div>
         <div class="notes-children-holder big-app-children-holder">
-            <div class="notes-section big-app-children-holder">
+            <div class="notes-section">
                 <div id="add-notes" class="notes">
                     <div class="add-notes-circle">
                         <p>+</p>
@@ -134,7 +134,7 @@
             <div class="big-drag" id="drag-paint"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-paint">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-paint">&#10005;</div>
             </div>
         </div>
         <div class="paint-children-holder big-app-children-holder">
@@ -155,7 +155,7 @@
             <div class="big-drag" id="drag-password"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-password">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-password">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-password">&#10005;</div>
             </div>
         </div>
         <div class="password-children-holder">
@@ -317,16 +317,35 @@
         </div>
     </div>
 
-    <div class="app" id="settings">
-        <div class="drag-holder">
-            <div class="drag" id="drag-settings"></div>
+    <div class="big-app app" id="settings">
+        <div class="big-drag-holder">
+            <div class="big-drag" id="drag-settings"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-settings">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-settings">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-settings">&#10005;</div>
             </div>
         </div>
-        <h1>settings</h1>
-        <img src="./img/blue-screen-of-death.png" style="width: 300px; height: 200px;" alt="">
+        <div class="settings-children-holder">
+            <p style="text-align: center; font-weight: 300; font-size: 24px;">Windoge Settings</з>
+            <div class="input-settings-holder">
+                <div class="search-settings-cross-holder">
+                    <p>&#10005;</p>
+                </div>
+                <input type="text" id="input-settings" placeholder="Find a setting">
+                <img src="./img/search-icon.svg" alt="🔎" class="search-settings-icon">
+            </div>
+            <div class="settings-cards-section">
+                <i class="fa-solid fa-laptop"></i>
+                <i class="fa-solid fa-keyboard"></i>
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-list"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-language"></i>
+                <i class="fa-brands fa-xbox"></i>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+        </div>
     </div>
 
     <div class="app big-app" id="images">
@@ -334,7 +353,7 @@
             <div class="big-drag" id="drag-images"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-images">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-images">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-images">&#10005;</div>
             </div>
         </div>
         <div class="images-children-holder">
@@ -354,7 +373,7 @@
             <div class="big-drag" id="drag-document"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" style="user-select: none;" id="hide-btn-drag-document">&mdash;</div>
-                <div class="btn-drag close-btn-drag" style="user-select: none;" id="close-btn-drag-document">&times;
+                <div class="btn-drag close-btn-drag" style="user-select: none;" id="close-btn-drag-document">&#10005;
                 </div>
             </div>
         </div>
@@ -396,7 +415,7 @@
             <div class="big-drag" id="drag-camera"></div>
             <div class="drag-btns-holder">
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-camera">&mdash;</div>
-                <div class="btn-drag close-btn-drag" id="close-btn-drag-camera">&times;</div>
+                <div class="btn-drag close-btn-drag" id="close-btn-drag-camera">&#10005;</div>
             </div>
         </div>
         <div class="camera-children-holder">

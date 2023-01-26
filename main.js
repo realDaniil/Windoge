@@ -456,7 +456,6 @@ function upload(selector, options = {}) {
             }
             let reader = new FileReader();
             reader.onload = (ev) => {
-                console.log(file)
                 if (imagesSectionFiles.includes(ev.target.result)) {
                     return;
                 }
@@ -465,7 +464,7 @@ function upload(selector, options = {}) {
                 imagesSection.style.alignItems = 'flex-start';
                 imagesSection.insertAdjacentHTML('afterbegin', `
                 <div class="image-holder">
-                    <div class="image-remove" data-name="${file.name}">&times;</div>
+                    <div class="image-remove" data-name="${file.name}">&#10005;</div>
                     <img src="${ev.target.result}" alt="${file.name}" class="image">
                     <div class="image-info">
                         <span>${file.name}</span>
@@ -544,7 +543,7 @@ document.querySelector('.search-input').addEventListener('input', e => {
     appName.forEach(name => {
         if (name.textContent.toLowerCase().includes(searchValue)) {
             name.parentNode.style.display = 'flex';
-        } else { name.parentNode.style.display = 'none'; }
+        } else name.parentNode.style.display = 'none';
     });
 });
 document.addEventListener('keydown', (e) => {
@@ -680,7 +679,7 @@ document.addEventListener('click', (e) => {
             document.querySelector('.dontHaveImg').style.display = 'none';
             imagesSection.insertAdjacentHTML('afterbegin', `
             <div class="image-holder">
-                <div class="image-remove" data-name="${bigVideoCanvas.toDataURL("image/jpeg")}">&times;</div>
+                <div class="image-remove" data-name="${bigVideoCanvas.toDataURL("image/jpeg")}">&#10005;</div>
                 <img src="${bigVideoCanvas.toDataURL("image/jpeg")}" class="image" alt="${bigVideoCanvas.toDataURL("image/jpeg")}" id="canvasImage${takePhotoClick}">
                 <div class="image-info">
                     <span>image${takePhotoClick}.doge</span>

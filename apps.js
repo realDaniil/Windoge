@@ -109,6 +109,10 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 					dragBtnHolder.parentNode.parentElement.children[1].className = appId + '-children-holder app-children-holder';
 					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = window.innerHeight - window.innerHeight / 3 - 30 + 'px';
 				}
+				if (appId == 'settings') {
+					document.querySelector('.settings-cards-section').style.height = 25 + 'vh';
+					document.querySelector('.settings-cards-section').style.overflowX = 'scroll';
+				}
 			} else {
 				e.target.closest('.roll-btn-drag').innerHTML = '<i class="fa-regular fa-clone"></i>';
 				document.getElementById(appId).className = 'app big-app';
@@ -121,6 +125,10 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 				if (appId == 'notes') {
 					dragBtnHolder.parentNode.parentElement.children[1].className = appId + '-children-holder big-app-children-holder';
 					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = 100 + '%';
+				}
+				if (appId == 'settings') {
+					document.querySelector('.settings-cards-section').style.height = '';
+					document.querySelector('.settings-cards-section').style.overflowX = '';
 				}
 			}
 			getDragFunction()

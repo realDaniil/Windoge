@@ -663,7 +663,9 @@ input[type=color]::-moz-color-swatch {
 	background-color: white;
 }
 
-.settings-children-holder {}
+#roll-btn-drag-settings {
+	color: black;
+}
 
 #hide-btn-drag-settings,
 #close-btn-drag-settings {
@@ -676,7 +678,7 @@ input[type=color]::-moz-color-swatch {
 	justify-content: space-between;
 	position: relative;
 	width: 28vw;
-	margin: 2rem auto;
+	margin: 2rem auto 4rem;
 	height: 30px;
 }
 
@@ -730,4 +732,59 @@ input[type=color]::-moz-color-swatch {
 
 #input-settings:focus {
 	border: solid 2px rgb(0, 120, 215);
+}
+
+.settings-cards-section {
+	display: grid;
+	grid-template-columns: repeat(4, 20%);
+	justify-items: center;
+	justify-content: space-evenly;
+	height: 30vh;
+	overflow-y: none;
+}
+
+.settings-card {
+	width: 95%;
+	min-height: 60px;
+	display: flex;
+	border: solid 2px transparent;
+	padding: 0.5rem 0 1.5rem 0;
+	margin-bottom: 1.5rem;
+	transition: 0.1s ease;
+}
+
+.settings-card * {
+	transition: 0.1s ease-in-out;
+}
+
+.settings-card:hover {
+	border: solid 2px rgb(210, 210, 210);
+}
+
+.settings-card:active {
+	border: solid 2px rgb(180, 180, 180);
+}
+
+.settings-card:active * {
+	transform: scale(95%);
+}
+
+.card-icon-holder {
+	color: rgb(0, 120, 215);
+	font-size: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20%;
+	margin-right: 0.5rem;
+}
+
+.card-text-holder {
+	color: rgb(103, 103, 103);
+	font-size: 12px;
+}
+
+.card-name {
+	color: black;
+	font-size: 14px;
 }

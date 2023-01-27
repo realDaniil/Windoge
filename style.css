@@ -222,7 +222,6 @@ main {
 #canvas {
     position: absolute;
     top: 0;
-    z-index: 0;
 }
 
 .icon-holder {
@@ -240,6 +239,11 @@ main {
     display: block;
     height: 100px;
     border: solid 2px transparent;
+}
+
+.shortcut:hover {
+    background-color: rgba(45, 75, 185, 0.4);
+    border: solid 2px rgba(20, 20, 20, 0.7);
 }
 
 .shortcut-text-holder {
@@ -303,7 +307,6 @@ footer {
     flex-direction: column-reverse;
     width: 200px;
     font-size: 15px;
-    z-index: 850;
     box-shadow: 0 0 1px black;
     padding: 5px 0 5px 0;
     position: absolute;

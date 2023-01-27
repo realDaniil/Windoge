@@ -2,7 +2,14 @@
 let taskBarArray = [];
 for (let appLogo of document.querySelectorAll('.shortcut')) {
 	appLogo.addEventListener('dblclick', (e) => {
+		document.querySelectorAll('.shortcut').forEach(e => {
+			e.style.backgroundColor = '';
+			e.style.border = '';
+		});
 		let shortcutId = appLogo.id.slice(0, -5);
+		document.querySelectorAll('.app').forEach(e => {
+			e.style.display = 'none';
+		});
 		document.getElementById(shortcutId).style.display = 'block';
 		let taskBarAppSrc = appLogo.querySelector('.app-icon').getAttribute("src");
 		if (taskBarArray.includes(shortcutId)) {
@@ -11,13 +18,13 @@ for (let appLogo of document.querySelectorAll('.shortcut')) {
 		taskBarArray.push(shortcutId);
 		document.getElementById('task-bar').innerHTML += `<div class="task-app-holder" id="task-app-holder-` + shortcutId + `"><img src="` + taskBarAppSrc + `"></div>`;
 	});
-	appLogo.addEventListener('mousemove', function () {
+	appLogo.addEventListener('click', function () {
+		document.querySelectorAll('.shortcut').forEach(e => {
+			e.style.backgroundColor = '';
+			e.style.border = '';
+		});
 		this.style.backgroundColor = 'rgba(45, 75, 185, 0.7)';
 		this.style.border = 'solid 2px rgba(20, 20, 20, 0.7)';
-	});
-	appLogo.addEventListener('mouseout', function () {
-		this.style.backgroundColor = 'rgba(45, 75, 185, 0)';
-		this.style.border = 'solid 2px rgba(20, 20, 20, 0)';
 	});
 	document.querySelector('.start-menu-app-section').innerHTML +=
 		`<div class="start-menu-app-holder" id="start-${appLogo.id.slice(0, -5)}">
@@ -28,6 +35,9 @@ for (let appLogo of document.querySelectorAll('.shortcut')) {
 
 for (appLogo of document.querySelectorAll('.start-menu-app-holder')) {
 	appLogo.addEventListener('click', function () {
+		document.querySelectorAll('.app').forEach(e => {
+			e.style.display = 'none';
+		});
 		document.getElementById(this.id.slice(6)).style.display = 'block';
 		let taskBarAppSrc = this.firstElementChild.getAttribute("src");
 		if (taskBarArray.includes(this.id.slice(6))) {
@@ -41,6 +51,9 @@ for (appLogo of document.querySelectorAll('.start-menu-app-holder')) {
 for (let appLogo of document.querySelectorAll('.start-menu-btn')) {
 	appLogo.addEventListener('click', function () {
 		let shortcutId = this.id.slice(0, -10);
+		document.querySelectorAll('.app').forEach(e => {
+			e.style.display = 'none';
+		});
 		document.getElementById(shortcutId).style.display = 'block';
 		let taskBarAppSrc = appLogo.querySelector('.img-btn-start').getAttribute("src");
 		if (taskBarArray.includes(shortcutId)) {
@@ -56,63 +69,59 @@ for (let appLogo of document.querySelectorAll('.start-menu-btn')) {
 
 
 
-
 document.querySelector('#task-bar').addEventListener('click', (e) => {
-	if (e.target.id.slice(16) === 'camera') {
-		cameraOpen = true;
-		cameraFunction();
-	}
 	if (e.target.closest('.task-app-holder')) {
 		if (window.getComputedStyle(document.getElementById(e.target.id.slice(16))).display == 'block') {
 			document.getElementById(e.target.id.slice(16)).style.display = 'none';
 		}
 		else if (window.getComputedStyle(document.getElementById(e.target.id.slice(16))).display == 'none') {
+			document.querySelectorAll('.app').forEach(e => {
+				e.style.display = 'none';
+			});
 			document.getElementById(e.target.id.slice(16)).style.display = 'block';
 		}
 	}
 });
 
 //закрытие и свертывание
-let roll = false;
 let nodeListDragBtnHolder = document.querySelectorAll('.drag-btns-holder');
 for (let dragBtnHolder of nodeListDragBtnHolder) {
 	dragBtnHolder.addEventListener('click', (e) => {
 		if (e.target.classList.contains('hide-btn-drag')) {
 			document.getElementById(e.target.id.split("-").pop()).style.display = 'none';
-			if (e.target.id.split("-").pop() === 'camera') {
-				cameraOpen = false;
-				cameraFunction();
-			}
 		}
 		if (e.target.closest('.roll-btn-drag')) {
-			if (roll === false) {
-				roll = true;
+			let appId = dragBtnHolder.parentNode.children[0].id.slice(5);
+			if (document.getElementById(appId).className == 'app big-app') {
 				e.target.closest('.roll-btn-drag').innerHTML = '<i class="fa-regular fa-square"></i>';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).classList = 'app';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.transition = '0.2s ease-in-out';
+				document.getElementById(appId).className = 'app';
+				document.getElementById(appId).style.transition = '0.2s ease-in-out';
 				setTimeout(() => {
-					document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.transition = 'none';
-				}, 200)
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.height = window.innerHeight - window.innerHeight / 3 + 'px';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.width = 70 + 'vw';
-				dragBtnHolder.parentNode.parentElement.children[1].classList = 'notes-children-holder app-children-holder';
-				dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = window.innerHeight - window.innerHeight / 3 - 30 + 'px';
-				dragBtnHolder.parentNode.children[0].classList = 'drag';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.top = 10 + 'vh';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.left = 25 + 'vw';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.position = 'absolute';
+					document.getElementById(appId).style.transition = 'none';
+				}, 200);
+				document.getElementById(appId).style.top = 10 + 'vh';
+				document.getElementById(appId).style.left = 25 + 'vw';
+				document.getElementById(appId).style.position = 'absolute';
+				dragBtnHolder.parentNode.children[0].className = 'drag';
+				document.getElementById(appId).style.height = window.innerHeight - window.innerHeight / 3 + 'px';
+				document.getElementById(appId).style.width = 70 + 'vw';
+				if (appId == 'notes') {
+					dragBtnHolder.parentNode.parentElement.children[1].className = appId + '-children-holder app-children-holder';
+					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = window.innerHeight - window.innerHeight / 3 - 30 + 'px';
+				}
 			} else {
-				roll = false;
 				e.target.closest('.roll-btn-drag').innerHTML = '<i class="fa-regular fa-clone"></i>';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).classList = ' app big-app';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.height = 100 + 'vh';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.width = 100 + 'vw';
-				dragBtnHolder.parentNode.parentElement.children[1].classList = 'notes-children-holder big-app-children-holder';
-				dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = 100 + '%';
-				dragBtnHolder.parentNode.children[0].classList = 'big-drag';
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.top = 0;
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.left = 0;
-				document.getElementById(dragBtnHolder.parentNode.children[0].id.slice(5)).style.position = 'static';
+				document.getElementById(appId).className = 'app big-app';
+				document.getElementById(appId).style.top = 0;
+				document.getElementById(appId).style.left = 0;
+				document.getElementById(appId).style.position = 'sticky';
+				dragBtnHolder.parentNode.children[0].className = 'big-drag';
+				document.getElementById(appId).style.height = 100 + 'vh';
+				document.getElementById(appId).style.width = 100 + 'vw';
+				if (appId == 'notes') {
+					dragBtnHolder.parentNode.parentElement.children[1].className = appId + '-children-holder big-app-children-holder';
+					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = 100 + '%';
+				}
 			}
 			getDragFunction()
 		}

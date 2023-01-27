@@ -61,14 +61,13 @@
 .big-app {
 	top: 0;
 	left: 0;
-	z-index: 1000;
+	z-index: 50;
 	width: 100vw;
 	height: 100vh;
 }
 
 #calculator {
 	width: 220px;
-	z-index: 500;
 	color: white;
 	border-radius: 4px;
 	-webkit-backdrop-filter: blur(10px);
@@ -121,6 +120,10 @@
 
 .calc-btn:hover {
 	filter: brightness(80%);
+}
+
+.calc-btn:active {
+	filter: brightness(60%);
 }
 
 .notes-background {
@@ -534,13 +537,18 @@ input[type=color]::-moz-color-swatch {
 	justify-content: center;
 }
 
+#password {
+	width: 100vw;
+	height: 100vh;
+}
+
 .password-children-holder {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	background-color: #CAEDF7;
 }
 

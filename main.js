@@ -133,8 +133,8 @@ function canvasFunction(e) {
         ctx.fillRect(xCanvas, yCanvas, wCanvas, hCanvas);
         ctx.strokeRect(xCanvas, yCanvas, wCanvas, hCanvas);
         for (let appShortcut of document.querySelectorAll('.shortcut')) {
-            appShortcut.style.backgroundColor = 'transparent';
-            appShortcut.style.border = 'solid 2px transparent';
+            appShortcut.style.backgroundColor = '';
+            appShortcut.style.border = '';
             RectsColliding(document.getElementById(appShortcut.id).getBoundingClientRect(), document.getElementById(appShortcut.id));
         }
     }, 1);
@@ -568,14 +568,14 @@ document.addEventListener('keydown', (e) => {
             document.querySelector('.start-holder').style.backgroundColor = 'rgb(31, 31, 31)';
         }
     }
-    if (e.code == 'KeyZ' || e.code == 'ArrowUp' && document.querySelector('.backgroundImage').style.zIndex == '2000') {
+    if (e.code == 'KeyZ' || e.code == 'ArrowUp' && document.querySelector('.backgroundImage').style.zIndex == '10001') {
         if (zoomClick > 3) {
             zoomClick = -1;
         }
         zoomClick++;
         document.querySelector('.openImage').style.transform = 'scale(' + zoomClickArray[zoomClick] + ')';
     }
-    if (e.code == 'ArrowLeft' && document.querySelector('.backgroundImage').style.zIndex == '2000') {
+    if (e.code == 'ArrowLeft' && document.querySelector('.backgroundImage').style.zIndex == '10001') {
         document.querySelector('.openImage').style.transform = 'scale(1)';
         imagesLeft = imagesSectionFiles.indexOf(document.querySelector('.openImage').src);
         imagesLeft++;
@@ -584,7 +584,7 @@ document.addEventListener('keydown', (e) => {
         }
         document.querySelector('.openImage').src = imagesSectionFiles[imagesLeft];
     }
-    if (e.code == 'ArrowRight' && document.querySelector('.backgroundImage').style.zIndex == '2000') {
+    if (e.code == 'ArrowRight' && document.querySelector('.backgroundImage').style.zIndex == '10001') {
         document.querySelector('.openImage').style.transform = 'scale(1)';
         imagesLeft = imagesSectionFiles.indexOf(document.querySelector('.openImage').src);
         imagesLeft--;
@@ -593,7 +593,7 @@ document.addEventListener('keydown', (e) => {
         }
         document.querySelector('.openImage').src = imagesSectionFiles[imagesLeft];
     }
-    if (e.code == 'ArrowDown' && document.querySelector('.backgroundImage').style.zIndex == '2000') {
+    if (e.code == 'ArrowDown' && document.querySelector('.backgroundImage').style.zIndex == '10001') {
         if (zoomClick < 1) {
             zoomClick = 5;
         }
@@ -626,7 +626,7 @@ document.addEventListener('click', (e) => {
         openSound = false;
     }
     if (e.target.closest('.image-holder') && !e.target.closest('.image-remove')) {
-        document.querySelector('.backgroundImage').style.zIndex = 2000;
+        document.querySelector('.backgroundImage').style.zIndex = 10001;
         document.querySelector('.openImage').src = e.target.closest('.image-holder').childNodes[3].src;
     }
     if (e.target.closest('.backgroundImage')) {

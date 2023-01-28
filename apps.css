@@ -652,7 +652,6 @@ input[type=color]::-moz-color-swatch {
 
 #settings {
 	background-color: white;
-	display: block;
 }
 
 .settings-back {

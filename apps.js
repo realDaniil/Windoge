@@ -110,8 +110,10 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = window.innerHeight - window.innerHeight / 3 - 30 + 'px';
 				}
 				if (appId == 'settings') {
-					document.querySelector('.settings-cards-section').style.height = 25 + 'vh';
-					document.querySelector('.settings-cards-section').style.overflowX = 'scroll';
+					document.querySelectorAll('.settings-card').forEach(e => {
+						e.style.padding = 0;
+						e.style.marginBottom = '0.5rem';
+					});
 				}
 			} else {
 				e.target.closest('.roll-btn-drag').innerHTML = '<i class="fa-regular fa-clone"></i>';
@@ -127,8 +129,10 @@ for (let dragBtnHolder of nodeListDragBtnHolder) {
 					dragBtnHolder.parentNode.parentElement.children[1].children[0].style.height = 100 + '%';
 				}
 				if (appId == 'settings') {
-					document.querySelector('.settings-cards-section').style.height = '';
-					document.querySelector('.settings-cards-section').style.overflowX = '';
+					document.querySelectorAll('.settings-card').forEach(e => {
+						e.style.padding = '0.5rem 0 1.5rem 0';
+						e.style.marginBottom = '1.5rem';
+					});
 				}
 			}
 			getDragFunction()
@@ -559,7 +563,16 @@ paintCanvas.addEventListener("mouseup", function (e) {
 });
 
 
-document.getElementById('input-settings').addEventListener('input', (e) => {
+
+//settings
+
+document.getElementById('input-settings').addEventListener('input', e => {
+	let searchValue = e.target.value.toLowerCase();
+	document.querySelectorAll('.settings-card-name').forEach(name => {
+		if (name.textContent.toLowerCase().includes(searchValue)) {
+			name.parentNode.parentNode.closest('.settings-card').style.display = 'flex';
+		} else name.parentNode.parentNode.style.display = 'none';
+	});
 	if (e.target.value != '') {
 		document.querySelector('.search-settings-icon').style.display = 'none';
 		document.querySelector('.search-settings-cross-holder').style.display = 'flex';
@@ -572,8 +585,28 @@ document.getElementById('input-settings').addEventListener('input', (e) => {
 
 
 
-document.querySelector('.search-settings-cross-holder').addEventListener('click', (e) => {
+
+document.getElementById('settings').addEventListener('click', e => {
+	if (e.target.closest('.settings-card')) {
+		document.querySelector('.first-section-settings').style.display = 'none';
+		document.querySelector('.settings-back').style.display = 'block';
+		document.getElementById('settings-section-' + e.target.closest('.settings-card').id.slice(0, -5)).style.display = 'block';
+	}
+	if (e.target.closest('.settings-back')) {
+		document.querySelectorAll('.settings-section').forEach(e => {
+			e.style.display = 'none';
+		});
+		document.querySelector('.settings-back').style.display = 'none';
+		document.querySelector('.first-section-settings').style.display = 'block';
+	}
+});
+
+
+document.querySelector('.search-settings-cross-holder').addEventListener('click', () => {
 	document.querySelector('#input-settings').value = '';
+	document.querySelectorAll('.settings-card-name').forEach(name => {
+		name.parentNode.parentNode.closest('.settings-card').style.display = 'flex';
+	});
 	document.querySelector('.search-settings-icon').style.display = 'block';
 	document.querySelector('.search-settings-cross-holder').style.display = 'none';
 	document.getElementById('input-settings').focus();

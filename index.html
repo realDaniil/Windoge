@@ -319,10 +319,11 @@
         </div>
     </div>
 
-    <div class="big-app app" id="settings">
+    <div class="app big-app" id="settings">
         <div class="big-drag-holder">
             <div class="big-drag" id="drag-settings"></div>
             <div class="drag-btns-holder">
+                <div class="settings-back">&#8592;</div>
                 <div class="btn-drag hide-btn-drag" id="hide-btn-drag-settings">&mdash;</div>
                 <div class="btn-drag roll-btn-drag" id="roll-btn-drag-settings"><i class="fa-regular fa-clone"></i>
                 </div>
@@ -330,108 +331,137 @@
             </div>
         </div>
         <div class="settings-children-holder">
-            <p style="text-align: center; font-weight: 300; font-size: 24px;">Windoge Settings</з>
-            <div class="input-settings-holder">
-                <div class="search-settings-cross-holder">
-                    <p>&#10005;</p>
+            <div class="first-section-settings">
+                <div class="settings-first-other-holder">
+                    <p style="text-align: center; font-weight: 300; font-size: 24px;">Windoge Settings</з>
+                    <div class="input-settings-holder">
+                        <div class="search-settings-cross-holder">
+                            <p>&#10005;</p>
+                        </div>
+                        <input type="text" id="input-settings" placeholder="Find a setting">
+                        <img src="./img/search-icon.svg" alt="🔎" class="search-settings-icon">
+                    </div>
                 </div>
-                <input type="text" id="input-settings" placeholder="Find a setting">
-                <img src="./img/search-icon.svg" alt="🔎" class="search-settings-icon">
+                <div class="settings-cards-section">
+                    <div class="settings-card" id="system-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-laptop"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">System</p>
+                            <p>Display, sound, notifications, power</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="devices-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-keyboard"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Devices</p>
+                            <p>Bluetooth, printers, mouse</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="phone-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Phone</p>
+                            <p>Link your Android, iPhone</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="network-and-internet-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Network & Internet</p>
+                            <p>WiFi, flight mode, VPN</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="apps-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-list"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Apps</p>
+                            <p>Uninstall, defaults, optional features</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="accounts-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Accounts</p>
+                            <p>Your accounts, email, sync, work, family</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="time-and-language-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Time & Language</p>
+                            <p>Speech, region, date</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="gaming-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-brands fa-xbox"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Gaming</p>
+                            <p>Xbox Game Bar, captures, Game Mode</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="privacy-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Privacy</p>
+                            <p>Location, camera, microphone</p>
+                        </div>
+                    </div>
+                    <div class="settings-card" id="update-and-security-card">
+                        <div class="card-icon-holder">
+                            <i class="fa-solid fa-rotate"></i>
+                        </div>
+                        <div class="card-text-holder">
+                            <p class="settings-card-name">Update & Security</p>
+                            <p>Windows Update, recovery, backup</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="settings-cards-section">
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-laptop"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">System</p>
-                        <p>Display, sound, notifications, power</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-keyboard"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Devices</p>
-                        <p>Bluetooth, printers, mouse</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Phone</p>
-                        <p>Link your Android, iPhone</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-wifi"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Network & Internet</p>
-                        <p>WiFi, flight mode, VPN</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-list"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Apps</p>
-                        <p>Uninstall, defaults, optional features</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Accounts</p>
-                        <p>Your accounts, email, sync, work, family</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-language"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Time & Language</p>
-                        <p>Speech, region, date</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-brands fa-xbox"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Gaming</p>
-                        <p>Xbox Game Bar, captures, Game Mode</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Privacy</p>
-                        <p>Location, camera, microphone</p>
-                    </div>
-                </div>
-                <div class="settings-card">
-                    <div class="card-icon-holder">
-                        <i class="fa-solid fa-rotate"></i>
-                    </div>
-                    <div class="card-text-holder">
-                        <p class="card-name">Update & Security</p>
-                        <p>Windows Update, recovery, backup</p>
-                    </div>
-                </div>
-
-
-            </div>
+        </div>
+        <div class="settings-section" id="settings-section-system">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-devices">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-phone">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-network-and-internet">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-apps">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-time-and-language">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-gaming">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-privacy">
+            Coming soon
+        </div>
+        <div class="settings-section" id="settings-section-update-and-security">
+            Coming soon
         </div>
     </div>
 
@@ -600,11 +630,9 @@
             </audio>
             <div class="timer-num-holder" style="margin-top: 1rem;">
                 <div class="dont-click-timer"></div>
-                <input type="number"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = 60;"
                     min="0" max="60" value="0" maxlength="2" class="timer-min">
-                <input type="number"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = 59;"
                     min="0" max="59" value="30" maxlength="2" class="timer-sec">
             </div>
             <div class="timer-num-holder" style="margin-bottom: 1rem;">
